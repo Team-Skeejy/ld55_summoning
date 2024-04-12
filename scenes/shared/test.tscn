@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqmjesx2jam32"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ccp7e"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ccp7e")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1, 4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7996, 7.26354, -0.807087)
