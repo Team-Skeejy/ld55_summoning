@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgol823ub27ic"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/inventory/inventory.gd" id="1_61pey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mystw"]
+size = Vector2(149, 140)
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource("1_61pey")
+
+[node name="Storage Space" type="Area2D" parent="."]
+position = Vector2(12, 10)
+input_pickable = false
+gravity_space_override = 3
+gravity = 0.0
+linear_damp_space_override = 3
+linear_damp = 100.0
+angular_damp_space_override = 3
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Storage Space"]
+position = Vector2(64.5, 60)
+shape = SubResource("RectangleShape2D_mystw")
+
+[node name="ColorRect" type="ColorRect" parent="Storage Space"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 29.0
+offset_bottom = 30.0
+scale = Vector2(3.70926, 3.48786)
+mouse_filter = 2
+color = Color(1, 0.603922, 1, 0.247059)

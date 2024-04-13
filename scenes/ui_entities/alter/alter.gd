@@ -1,3 +1,4 @@
+class_name Alter
 extends Node2D
 
 signal summoning(remaining: float)
@@ -17,7 +18,6 @@ func _ready() -> void:
 		button.button_down.connect(check_buttons)
 		button.button_up.connect(check_buttons)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if _can_summon:
@@ -28,10 +28,8 @@ func _process(delta: float) -> void:
 			countdown = 0
 			summon.emit(summon_area.get_overlapping_bodies())
 			_can_summon = false
-			reset_buttons()
 
-func reset_buttons() -> void:
-	await get_tree().process_frame
+func reevaluate_button_collisions() -> void:
 	for button: UIButton in alter_buttons:
 		button.reevaluate_collisions()
 
