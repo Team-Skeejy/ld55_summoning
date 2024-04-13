@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwg3bj4u5xq54"]
+[gd_scene load_steps=4 format=3 uid="uid://cwg3bj4u5xq54"]
 
-[ext_resource type="PackedScene" path="res://scenes/entities/base/base.tscn" id="1_q6sql"]
+[ext_resource type="Texture2D" uid="uid://h73nirqcbjy0" path="res://scenes/ui_entities/button/textures/placeholder_button.png" id="1_o8bnn"]
+[ext_resource type="Script" path="res://scenes/ui_entities/button/button.gd" id="2_ytfd1"]
 
-[node name="Button" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j741c"]
+size = Vector2(32, 8)
 
-[node name="Entity" parent="." instance=ExtResource("1_q6sql")]
+[node name="UIButton" type="Sprite2D" node_paths=PackedStringArray("area")]
+texture = ExtResource("1_o8bnn")
+vframes = 3
+script = ExtResource("2_ytfd1")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_j741c")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_shape_entered" from="Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="Area2D" to="." method="_on_area_2d_mouse_shape_exited"]

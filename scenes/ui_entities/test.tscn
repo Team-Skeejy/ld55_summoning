@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8fk8xcrfhlwr"]
+[gd_scene load_steps=7 format=3 uid="uid://c8fk8xcrfhlwr"]
 
-[ext_resource type="PackedScene" uid="uid://dfvjewsccldtf" path="res://scenes/ui_entities/base/entity.tscn" id="1_04yic"]
+[ext_resource type="PackedScene" uid="uid://dfvjewsccldtf" path="res://scenes/ui_entities/base/ui_entity.tscn" id="1_04yic"]
+[ext_resource type="Script" path="res://scenes/ui_entities/test.gd" id="1_nl7wu"]
 [ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/ui_entities/behaviours/draggable.tscn" id="2_5p8j2"]
+[ext_resource type="PackedScene" uid="uid://cwg3bj4u5xq54" path="res://scenes/ui_entities/button/button.tscn" id="3_uylu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3jcs"]
 size = Vector2(149, 140)
@@ -9,6 +11,7 @@ size = Vector2(149, 140)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wgnkv"]
 
 [node name="Test" type="Node2D"]
+script = ExtResource("1_nl7wu")
 
 [node name="Border" type="Area2D" parent="."]
 position = Vector2(12, 141)
@@ -18,7 +21,9 @@ gravity_space_override = 3
 gravity_point_center = Vector2(0, -1)
 gravity_direction = Vector2(0, -1)
 gravity = 1.0
+linear_damp_space_override = 3
 linear_damp = 100.0
+angular_damp_space_override = 3
 angular_damp = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border"]
@@ -26,6 +31,32 @@ position = Vector2(64.5, 60)
 shape = SubResource("RectangleShape2D_m3jcs")
 
 [node name="ColorRect" type="ColorRect" parent="Border"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 29.0
+offset_bottom = 30.0
+scale = Vector2(3.70926, 3.48786)
+mouse_filter = 2
+color = Color(1, 1, 1, 0.219608)
+
+[node name="Border2" type="Area2D" parent="."]
+position = Vector2(203, 88)
+scale = Vector2(1, 0.1)
+input_pickable = false
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 100.0
+angular_damp_space_override = 3
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border2"]
+position = Vector2(64.5, 60)
+shape = SubResource("RectangleShape2D_m3jcs")
+
+[node name="ColorRect" type="ColorRect" parent="Border2"]
 offset_left = -11.0
 offset_top = -10.0
 offset_right = 29.0
@@ -57,6 +88,9 @@ scale = Vector2(3.70926, 3.48786)
 mouse_filter = 2
 color = Color(1, 0.603922, 1, 0.247059)
 
+[node name="UIButton" parent="." instance=ExtResource("3_uylu7")]
+position = Vector2(273, 83)
+
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 freeze = true
 
@@ -84,3 +118,8 @@ position = Vector2(166, 115)
 
 [node name="Entity2" parent="." instance=ExtResource("1_04yic")]
 position = Vector2(192, 69)
+
+[connection signal="button_down" from="UIButton" to="." method="_on_ui_button_button_down"]
+[connection signal="button_up" from="UIButton" to="." method="_on_ui_button_button_up"]
+[connection signal="over" from="UIButton" to="." method="_on_ui_button_over"]
+[connection signal="pressed" from="UIButton" to="." method="_on_ui_button_pressed"]
