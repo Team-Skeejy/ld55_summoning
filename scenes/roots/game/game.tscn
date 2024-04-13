@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
-[ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade transition/fade_transition.tscn" id="2_8k2ii"]
+[ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
 
 [node name="Game" type="Control"]
 layout_mode = 3

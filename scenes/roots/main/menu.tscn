@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://7qt5cys60ti4"]
 
 [ext_resource type="Script" path="res://scenes/roots/main/menu.gd" id="1_8aya2"]
-[ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade transition/fade_transition.tscn" id="2_dglu1"]
+[ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_dglu1"]
 
 [node name="UI" type="Control" node_paths=PackedStringArray("fadeTransition", "volume")]
 layout_mode = 3

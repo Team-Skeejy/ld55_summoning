@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8fk8xcrfhlwr"]
+
+[ext_resource type="PackedScene" uid="uid://dfvjewsccldtf" path="res://scenes/entities/base/entity.tscn" id="1_04yic"]
+[ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/entities/behaviours/draggable.tscn" id="2_5p8j2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wgnkv"]
+
+[node name="Test" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(320, 180)
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(320, 180)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
+[node name="Entity" parent="." instance=ExtResource("1_04yic")]
+position = Vector2(113, 115)
+
+[node name="DraggableNode" parent="Entity" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity2" parent="." instance=ExtResource("1_04yic")]
+position = Vector2(192, 69)

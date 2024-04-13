@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfvjewsccldtf"]
+
+[ext_resource type="Texture2D" uid="uid://p3q2r78uxhww" path="res://scenes/entities/base/textures/placeholder_entity.png" id="1_n6d2l"]
+[ext_resource type="Script" path="res://scenes/entities/base/entity.gd" id="1_uqk7n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbvlq"]
+radius = 8.0
+
+[node name="Entity" type="RigidBody2D" node_paths=PackedStringArray("collider")]
+input_pickable = true
+script = ExtResource("1_uqk7n")
+collider = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n6d2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mbvlq")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
