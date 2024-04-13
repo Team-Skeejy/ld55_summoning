@@ -20,7 +20,10 @@ func _on_ui_button_over():
 	pass
 
 func _on_ui_button_button_up():
-	print_debug("up")
+	# print_debug("up")
+	pass
 
 func _on_ui_button_button_down():
-	print_debug("down")
+	# print_debug("down")
+	pass
+

@@ -48,7 +48,7 @@ Tab={
 [physics]
 
 2d/run_on_separate_thread=true
-2d/default_linear_damp=10.0
+2d/default_linear_damp=25.0
 
 [rendering]
 

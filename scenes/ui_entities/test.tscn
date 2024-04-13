@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8fk8xcrfhlwr"]
+[gd_scene load_steps=8 format=3 uid="uid://c8fk8xcrfhlwr"]
 
 [ext_resource type="PackedScene" uid="uid://dfvjewsccldtf" path="res://scenes/ui_entities/base/ui_entity.tscn" id="1_04yic"]
 [ext_resource type="Script" path="res://scenes/ui_entities/test.gd" id="1_nl7wu"]
 [ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/ui_entities/behaviours/draggable.tscn" id="2_5p8j2"]
 [ext_resource type="PackedScene" uid="uid://cwg3bj4u5xq54" path="res://scenes/ui_entities/button/button.tscn" id="3_uylu7"]
+[ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="5_3dlbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3jcs"]
 size = Vector2(149, 140)
@@ -39,8 +40,51 @@ scale = Vector2(3.70926, 3.48786)
 mouse_filter = 2
 color = Color(1, 1, 1, 0.219608)
 
+[node name="Antigrav" type="Area2D" parent="."]
+position = Vector2(12, 10)
+input_pickable = false
+gravity_space_override = 3
+gravity = 0.0
+linear_damp_space_override = 3
+linear_damp = 100.0
+angular_damp_space_override = 3
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Antigrav"]
+position = Vector2(64.5, 60)
+shape = SubResource("RectangleShape2D_m3jcs")
+
+[node name="ColorRect" type="ColorRect" parent="Antigrav"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 29.0
+offset_bottom = 30.0
+scale = Vector2(3.70926, 3.48786)
+mouse_filter = 2
+color = Color(1, 0.603922, 1, 0.247059)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(320, 180)
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(320, 180)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_wgnkv")
+
 [node name="Border2" type="Area2D" parent="."]
-position = Vector2(203, 88)
+position = Vector2(190, 37)
 scale = Vector2(1, 0.1)
 input_pickable = false
 gravity_space_override = 3
@@ -65,61 +109,37 @@ scale = Vector2(3.70926, 3.48786)
 mouse_filter = 2
 color = Color(1, 1, 1, 0.219608)
 
-[node name="Antigrav" type="Area2D" parent="."]
-position = Vector2(12, 10)
-input_pickable = false
-gravity_space_override = 3
-gravity = 0.0
-linear_damp_space_override = 3
-linear_damp = 100.0
-angular_damp_space_override = 3
-angular_damp = 100.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Antigrav"]
-position = Vector2(64.5, 60)
-shape = SubResource("RectangleShape2D_m3jcs")
-
-[node name="ColorRect" type="ColorRect" parent="Antigrav"]
-offset_left = -11.0
-offset_top = -10.0
-offset_right = 29.0
-offset_bottom = 30.0
-scale = Vector2(3.70926, 3.48786)
-mouse_filter = 2
-color = Color(1, 0.603922, 1, 0.247059)
-
-[node name="UIButton" parent="." instance=ExtResource("3_uylu7")]
-position = Vector2(273, 83)
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(320, 180)
-shape = SubResource("WorldBoundaryShape2D_wgnkv")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(320, 180)
-rotation = -1.5708
-shape = SubResource("WorldBoundaryShape2D_wgnkv")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
-rotation = 3.14159
-shape = SubResource("WorldBoundaryShape2D_wgnkv")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
-rotation = 1.5708
-shape = SubResource("WorldBoundaryShape2D_wgnkv")
+[node name="Alter" parent="." instance=ExtResource("5_3dlbg")]
+position = Vector2(259, 120)
 
 [node name="Entity" parent="." instance=ExtResource("1_04yic")]
-position = Vector2(166, 115)
+position = Vector2(46, 81)
 
 [node name="DraggableNode" parent="Entity" instance=ExtResource("2_5p8j2")]
 
-[node name="Entity2" parent="." instance=ExtResource("1_04yic")]
-position = Vector2(192, 69)
+[node name="Entity2" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(67, 56)
+collider = NodePath("../Entity/CollisionShape2D")
 
-[connection signal="button_down" from="UIButton" to="." method="_on_ui_button_button_down"]
-[connection signal="button_up" from="UIButton" to="." method="_on_ui_button_button_up"]
-[connection signal="over" from="UIButton" to="." method="_on_ui_button_over"]
-[connection signal="pressed" from="UIButton" to="." method="_on_ui_button_pressed"]
+[node name="DraggableNode" parent="Entity2" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity3" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(89, 78)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity3" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity4" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(88, 105)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity4" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity5" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(56, 112)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity5" instance=ExtResource("2_5p8j2")]
+
+[node name="UIButton" parent="." instance=ExtResource("3_uylu7")]
+position = Vector2(258, 31)

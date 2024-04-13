@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://btco02dq00kwc"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/alter/alter.gd" id="1_ibfmc"]
+[ext_resource type="PackedScene" uid="uid://6i2uak1cixpa" path="res://scenes/ui_entities/button/button_alter.tscn" id="2_6fh8w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tkfch"]
+radius = 48.0
+
+[node name="Alter" type="Node2D" node_paths=PackedStringArray("alter_buttons", "summon_area")]
+script = ExtResource("1_ibfmc")
+alter_buttons = [NodePath("Alter Button"), NodePath("Alter Button2"), NodePath("Alter Button3"), NodePath("Alter Button4"), NodePath("Alter Button5")]
+summon_area = NodePath("SummonArea2D")
+metadata/_edit_vertical_guides_ = [96.0]
+metadata/_edit_horizontal_guides_ = [96.0]
+
+[node name="SummonArea2D" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="ColorRect" type="ColorRect" parent="SummonArea2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SummonArea2D"]
+shape = SubResource("CircleShape2D_tkfch")
+
+[node name="Alter Button" parent="." instance=ExtResource("2_6fh8w")]
+position = Vector2(0, -38)
+
+[node name="Alter Button2" parent="." instance=ExtResource("2_6fh8w")]
+position = Vector2(-35, -9)
+
+[node name="Alter Button3" parent="." instance=ExtResource("2_6fh8w")]
+position = Vector2(33, -9)
+
+[node name="Alter Button4" parent="." instance=ExtResource("2_6fh8w")]
+position = Vector2(-23, 30)
+
+[node name="Alter Button5" parent="." instance=ExtResource("2_6fh8w")]
+position = Vector2(24, 30)

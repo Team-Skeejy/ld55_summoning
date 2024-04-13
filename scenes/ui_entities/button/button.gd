@@ -15,6 +15,7 @@ var _entity_on: bool = false
 var _entity_pressed: bool = false
 var _mouse_over: bool = false
 var _mouse_pressed: bool = false
+var _mouse_down: bool = false
 
 var _timer: float = 0
 
@@ -22,14 +23,13 @@ var _absolute_down: bool = false
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	_entity_over = true
-	if !_mouse_pressed:
+	if !_mouse_down:
 		_entity_on = true
 
 	reevaluate_ui_state()
 
 func _on_area_2d_body_exited(_body: Node2D) -> void:
 	if area.has_overlapping_bodies(): return
-
 	_entity_over = false
 	_entity_on = false
 	_entity_pressed = false
@@ -46,6 +46,7 @@ func _on_area_2d_mouse_shape_entered(_shape_idx: int) -> void:
 
 func _on_area_2d_mouse_shape_exited(_shape_idx: int) -> void:
 	_mouse_over = false
+	_mouse_pressed = false
 	reevaluate_ui_state()
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -88,12 +89,14 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var ev: InputEventMouseButton = event as InputEventMouseButton
 		if ev.button_index == 1:
-			if !ev.pressed:
+			if ev.pressed:
+				_mouse_down = true
+			else:
+				_mouse_down = false
 				_mouse_pressed = false
 				if _entity_over:
 					_entity_on = true
-
-				reevaluate_ui_state()
+			reevaluate_ui_state()
 
 func reevaluate_ui_state() -> void:
 	if _entity_pressed || _mouse_pressed:
