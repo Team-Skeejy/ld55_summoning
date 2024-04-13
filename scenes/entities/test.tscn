@@ -1,11 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8fk8xcrfhlwr"]
+[gd_scene load_steps=5 format=3 uid="uid://c8fk8xcrfhlwr"]
 
 [ext_resource type="PackedScene" uid="uid://dfvjewsccldtf" path="res://scenes/entities/base/entity.tscn" id="1_04yic"]
 [ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/entities/behaviours/draggable.tscn" id="2_5p8j2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3jcs"]
+size = Vector2(149, 140)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wgnkv"]
 
 [node name="Test" type="Node2D"]
+
+[node name="Border" type="Area2D" parent="."]
+position = Vector2(12, 141)
+scale = Vector2(1, 0.1)
+input_pickable = false
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 1.0
+linear_damp = 100.0
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border"]
+position = Vector2(64.5, 60)
+shape = SubResource("RectangleShape2D_m3jcs")
+
+[node name="ColorRect" type="ColorRect" parent="Border"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 29.0
+offset_bottom = 30.0
+scale = Vector2(3.70926, 3.48786)
+mouse_filter = 2
+color = Color(1, 1, 1, 0.219608)
+
+[node name="Antigrav" type="Area2D" parent="."]
+position = Vector2(12, 10)
+input_pickable = false
+gravity_space_override = 3
+gravity = 0.0
+linear_damp_space_override = 3
+linear_damp = 100.0
+angular_damp_space_override = 3
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Antigrav"]
+position = Vector2(64.5, 60)
+shape = SubResource("RectangleShape2D_m3jcs")
+
+[node name="ColorRect" type="ColorRect" parent="Antigrav"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 29.0
+offset_bottom = 30.0
+scale = Vector2(3.70926, 3.48786)
+mouse_filter = 2
+color = Color(1, 0.603922, 1, 0.247059)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 freeze = true
@@ -28,7 +78,7 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_wgnkv")
 
 [node name="Entity" parent="." instance=ExtResource("1_04yic")]
-position = Vector2(113, 115)
+position = Vector2(166, 115)
 
 [node name="DraggableNode" parent="Entity" instance=ExtResource("2_5p8j2")]
 
