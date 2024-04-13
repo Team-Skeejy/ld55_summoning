@@ -15,16 +15,25 @@ var countdown: float = summon_time
 func _ready() -> void:
 	for button: UIButton in alter_buttons:
 		button.button_down.connect(check_buttons)
+		button.button_up.connect(check_buttons)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if _can_summon:
 		countdown -= delta
-		summoning.emit(countdown)
-		if countdown <= 0:
-			countdown = summon_time
+		if countdown > 0:
+			summoning.emit(countdown)
+		else:
+			countdown = 0
 			summon.emit(summon_area.get_overlapping_bodies())
+			_can_summon = false
+			reset_buttons()
+
+func reset_buttons() -> void:
+	await get_tree().process_frame
+	for button: UIButton in alter_buttons:
+		button.reevaluate_collisions()
 
 func check_buttons() -> void:
 	var exited_early: bool = false
@@ -33,5 +42,6 @@ func check_buttons() -> void:
 			exited_early = true
 			break
 
-	if !exited_early:
-		_can_summon = true;
+	countdown = summon_time
+	_can_summon = !exited_early
+	print(_can_summon)

@@ -2,28 +2,35 @@ extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	pass  # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta: float) -> void:
 	pass
 
 
-func _on_ui_button_pressed():
+func _on_ui_button_pressed() -> void:
 	# print_debug("pressed")
 	pass
 
-func _on_ui_button_over():
+func _on_ui_button_over() -> void:
 	# print_debug("over")
 	pass
 
-func _on_ui_button_button_up():
+func _on_ui_button_button_up() -> void:
 	# print_debug("up")
 	pass
 
-func _on_ui_button_button_down():
+func _on_ui_button_button_down() -> void:
 	# print_debug("down")
 	pass
 
+
+func _on_alter_summon(entities: Array[Node2D]) -> void:
+	for entity: Node2D in entities:
+		entity.queue_free()
+
+func _on_alter_summoning(remaining: float) -> void:
+	print("summoning in " + str(remaining) + " seconds")

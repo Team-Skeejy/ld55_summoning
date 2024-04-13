@@ -35,8 +35,8 @@ func _on_area_2d_body_exited(_body: Node2D) -> void:
 	_entity_pressed = false
 
 	if _absolute_down:
-		button_up.emit()
 		_absolute_down = false
+		button_up.emit()
 
 	reevaluate_ui_state()
 
@@ -54,13 +54,13 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 		var ev: InputEventMouseButton = event as InputEventMouseButton
 		if ev.pressed && ev.button_index == 1:
 			if !_absolute_down:
-				button_down.emit()
 				_absolute_down = true
+				button_down.emit()
 			_mouse_pressed = true
 		if !ev.pressed && ev.button_index == 1:
 			if _absolute_down && !area.has_overlapping_bodies():
-				button_up.emit()
 				_absolute_down = false
+				button_up.emit()
 			_mouse_pressed = false
 		reevaluate_ui_state()
 
@@ -71,8 +71,8 @@ func _process(delta: float) -> void:
 		else:
 			if !_entity_pressed && !_mouse_pressed:
 				if !_absolute_down:
-					button_down.emit()
 					_absolute_down = true
+					button_down.emit()
 			_entity_pressed = true
 			reevaluate_ui_state()
 	else:
@@ -97,6 +97,17 @@ func _input(event: InputEvent) -> void:
 				if _entity_over:
 					_entity_on = true
 			reevaluate_ui_state()
+
+func reset() -> void:
+	_entity_over = false
+	_entity_on = false
+	_entity_pressed = false
+
+func reevaluate_collisions() -> void:
+	var colliding: bool = area.has_overlapping_bodies()
+	_entity_over = colliding
+	_entity_on = colliding
+	_entity_pressed = colliding
 
 func reevaluate_ui_state() -> void:
 	if _entity_pressed || _mouse_pressed:

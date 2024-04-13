@@ -109,6 +109,32 @@ scale = Vector2(3.70926, 3.48786)
 mouse_filter = 2
 color = Color(1, 1, 1, 0.219608)
 
+[node name="Border3" type="Area2D" parent="."]
+position = Vector2(190, 37)
+scale = Vector2(1, 0.1)
+input_pickable = false
+gravity_space_override = 3
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
+gravity = 100.0
+linear_damp_space_override = 3
+linear_damp = 100.0
+angular_damp_space_override = 3
+angular_damp = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border3"]
+position = Vector2(64.5, 60)
+shape = SubResource("RectangleShape2D_m3jcs")
+
+[node name="ColorRect" type="ColorRect" parent="Border3"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 29.0
+offset_bottom = 30.0
+scale = Vector2(3.70926, 3.48786)
+mouse_filter = 2
+color = Color(1, 1, 1, 0.219608)
+
 [node name="Alter" parent="." instance=ExtResource("5_3dlbg")]
 position = Vector2(259, 120)
 
@@ -141,5 +167,38 @@ collider = NodePath("../Entity/CollisionShape2D")
 
 [node name="DraggableNode" parent="Entity5" instance=ExtResource("2_5p8j2")]
 
+[node name="Entity6" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(232, 92)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity6" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity7" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(256, 128)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity7" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity8" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(247, 108)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity8" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity9" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(276, 134)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity9" instance=ExtResource("2_5p8j2")]
+
+[node name="Entity10" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
+position = Vector2(271, 108)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="DraggableNode" parent="Entity10" instance=ExtResource("2_5p8j2")]
+
 [node name="UIButton" parent="." instance=ExtResource("3_uylu7")]
 position = Vector2(258, 31)
+
+[connection signal="summon" from="Alter" to="." method="_on_alter_summon"]
+[connection signal="summoning" from="Alter" to="." method="_on_alter_summoning"]
