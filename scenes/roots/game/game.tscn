@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=4 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
+[ext_resource type="PackedScene" uid="uid://ddek8n8d6064c" path="res://scenes/characters/Dude.tscn" id="3_pu32q"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -22,5 +23,64 @@ text = "Menu"
 
 [node name="FadeTransition" parent="." instance=ExtResource("2_8k2ii")]
 layout_mode = 1
+
+[node name="DudeContainer" type="Node2D" parent="."]
+
+[node name="Goodie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(97, 159)
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home1")
+
+[node name="Goodie2" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(110, 49)
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home1")
+
+[node name="Goodie3" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(61, 134)
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home1")
+
+[node name="Baddie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(218, 44)
+team = 2
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home2")
+
+[node name="Baddie2" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(134, 92)
+team = 2
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home2")
+
+[node name="Baddie3" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(250, 126)
+team = 2
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home2")
+
+[node name="Baddie4" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(223, 155)
+team = 2
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home2")
+
+[node name="Baddie5" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(220, 95)
+team = 2
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home2")
+
+[node name="Baddie6" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
+position = Vector2(267, 46)
+team = 2
+parentContainer = NodePath("..")
+homeNode = NodePath("../../Home2")
+
+[node name="Home1" type="Node2D" parent="."]
+position = Vector2(68, 91)
+
+[node name="Home2" type="Node2D" parent="."]
+position = Vector2(240, 87)
 
 [connection signal="button_down" from="Menu" to="." method="_on_menu_button_down"]
