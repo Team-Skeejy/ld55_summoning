@@ -17,10 +17,6 @@ func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void
 		if ev.pressed && ev.button_index == 1:
 			dragging = true
 			_drag_pos = parent.get_local_mouse_position()
-	# elif event is InputEventScreenTouch:
-	# 	var ev: InputEventScreenTouch = event as InputEventScreenTouch
-	# 	if ev.pressed && ev.index == 1:
-	# 		dragging = true
 
 func _input(event: InputEvent) -> void:
 	if !dragging: return
@@ -29,12 +25,6 @@ func _input(event: InputEvent) -> void:
 		var ev: InputEventMouseButton = event as InputEventMouseButton
 		if ev.is_released && ev.button_index == 1:
 			dragging = false
-
-	# elif event is InputEventScreenTouch:
-	# 	var ev: InputEventScreenTouch = event as InputEventScreenTouch
-	# 	if ev.is_released && ev.index == 1:
-	# 		dragging = false
-
 
 func _physics_process(_delta: float) -> void:
 	if !dragging: return

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://p3q2r78uxhww"
-path="res://.godot/imported/placeholder_entity.png-e82a436ebb6ada221e327a0b58f44301.ctex"
+uid="uid://h73nirqcbjy0"
+path="res://.godot/imported/placeholder_button.png-1f1af27cc55961bba8d28999a6131cf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/entities/base/textures/placeholder_entity.png"
-dest_files=["res://.godot/imported/placeholder_entity.png-e82a436ebb6ada221e327a0b58f44301.ctex"]
+source_file="res://scenes/ui_entities/button/textures/placeholder_button.png"
+dest_files=["res://.godot/imported/placeholder_button.png-1f1af27cc55961bba8d28999a6131cf4.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
