@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvyej5of034s3"]
+
+[ext_resource type="Texture2D" uid="uid://h73nirqcbjy0" path="res://scenes/shared/button/textures/placeholder_button.png" id="1_0j0ds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu5lh"]
+size = Vector2(32, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7vtju"]
+
+[node name="Button" type="Area2D"]
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hu5lh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0j0ds")
+vframes = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7vtju")

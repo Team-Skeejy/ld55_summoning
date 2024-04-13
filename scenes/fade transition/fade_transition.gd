@@ -1,9 +1,9 @@
 extends Control
 class_name FadeTransition
 
-const MAIN_MENU: StringName = "res://scenes/main_menu.tscn"
-const SPLASH_SCREEN: StringName = "res://scenes/splash_screen.tscn"
-const GAME: StringName = "res://scenes/game.tscn"
+const SPLASH_SCREEN: StringName = "res://scenes/roots/splash/splash_screen.tscn"
+const MAIN_MENU: StringName = "res://scenes/roots/main/menu.tscn"
+const GAME: StringName = "res://scenes/roots/game/game.tscn"
 
 
 @export var animationPlayer: AnimationPlayer

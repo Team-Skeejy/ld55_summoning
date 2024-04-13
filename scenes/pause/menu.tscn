@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://0kmtooddb8a5"]
+
+[ext_resource type="Script" path="res://scenes/roots/main/menu.gd" id="1_uq5tx"]
+[ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade transition/fade_transition.tscn" id="2_d8gew"]
+
+[node name="UI" type="Control" node_paths=PackedStringArray("fadeTransition", "volume")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_uq5tx")
+fadeTransition = NodePath("FadeTransition")
+volume = NodePath("VBoxContainer/HSlider")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -15.5
+offset_right = 111.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Btn Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="Main"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 78.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FadeTransition" parent="." instance=ExtResource("2_d8gew")]
+layout_mode = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j2d2bp1v1p1g"
-path="res://.godot/imported/skeejy_splash.png-169e40a2e3f6474bc6fd9618d66099db.ctex"
+uid="uid://cdlc8j55dp33m"
+path="res://.godot/imported/bubble-1.png-048b7c33c6f7f0194a4d15ee752d3f73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/splash/textures/skeejy_splash.png"
-dest_files=["res://.godot/imported/skeejy_splash.png-169e40a2e3f6474bc6fd9618d66099db.ctex"]
+source_file="res://scenes/roots/splash/textures/bubble-1.png"
+dest_files=["res://.godot/imported/bubble-1.png-048b7c33c6f7f0194a4d15ee752d3f73.ctex"]
 
 [params]
 
