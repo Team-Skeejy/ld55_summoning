@@ -26,7 +26,7 @@ func _ready() -> void:
 			area_2d.add_child(sprite)
 
 			add_child(area_2d)
-			area_2d.position = area.size * (Vector2(i / float(dimensions.x), j / float(dimensions.y))) + area.size / Vector2(dimensions) / 2
+			area_2d.position = area.position + area.size * (Vector2(i / float(dimensions.x), j / float(dimensions.y))) + area.size / Vector2(dimensions) / 2
 
 			_colliders.append(area_2d)
 

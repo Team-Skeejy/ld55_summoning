@@ -88,15 +88,20 @@ gravity_space_override = 3
 position = Vector2(51, 34)
 shape = SubResource("RectangleShape2D_7ob2m")
 
-[node name="Alter Button1" parent="." instance=ExtResource("3_6tmnc")]
+[node name="Alter Button1" parent="." node_paths=PackedStringArray("area") instance=ExtResource("3_6tmnc")]
+area = NodePath("Area2D")
 
-[node name="Alter Button2" parent="." instance=ExtResource("4_ht3jc")]
+[node name="Alter Button2" parent="." node_paths=PackedStringArray("area") instance=ExtResource("4_ht3jc")]
+area = NodePath("Area2D")
 
-[node name="Alter Button3" parent="." instance=ExtResource("5_6g0dk")]
+[node name="Alter Button3" parent="." node_paths=PackedStringArray("area") instance=ExtResource("5_6g0dk")]
+area = NodePath("Area2D")
 
-[node name="Alter Button4" parent="." instance=ExtResource("6_ym6j5")]
+[node name="Alter Button4" parent="." node_paths=PackedStringArray("area") instance=ExtResource("6_ym6j5")]
+area = NodePath("Area2D")
 
-[node name="Alter Button5" parent="." instance=ExtResource("7_7s3wn")]
+[node name="Alter Button5" parent="." node_paths=PackedStringArray("area") instance=ExtResource("7_7s3wn")]
+area = NodePath("Area2D")
 
 [node name="Alter Bleed" type="AnimatedSprite2D" parent="."]
 position = Vector2(51, 34)

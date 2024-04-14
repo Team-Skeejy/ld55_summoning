@@ -1,7 +1,6 @@
 extends Node2D
 
 @export var ui: UI
-
 @export var test_entity: PackedScene
 
 func _on_button_button_down() -> void:

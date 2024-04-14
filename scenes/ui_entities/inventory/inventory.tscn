@@ -12,7 +12,7 @@ script = ExtResource("1_61pey")
 dimensions = Vector2i(5, 6)
 storage_space = NodePath("Storage Space/CollisionShape2D")
 debug_sprite = NodePath("Sprite2D")
-area = Rect2(0, 0, 96, 91)
+area = Rect2(1, 1, 95, 90)
 
 [node name="Grid" type="Sprite2D" parent="."]
 position = Vector2(48, 46)

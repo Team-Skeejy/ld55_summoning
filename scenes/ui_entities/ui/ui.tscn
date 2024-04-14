@@ -22,9 +22,10 @@ b = Vector2(102, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lw1g"]
 size = Vector2(99, 13)
 
-[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory")]
+[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory", "alter")]
 script = ExtResource("1_3cdks")
 inventory = NodePath("Inventory")
+alter = NodePath("Alter")
 
 [node name="Alter" parent="." node_paths=PackedStringArray("alter_buttons", "summon_area", "summoning_sprite") instance=ExtResource("1_yf748")]
 position = Vector2(0, 112)
@@ -36,6 +37,7 @@ summoning_sprite = NodePath("Alter Bleed")
 position = Vector2(3, 3)
 storage_space = NodePath("Storage Space/CollisionShape2D")
 debug_sprite = NodePath("Sprite2D")
+area = Rect2(3, 3, 96, 91)
 
 [node name="Ui" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
@@ -99,3 +101,5 @@ linear_damp = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Buttons Damper"]
 position = Vector2(51.5, 104.5)
 shape = SubResource("RectangleShape2D_4lw1g")
+
+[connection signal="summon" from="Alter" to="." method="_on_alter_summon"]

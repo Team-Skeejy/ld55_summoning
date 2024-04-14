@@ -2,7 +2,7 @@ class_name Alter
 extends Node2D
 
 signal summoning(remaining: float)
-signal summon
+signal summon(nodes: Array[Node2D])
 
 @export var alter_buttons: Array[UIButton]
 @export var summon_area: Area2D
@@ -10,7 +10,7 @@ signal summon
 
 var _can_summon: bool = false
 
-var summon_time: float = 3
+var summon_time: float = 1
 var countdown: float = summon_time
 
 # Called when the node enters the scene tree for the first time.
@@ -28,10 +28,12 @@ func _process(delta: float) -> void:
 			summoning_sprite.frame = int((summon_time - countdown) / summon_time * frame_count)
 			summoning.emit(countdown)
 		else:
-			countdown = 0
-			summoning_sprite.frame = 0
-			_can_summon = false
 			summon.emit(summon_area.get_overlapping_bodies())
+			_can_summon = false
+	else:
+		countdown = 0
+		summoning_sprite.frame = 0
+
 
 func reevaluate_button_collisions() -> void:
 	for button: UIButton in alter_buttons:
@@ -46,4 +48,3 @@ func check_buttons() -> void:
 
 	countdown = summon_time
 	_can_summon = !exited_early
-	print(_can_summon)

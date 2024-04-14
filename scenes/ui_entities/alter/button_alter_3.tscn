@@ -2,14 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://ckkkbf2fceqae" path="res://scenes/ui_entities/alter/button_alter_1.tscn" id="1_8v85v"]
 
-[node name="Alter Button" instance=ExtResource("1_8v85v")]
+[node name="Alter Button" node_paths=PackedStringArray("area") instance=ExtResource("1_8v85v")]
 frame = 6
+area = NodePath("Area2D")
 up_sprite = Vector2i(0, 2)
 over_sprite = Vector2i(1, 2)
 down_sprite = Vector2i(2, 2)
 
 [node name="Area2D" parent="." index="0"]
-position = Vector2(-23, 7)
+position = Vector2(-23, 5)
 
 [node name="Area2D2" parent="." index="1"]
 position = Vector2(-23, 7)
