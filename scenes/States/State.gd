@@ -38,3 +38,10 @@ func distance_to(character, target):
 	if(target is Vector2):
 		return character.get_global_transform().origin.distance_to(target)
 	return character.get_global_transform().origin.distance_to(target.get_global_transform().origin)
+
+
+func move_to(character: Dude, dest_target: Node2D) -> void:
+	if character:
+		var direction: Vector2 =  dest_target.global_position - character.global_position
+		direction = direction.normalized()
+		character.global_position += direction * character.speed

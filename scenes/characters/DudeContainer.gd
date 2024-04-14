@@ -24,14 +24,16 @@ func child_killed(team: int):
 	dude_killed.emit(team)
 
 func spawn_dude(team: int):
-	var new_dude = dude.instantiate()
+	var new_dude: Dude = dude.instantiate()
 		
 	new_dude.parentContainer = self
 	new_dude.team = team
 	if(team == 1):
-		new_dude.homeNode = good_home
+		new_dude.bad_home = bad_home 
+		new_dude.home = good_home
 		new_dude.global_position = good_home.global_position
 	else:
-		new_dude.homeNode = bad_home
+		new_dude.bad_home = good_home
+		new_dude.home = bad_home
 		new_dude.global_position = bad_home.global_position
 	add_child(new_dude)

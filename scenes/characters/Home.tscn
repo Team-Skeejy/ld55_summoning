@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch5rsfub34lwr"]
+
+[ext_resource type="Script" path="res://scenes/characters/home.gd" id="1_jdass"]
+[ext_resource type="Texture2D" uid="uid://cqxif1xnqy732" path="res://scenes/characters/house.png" id="2_w2mdl"]
+
+[node name="Home1" type="Node2D" node_paths=PackedStringArray("Bar")]
+position = Vector2(0, 1)
+script = ExtResource("1_jdass")
+Bar = NodePath("Healthbar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-15, 2)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_w2mdl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -28.0
+offset_top = 16.0
+offset_right = -2.0
+offset_bottom = 20.0
+color = Color(1, 0, 0, 1)
+
+[node name="Healthbar" type="ColorRect" parent="."]
+auto_translate_mode = 1
+offset_left = -28.0
+offset_top = 16.0
+offset_right = -2.0
+offset_bottom = 20.0
+color = Color(0, 1, 0, 1)

@@ -20,8 +20,8 @@ func Exit() -> void:
 	
 func Update(delta) -> void:
 	total_idle_time += delta
-	if total_idle_time > 5:
-		Transitioned.emit(self, "returnhome")
+	if total_idle_time > 1:
+		Transitioned.emit(self, "attackhouse")
 
 	if wander_time > 0:
 		wander_time -= delta

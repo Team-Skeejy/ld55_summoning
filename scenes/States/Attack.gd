@@ -20,16 +20,9 @@ func Update(delta: float) -> void:
 	if running_target != null:
 		if character:
 			character.attack(running_target, delta)
-		move_to(running_target)
+		move_to(character, running_target)
 	else:
 		Transitioned.emit(self, "idle")
-
-func move_to(dest_target: Dude) -> void:
-	if character:
-		var direction: Vector2 =  dest_target.global_position - character.global_position
-		direction = direction.normalized()
-		character.global_position += direction * character.speed
-
 
 func get_target() -> Dude:
 	if target and target.health and target.health > 0:

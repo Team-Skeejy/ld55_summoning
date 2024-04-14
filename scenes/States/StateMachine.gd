@@ -6,6 +6,7 @@ class_name StateMachine
 @export var containerReference: Node2D
 @export var character: Dude
 @export var home: Node2D
+@export var bad_home: Node2D
 
 var current_state: State
 var states: Dictionary = {}
@@ -47,3 +48,5 @@ func set_refs() -> void:
 			child.containerReference = containerReference
 		if "home" in child:
 			child.home = home
+		if "bad_home" in child:
+			child.bad_home = bad_home

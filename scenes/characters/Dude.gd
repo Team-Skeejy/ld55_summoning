@@ -9,7 +9,8 @@ class_name Dude
 @export var attack_range: float = 1;
 @export var attack_interval: float = 1;
 @export var parentContainer: Node2D;
-@export var homeNode: Node2D;
+@export var home: Node2D;
+@export var bad_home: Node2D;
 @export var stateMachine: StateMachine;
 @export var current_state: String = "";
 @export var is_dead: bool = false;
@@ -17,7 +18,8 @@ class_name Dude
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	stateMachine.containerReference = parentContainer
-	stateMachine.home = homeNode
+	stateMachine.home = home
+	stateMachine.bad_home = bad_home
 	stateMachine.set_refs()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,7 +42,7 @@ func attack(closest: Dude, delta: float) -> void:
 	time_since_last_attack += delta
 	if(attack_interval > time_since_last_attack):
 		time_since_last_attack = 0;
-		if(closest):
+		if closest:
 			var distance = distance_to(closest)
 			if(distance < attack_range):
 				closest.health = closest.health - attack_power

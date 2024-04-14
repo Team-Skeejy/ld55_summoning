@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddek8n8d6064c"]
+[gd_scene load_steps=8 format=3 uid="uid://ddek8n8d6064c"]
 
 [ext_resource type="Script" path="res://scenes/characters/Dude.gd" id="1_qqcbt"]
 [ext_resource type="Script" path="res://scenes/States/StateMachine.gd" id="2_n5kgs"]
 [ext_resource type="Script" path="res://scenes/States/Idle.gd" id="3_xogxj"]
 [ext_resource type="Script" path="res://scenes/States/Attack.gd" id="4_anltw"]
 [ext_resource type="Script" path="res://scenes/States/ReturnHome.gd" id="5_2y0be"]
+[ext_resource type="Script" path="res://scenes/States/AttackHouse.gd" id="6_l8227"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ynn6w"]
 specular_color = Color(1, 0, 1, 1)
@@ -30,3 +31,6 @@ script = ExtResource("4_anltw")
 
 [node name="returnhome" type="Node" parent="StateMachine"]
 script = ExtResource("5_2y0be")
+
+[node name="attackhouse" type="Node" parent="StateMachine"]
+script = ExtResource("6_l8227")
