@@ -4,7 +4,6 @@ extends Node2D
 @export var test_entity: PackedScene
 
 func _on_button_button_down() -> void:
-	print("adding item")
 	var entity: Entity = test_entity.instantiate()
 	add_child(entity)
 	ui.inventory.add_entity(entity)

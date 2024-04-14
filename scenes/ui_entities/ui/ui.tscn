@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dum2vhk725ubd"]
+[gd_scene load_steps=11 format=3 uid="uid://dum2vhk725ubd"]
 
 [ext_resource type="Script" path="res://scenes/ui_entities/ui/ui.gd" id="1_3cdks"]
 [ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="1_yf748"]
 [ext_resource type="Texture2D" uid="uid://dg1q3pxuipxkg" path="res://scenes/ui_entities/inventory/textures/ui.png" id="2_1tb5p"]
 [ext_resource type="PackedScene" uid="uid://bgol823ub27ic" path="res://scenes/ui_entities/inventory/inventory.tscn" id="3_bwefo"]
+[ext_resource type="PackedScene" path="res://scenes/ui_entities/button/btn_forfiet.tscn" id="5_j8rod"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l7cmk"]
 
@@ -32,12 +33,6 @@ position = Vector2(0, 112)
 alter_buttons = [NodePath("Alter Button1"), NodePath("Alter Button2"), NodePath("Alter Button3"), NodePath("Alter Button4"), NodePath("Alter Button5")]
 summon_area = NodePath("SummonArea2D")
 summoning_sprite = NodePath("Alter Bleed")
-
-[node name="Inventory" parent="." node_paths=PackedStringArray("storage_space", "debug_sprite") instance=ExtResource("3_bwefo")]
-position = Vector2(3, 3)
-storage_space = NodePath("Storage Space/CollisionShape2D")
-debug_sprite = NodePath("Sprite2D")
-area = Rect2(3, 3, 96, 91)
 
 [node name="Ui" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
@@ -78,7 +73,7 @@ shape = SubResource("SegmentShape2D_lqpwv")
 
 [node name="Inventory Bottom" type="Area2D" parent="Borders"]
 gravity_space_override = 1
-gravity = -1960.0
+gravity = -100.0
 linear_damp_space_override = 3
 linear_damp = 10.0
 
@@ -87,19 +82,30 @@ shape = SubResource("SegmentShape2D_eaat3")
 
 [node name="Buttons Bottom" type="Area2D" parent="Borders"]
 gravity_space_override = 1
-gravity = -1960.0
-linear_damp_space_override = 3
-linear_damp = 10.0
+gravity = -1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Buttons Bottom"]
 shape = SubResource("SegmentShape2D_wnwn8")
 
 [node name="Buttons Damper" type="Area2D" parent="Borders"]
 gravity = -1960.0
-linear_damp = 10.0
+linear_damp_space_override = 1
+linear_damp = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Buttons Damper"]
 position = Vector2(51.5, 104.5)
 shape = SubResource("RectangleShape2D_4lw1g")
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Forfiet" parent="Buttons" node_paths=PackedStringArray("area") instance=ExtResource("5_j8rod")]
+position = Vector2(51, 104)
+area = NodePath("Area2D")
+
+[node name="Inventory" parent="." node_paths=PackedStringArray("storage_space", "debug_sprite") instance=ExtResource("3_bwefo")]
+position = Vector2(3, 3)
+storage_space = NodePath("Storage Space/CollisionShape2D")
+debug_sprite = NodePath("Sprite2D")
+area = Rect2(3, 3, 96, 91)
 
 [connection signal="summon" from="Alter" to="." method="_on_alter_summon"]

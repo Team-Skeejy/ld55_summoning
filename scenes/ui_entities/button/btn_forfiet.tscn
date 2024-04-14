@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0lu6hg5uleok"]
+
+[ext_resource type="PackedScene" uid="uid://cwg3bj4u5xq54" path="res://scenes/ui_entities/button/button.tscn" id="1_cqgff"]
+[ext_resource type="Texture2D" uid="uid://fjylhkc8wc1u" path="res://scenes/ui_entities/button/textures/button_forefiet.png" id="2_rftrf"]
+
+[node name="BtnForfiet" node_paths=PackedStringArray("area") instance=ExtResource("1_cqgff")]
+texture = ExtResource("2_rftrf")
+area = NodePath("Area2D")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -0.5)

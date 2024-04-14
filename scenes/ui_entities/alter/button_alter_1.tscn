@@ -20,15 +20,3 @@ linear_damp = 100.0
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0)
-
-[node name="Area2D2" parent="." index="1"]
-visible = false
-position = Vector2(-11, -15)
-monitoring = false
-monitorable = false
-gravity_space_override = 0
-linear_damp_space_override = 0
-angular_damp_space_override = 0
-
-[node name="CollisionShape2D" parent="Area2D2" index="0"]
-visible = false
