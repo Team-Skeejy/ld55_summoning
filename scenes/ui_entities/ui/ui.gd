@@ -21,6 +21,10 @@ func _on_alter_summon(nodes: Array[Node2D]) -> void:
 func reset_alter_buttons() -> void:
 	await get_tree().process_frame
 	alter.reevaluate_button_collisions()
+	await get_tree().process_frame
+	alter.reevaluate_button_collisions()
+	await get_tree().process_frame
+	alter.reevaluate_button_collisions()
 
 
 func _on_forfeit_button_down() -> void:
