@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckkkbf2fceqae"]
+[gd_scene load_steps=5 format=3 uid="uid://ckkkbf2fceqae"]
 
 [ext_resource type="PackedScene" uid="uid://6i2uak1cixpa" path="res://scenes/ui_entities/alter/button_alter.tscn" id="1_63t38"]
 [ext_resource type="Texture2D" uid="uid://cxhum301wncn3" path="res://scenes/ui_entities/alter/textures/alter_alters.png" id="2_se88v"]
+[ext_resource type="Texture2D" uid="uid://cffvi6f5piddr" path="res://scenes/ui_entities/button/textures/button_alter.png" id="3_dwxau"]
+[ext_resource type="Script" path="res://scenes/ui_entities/alter/hack_button.gd" id="4_d0avf"]
 
 [node name="Alter Button" node_paths=PackedStringArray("area") instance=ExtResource("1_63t38")]
 position = Vector2(51, 34)
@@ -9,7 +11,15 @@ texture = ExtResource("2_se88v")
 vframes = 5
 area = NodePath("Area2D")
 
-[node name="Area2D" parent="." index="0"]
+[node name="UIButton" type="Sprite2D" parent="." index="0"]
+position = Vector2(-11, -18)
+texture = ExtResource("3_dwxau")
+vframes = 3
+script = ExtResource("4_d0avf")
+over_sprite = Vector2i(0, 1)
+down_sprite = Vector2i(0, 2)
+
+[node name="Area2D" parent="." index="1"]
 position = Vector2(-11, -18)
 gravity_space_override = 3
 gravity_point = true

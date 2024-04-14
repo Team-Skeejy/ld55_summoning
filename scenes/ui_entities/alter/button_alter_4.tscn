@@ -9,11 +9,12 @@ up_sprite = Vector2i(0, 3)
 over_sprite = Vector2i(1, 3)
 down_sprite = Vector2i(2, 3)
 
-[node name="Area2D" parent="." index="0"]
+[node name="UIButton" parent="." index="0" node_paths=PackedStringArray("area")]
+position = Vector2(7, 7)
+area = NodePath("../Area2D")
+
+[node name="Area2D" parent="." index="1"]
 position = Vector2(7, 9)
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, -2)
-
-[node name="Area2D2" parent="." index="1"]
-position = Vector2(7, 9)

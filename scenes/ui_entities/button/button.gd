@@ -3,7 +3,8 @@ extends Sprite2D
 
 signal button_down
 signal button_up
-signal over
+signal hover
+signal unhover
 signal pressed
 
 @export var area: Area2D
@@ -85,7 +86,7 @@ func _process(delta: float) -> void:
 		_timer = 0
 
 	if _mouse_over || _entity_over:
-		over.emit()
+		hover.emit()
 	if _mouse_pressed || _entity_pressed:
 		pressed.emit()
 
