@@ -14,7 +14,6 @@ func _ready() -> void:
 	parent.input_event.connect(on_input_event)
 
 func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	print(event)
 	if event is InputEventMouseButton:
 		var ev: InputEventMouseButton = event as InputEventMouseButton
 		if ev.pressed && ev.button_index == 1:
