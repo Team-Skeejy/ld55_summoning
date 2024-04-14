@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://drtsb3cnf4owo"]
+[gd_scene load_steps=4 format=3 uid="uid://drtsb3cnf4owo"]
 
 [ext_resource type="PackedScene" uid="uid://cwg3bj4u5xq54" path="res://scenes/ui_entities/button/button.tscn" id="1_cqgff"]
 [ext_resource type="Texture2D" uid="uid://fjylhkc8wc1u" path="res://scenes/ui_entities/button/textures/button_forefiet.png" id="2_rftrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tef6s"]
+size = Vector2(96, 11)
 
 [node name="BtnForfiet" node_paths=PackedStringArray("area") instance=ExtResource("1_cqgff")]
 texture = ExtResource("2_rftrf")
@@ -9,3 +12,4 @@ area = NodePath("Area2D")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_tef6s")

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="1_yf748"]
 [ext_resource type="Texture2D" uid="uid://dg1q3pxuipxkg" path="res://scenes/ui_entities/inventory/textures/ui.png" id="2_1tb5p"]
 [ext_resource type="PackedScene" uid="uid://bgol823ub27ic" path="res://scenes/ui_entities/inventory/inventory.tscn" id="3_bwefo"]
-[ext_resource type="PackedScene" path="res://scenes/ui_entities/button/btn_forfiet.tscn" id="5_j8rod"]
+[ext_resource type="PackedScene" uid="uid://drtsb3cnf4owo" path="res://scenes/ui_entities/button/btn_forfiet.tscn" id="5_j8rod"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l7cmk"]
 
@@ -63,6 +63,7 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_l7cmk")
 
 [node name="Inventory Right" type="Area2D" parent="Borders"]
+input_pickable = false
 gravity_space_override = 1
 gravity_point_center = Vector2(-1, 0)
 gravity_direction = Vector2(-1, 0)
@@ -72,6 +73,7 @@ gravity = 9800.0
 shape = SubResource("SegmentShape2D_lqpwv")
 
 [node name="Inventory Bottom" type="Area2D" parent="Borders"]
+input_pickable = false
 gravity_space_override = 1
 gravity = -100.0
 linear_damp_space_override = 3
@@ -81,6 +83,7 @@ linear_damp = 10.0
 shape = SubResource("SegmentShape2D_eaat3")
 
 [node name="Buttons Bottom" type="Area2D" parent="Borders"]
+input_pickable = false
 gravity_space_override = 1
 gravity = -1000.0
 
@@ -88,6 +91,7 @@ gravity = -1000.0
 shape = SubResource("SegmentShape2D_wnwn8")
 
 [node name="Buttons Damper" type="Area2D" parent="Borders"]
+input_pickable = false
 gravity = -1960.0
 linear_damp_space_override = 1
 linear_damp = 100.0
