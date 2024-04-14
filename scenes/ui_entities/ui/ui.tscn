@@ -1,8 +1,96 @@
-[gd_scene load_steps=2 format=3 uid="uid://dum2vhk725ubd"]
+[gd_scene load_steps=10 format=3 uid="uid://dum2vhk725ubd"]
 
+[ext_resource type="Script" path="res://scenes/ui_entities/ui/ui.gd" id="1_3cdks"]
 [ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="1_yf748"]
+[ext_resource type="Texture2D" uid="uid://dg1q3pxuipxkg" path="res://scenes/ui_entities/inventory/textures/ui.png" id="2_1tb5p"]
+[ext_resource type="PackedScene" uid="uid://bgol823ub27ic" path="res://scenes/ui_entities/inventory/inventory.tscn" id="3_bwefo"]
 
-[node name="Ui" type="Node2D"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l7cmk"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lqpwv"]
+a = Vector2(102, 0)
+b = Vector2(102, 180)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_eaat3"]
+a = Vector2(0, 96)
+b = Vector2(102, 96)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wnwn8"]
+a = Vector2(0, 112)
+b = Vector2(102, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lw1g"]
+size = Vector2(99, 13)
+
+[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory")]
+script = ExtResource("1_3cdks")
+inventory = NodePath("Inventory")
 
 [node name="Alter" parent="." instance=ExtResource("1_yf748")]
-position = Vector2(-28, 89)
+position = Vector2(0, 112)
+
+[node name="Inventory" parent="." instance=ExtResource("3_bwefo")]
+position = Vector2(3, 3)
+
+[node name="Ui" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("2_1tb5p")
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="Game Border" type="RigidBody2D" parent="Borders"]
+freeze = true
+
+[node name="Bottom" type="CollisionShape2D" parent="Borders/Game Border"]
+position = Vector2(317, 177)
+shape = SubResource("WorldBoundaryShape2D_l7cmk")
+
+[node name="Right" type="CollisionShape2D" parent="Borders/Game Border"]
+position = Vector2(317, 177)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_l7cmk")
+
+[node name="Top" type="CollisionShape2D" parent="Borders/Game Border"]
+position = Vector2(3, 3)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_l7cmk")
+
+[node name="Left" type="CollisionShape2D" parent="Borders/Game Border"]
+position = Vector2(3, 3)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_l7cmk")
+
+[node name="Inventory Right" type="Area2D" parent="Borders"]
+gravity_space_override = 1
+gravity_point_center = Vector2(-1, 0)
+gravity_direction = Vector2(-1, 0)
+gravity = 9800.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Inventory Right"]
+shape = SubResource("SegmentShape2D_lqpwv")
+
+[node name="Inventory Bottom" type="Area2D" parent="Borders"]
+gravity_space_override = 1
+gravity = -1960.0
+linear_damp_space_override = 3
+linear_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Inventory Bottom"]
+shape = SubResource("SegmentShape2D_eaat3")
+
+[node name="Buttons Bottom" type="Area2D" parent="Borders"]
+gravity_space_override = 1
+gravity = -1960.0
+linear_damp_space_override = 3
+linear_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Buttons Bottom"]
+shape = SubResource("SegmentShape2D_wnwn8")
+
+[node name="Buttons Damper" type="Area2D" parent="Borders"]
+gravity = -1960.0
+linear_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Buttons Damper"]
+position = Vector2(51.5, 104.5)
+shape = SubResource("RectangleShape2D_4lw1g")

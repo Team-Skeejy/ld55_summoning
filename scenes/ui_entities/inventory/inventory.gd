@@ -12,8 +12,8 @@ var radius: float = 1
 var _colliders: Array[Area2D]
 
 func _ready() -> void:
-	for i: int in dimensions.x:
-		for j: int in dimensions.y:
+	for j: int in dimensions.y:
+		for i: int in dimensions.x:
 			var area_2d: Area2D = Area2D.new()
 			var collision_shape: CollisionShape2D = CollisionShape2D.new()
 			var circle: CircleShape2D = CircleShape2D.new()
@@ -31,4 +31,17 @@ func _ready() -> void:
 			_colliders.append(area_2d)
 
 func add_entity(entity: Entity) -> void:
-	pass
+	var unplaced: bool = true
+	for collider: Area2D in _colliders:
+		if !collider.has_overlapping_bodies():
+			entity.position = collider.position
+			unplaced = false
+			break
+	if unplaced:
+		entity.position = Vector2(randf_range(area.position.x, area.end.x), randf_range(area.position.y, area.end.y))
+
+	freeze(entity)
+
+func freeze(entity: Entity) -> void:
+	await get_tree().process_frame
+	entity.linear_velocity = Vector2.ZERO

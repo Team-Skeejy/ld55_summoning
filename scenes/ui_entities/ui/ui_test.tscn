@@ -1,7 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfws8s4srttog"]
+[gd_scene load_steps=4 format=3 uid="uid://bfws8s4srttog"]
 
 [ext_resource type="PackedScene" uid="uid://dum2vhk725ubd" path="res://scenes/ui_entities/ui/ui.tscn" id="1_b6ent"]
+[ext_resource type="Script" path="res://scenes/ui_entities/ui/ui_test.gd" id="1_j1gcs"]
+[ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="3_8ex4m"]
 
 [node name="UiTest" type="Node2D"]
+script = ExtResource("1_j1gcs")
 
 [node name="Ui" parent="." instance=ExtResource("1_b6ent")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 110.0
+offset_top = 7.0
+offset_right = 189.0
+offset_bottom = 38.0
+text = "Add Item"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 195.0
+offset_top = 8.0
+offset_right = 235.0
+offset_bottom = 31.0
+
+[node name="Entity" parent="." instance=ExtResource("3_8ex4m")]
+position = Vector2(194, 77)
+
+[node name="Entity2" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("3_8ex4m")]
+position = Vector2(194, 77)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="Entity3" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("3_8ex4m")]
+position = Vector2(194, 77)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="Entity4" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("3_8ex4m")]
+position = Vector2(194, 77)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="Entity5" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("3_8ex4m")]
+position = Vector2(194, 77)
+collider = NodePath("../Entity/CollisionShape2D")
+
+[node name="Entity6" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("3_8ex4m")]
+position = Vector2(194, 77)
+collider = NodePath("../Entity/CollisionShape2D")

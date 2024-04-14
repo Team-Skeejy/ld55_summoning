@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://du3ndtyofe575"]
+[gd_scene load_steps=4 format=3 uid="uid://du3ndtyofe575"]
 
 [ext_resource type="PackedScene" uid="uid://bgol823ub27ic" path="res://scenes/ui_entities/inventory/inventory.tscn" id="1_a8qb6"]
+[ext_resource type="Script" path="res://scenes/ui_entities/inventory/inventory_test.gd" id="1_uar4s"]
+[ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="2_derbx"]
 
-[node name="InventoryTest" type="Node2D"]
+[node name="InventoryTest" type="Node2D" node_paths=PackedStringArray("inventory")]
+script = ExtResource("1_uar4s")
+inventory = NodePath("Inventory")
+test_entity = ExtResource("2_derbx")
 
 [node name="Inventory" parent="." instance=ExtResource("1_a8qb6")]
 
@@ -11,3 +16,5 @@ offset_left = 96.0
 offset_right = 123.0
 offset_bottom = 31.0
 text = "++"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

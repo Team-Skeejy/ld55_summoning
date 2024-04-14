@@ -6,6 +6,8 @@ var dragging: bool = false
 var force_multiplier: float = 1000
 var torque_multiplier: float = 1000
 
+var manual_friction: float = 0.5
+
 var _drag_pos: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -36,4 +38,6 @@ func _physics_process(_delta: float) -> void:
 	var torque: float = -angle * torque_multiplier
 
 	parent.apply_force(force)
+	parent.linear_velocity *= manual_friction
+
 	parent.apply_torque(torque)
