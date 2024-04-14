@@ -10,7 +10,7 @@ var target: Dude = null
 
 
 func Enter() -> void:
-	target = get_closest_dude()
+	target = get_closest_enemy(containerReference, character)
 	
 func Exit() -> void:
 	target = null
@@ -34,22 +34,4 @@ func move_to(dest_target: Dude) -> void:
 func get_target() -> Dude:
 	if target and target.health and target.health > 0:
 		return target
-	return get_closest_dude()
-
-
-func distance_to(target):
-	if(target is Vector2):
-		return character.get_global_transform().origin.distance_to(target)
-	return character.get_global_transform().origin.distance_to(target.get_global_transform().origin)
-
-func get_closest_dude() ->  Dude:
-	var children = containerReference.get_children()
-	var alive_enemies: Array = children.filter(func (child): return child.team != character.team)
-	var closest_distance: float = 1.79769e308
-	var closest: Dude = null
-	for dude: Dude in alive_enemies:
-		var distance = distance_to(dude);
-		if distance < closest_distance:
-			closest_distance = distance
-			closest = dude
-	return closest
+	return get_closest_enemy(containerReference, character)

@@ -1,6 +1,14 @@
 extends Node2D
 
-@export var flesh_spawner: Node2D;
+class_name DudeContainer
+
+var dude = load("res://scenes/characters/Dude.tscn")
+
+signal dude_killed(team: int)
+
+@export var good_home: Node2D
+@export var bad_home: Node2D
+
 @export var template_entity: Entity;
 
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +20,18 @@ func _ready():
 func _process(delta):
 	pass
 
-func child_killed():
-	var second: Entity = template_entity.duplicate()
-	second.global_position = flesh_spawner.global_position
-	flesh_spawner.add_child(second)
+func child_killed(team: int):
+	dude_killed.emit(team)
+
+func spawn_dude(team: int):
+	var new_dude = dude.instantiate()
+		
+	new_dude.parentContainer = self
+	new_dude.team = team
+	if(team == 1):
+		new_dude.homeNode = good_home
+		new_dude.global_position = good_home.global_position
+	else:
+		new_dude.homeNode = bad_home
+		new_dude.global_position = bad_home.global_position
+	add_child(new_dude)

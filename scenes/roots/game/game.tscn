@@ -1,74 +1,82 @@
-[gd_scene load_steps=9 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=8 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
+[ext_resource type="PackedScene" uid="uid://dum2vhk725ubd" path="res://scenes/ui_entities/ui/ui.tscn" id="2_aqm0m"]
 [ext_resource type="Script" path="res://scenes/roots/game/DudeContainer.gd" id="3_3ugd2"]
 [ext_resource type="PackedScene" uid="uid://ddek8n8d6064c" path="res://scenes/characters/Dude.tscn" id="3_pu32q"]
-[ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="5_4qnkx"]
-[ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/ui_entities/behaviours/draggable.tscn" id="7_ncbn1"]
-[ext_resource type="PackedScene" uid="uid://bugbji15kybng" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
+[ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_blors"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "container")]
 script = ExtResource("1_yek46")
+interval_spawn_rate = 2.0
+test_entity = ExtResource("8_shgoh")
+ui = NodePath("Ui")
+container = NodePath("DudeContainer")
 
-[node name="Entity" parent="." instance=ExtResource("8_shgoh")]
-position = Vector2(182, 103)
-
-[node name="DraggableNode2" parent="Entity" instance=ExtResource("7_ncbn1")]
+[node name="Ui" parent="." node_paths=PackedStringArray("inventory", "alter") instance=ExtResource("2_aqm0m")]
+inventory = NodePath("Inventory")
+alter = NodePath("Alter")
 
 [node name="Menu" type="Button" parent="."]
+visible = false
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Menu"
 
-[node name="FadeTransition" parent="." instance=ExtResource("2_8k2ii")]
+[node name="FadeTransition" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_8k2ii")]
+animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
-[node name="DudeContainer" type="Node2D" parent="." node_paths=PackedStringArray("flesh_spawner", "template_entity")]
+[node name="DudeContainer" type="Node2D" parent="." node_paths=PackedStringArray("good_home", "bad_home", "template_entity")]
 script = ExtResource("3_3ugd2")
-flesh_spawner = NodePath("../FleshSpawner")
+good_home = NodePath("Home1")
+bad_home = NodePath("Home2")
 template_entity = NodePath("../Entity")
 
-[node name="Goodie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
-position = Vector2(116, 66)
+[node name="Goodie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode", "stateMachine") instance=ExtResource("3_pu32q")]
+position = Vector2(166, 57)
 parentContainer = NodePath("..")
-homeNode = NodePath("../../Home1")
+homeNode = NodePath("../Home1")
+stateMachine = NodePath("StateMachine")
 
-[node name="Baddie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
-position = Vector2(243, 43)
+[node name="Baddie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode", "stateMachine") instance=ExtResource("3_pu32q")]
+position = Vector2(262, 32)
 team = 2
 parentContainer = NodePath("..")
-homeNode = NodePath("../../Home2")
+homeNode = NodePath("../Home2")
+stateMachine = NodePath("StateMachine")
 
-[node name="Home1" type="Node2D" parent="."]
-position = Vector2(79, 72)
+[node name="Home1" type="Node2D" parent="DudeContainer"]
+position = Vector2(151, 57)
 
-[node name="Home2" type="Node2D" parent="."]
-position = Vector2(283, 28)
+[node name="Home2" type="Node2D" parent="DudeContainer"]
+position = Vector2(269, 28)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="BorderBox" type="RigidBody2D" parent="."]
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderBox"]
 position = Vector2(320, 180)
 shape = SubResource("WorldBoundaryShape2D_blors")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BorderBox"]
 position = Vector2(320, 180)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_blors")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BorderBox"]
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_blors")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BorderBox"]
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_blors")
 
-[node name="FleshSpawner" type="Node2D" parent="."]
-position = Vector2(41, 35)
+[node name="Entity" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("8_shgoh")]
+position = Vector2(-46, 41)
+collider = NodePath("CollisionShape2D")
 
-[node name="Alter" parent="." instance=ExtResource("5_4qnkx")]
-position = Vector2(211, 108)
+[connection signal="summon" from="Ui" to="." method="_on_ui_summon"]
+[connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]

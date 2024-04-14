@@ -1,33 +1,31 @@
 extends Node2D
 
-var dude = load("res://scenes/characters/Dude.tscn")
+@export var interval_spawn_rate: float = 10
+@export var test_entity: PackedScene
+@export var ui: UI
+@export var container: DudeContainer
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	pass  # Replace with function body.
 
+var spawn_timer:float = 0
+func _process(delta: float) -> void:
+	spawn_timer += delta
+	if(spawn_timer > interval_spawn_rate):
+		spawn_timer = 0
+		spawn_entity()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-var spawn_interval = 1
-var time_passed = 99
 
-func _process(delta):
-	time_passed += delta
-	if(time_passed > spawn_interval):
-		time_passed = 0
-		var new_dude = dude.instantiate()
-		
-		spawn_dudes(randi_range(1,2))
+func spawn_entity():
+	var entity: Entity = test_entity.instantiate()
+	add_child(entity)
+	ui.inventory.add_entity(entity)
 
-func spawn_dudes(team: int):
-	var new_dude = dude.instantiate()
-		
-	new_dude.parentContainer = $DudeContainer
-	new_dude.team = team
-	if(team == 1):
-		new_dude.homeNode = $Home1
-		new_dude.global_position = $Home1.global_position
-	else:
-		new_dude.homeNode = $Home2
-		new_dude.global_position = $Home2.global_position
-	$DudeContainer.add_child(new_dude)
+
+func _on_ui_summon() -> void:
+	container.spawn_dude(1)
+
+
+func _on_dude_container_dude_killed(team: int) -> void:
+	spawn_entity()

@@ -29,7 +29,7 @@ func _process(delta) -> void:
 func check_aliveness() -> void:
 	if(health <= 0):
 		is_dead = true;
-		parentContainer.child_killed()
+		parentContainer.child_killed(team)
 		queue_free()
 		
 

@@ -29,8 +29,6 @@ func Update(delta) -> void:
 			character.global_position += idle_target * (character.speed * 0.5)
 	else:
 		reset_wander_target()
-
-
 	check_enemies()
 
 
@@ -41,24 +39,6 @@ func reset_wander_target():
 
 func check_enemies():
 	if containerReference:
-		var children = containerReference.get_children()
-		var alive_enemies = children.filter(func (child): return child.team != character.team)
-		var closest = get_closest(alive_enemies)
+		var closest = get_closest_enemy(containerReference, character)
 		if closest:
 			Transitioned.emit(self, "attack")
-
-func distance_to(target):
-	if(target is Vector2):
-		return character.get_global_transform().origin.distance_to(target)
-	return character.get_global_transform().origin.distance_to(target.get_global_transform().origin)
-
-
-func get_closest(enemies):
-	var closest_distance = 99999
-	var closest = null
-	for dude in enemies:
-		var distance = distance_to(dude);
-		if distance < closest_distance:
-			closest_distance = distance
-			closest = dude
-	return closest
