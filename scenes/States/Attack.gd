@@ -6,7 +6,7 @@ class_name Attack
 @export var character: Dude
 @export var containerReference: Node2D
 
-var target = null
+var target: Dude = null
 
 
 func Enter() -> void:
@@ -32,7 +32,7 @@ func move_to(dest_target: Dude) -> void:
 
 
 func get_target() -> Dude:
-	if target != null:
+	if target and target.health and target.health > 0:
 		return target
 	return get_closest_dude()
 
