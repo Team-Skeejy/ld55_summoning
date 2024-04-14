@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=9 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
 [ext_resource type="Script" path="res://scenes/roots/game/DudeContainer.gd" id="3_3ugd2"]
 [ext_resource type="PackedScene" uid="uid://ddek8n8d6064c" path="res://scenes/characters/Dude.tscn" id="3_pu32q"]
+[ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="5_4qnkx"]
+[ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/ui_entities/behaviours/draggable.tscn" id="7_ncbn1"]
+[ext_resource type="PackedScene" uid="uid://bugbji15kybng" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_blors"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -25,24 +30,57 @@ text = "Menu"
 [node name="FadeTransition" parent="." instance=ExtResource("2_8k2ii")]
 layout_mode = 1
 
-[node name="DudeContainer" type="Node2D" parent="."]
+[node name="DudeContainer" type="Node2D" parent="." node_paths=PackedStringArray("flesh_spawner", "template_entity")]
 script = ExtResource("3_3ugd2")
+flesh_spawner = NodePath("../FleshSpawner")
+template_entity = NodePath("../Entity")
 
 [node name="Goodie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
-position = Vector2(123, 93)
+position = Vector2(116, 66)
 parentContainer = NodePath("..")
 homeNode = NodePath("../../Home1")
 
 [node name="Baddie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode") instance=ExtResource("3_pu32q")]
-position = Vector2(170, 91)
+position = Vector2(243, 43)
 team = 2
 parentContainer = NodePath("..")
 homeNode = NodePath("../../Home2")
 
 [node name="Home1" type="Node2D" parent="."]
-position = Vector2(68, 91)
+position = Vector2(79, 72)
 
 [node name="Home2" type="Node2D" parent="."]
-position = Vector2(240, 87)
+position = Vector2(283, 28)
+
+[node name="Alter" parent="." instance=ExtResource("5_4qnkx")]
+position = Vector2(275, 131)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(320, 180)
+shape = SubResource("WorldBoundaryShape2D_blors")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(320, 180)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_blors")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_blors")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RigidBody2D"]
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_blors")
+
+[node name="FleshSpawner" type="Node2D" parent="."]
+position = Vector2(60, 73)
+
+[node name="Entity" parent="." instance=ExtResource("8_shgoh")]
+position = Vector2(182, 103)
+
+[node name="DraggableNode2" parent="Entity" instance=ExtResource("7_ncbn1")]
 
 [connection signal="button_down" from="Menu" to="." method="_on_menu_button_down"]

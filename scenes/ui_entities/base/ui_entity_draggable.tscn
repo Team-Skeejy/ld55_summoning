@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bugbji15kybng"]
+
+[ext_resource type="PackedScene" uid="uid://dfvjewsccldtf" path="res://scenes/ui_entities/base/ui_entity.tscn" id="1_8hv07"]
+[ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/ui_entities/behaviours/draggable.tscn" id="2_ayvi2"]
+
+[node name="Entity" instance=ExtResource("1_8hv07")]
+
+[node name="DraggableNode" parent="." index="2" instance=ExtResource("2_ayvi2")]
