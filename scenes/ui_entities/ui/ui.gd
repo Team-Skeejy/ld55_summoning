@@ -8,7 +8,7 @@ signal summon()  # dunno what to put in this yet
 
 func _on_alter_summon(nodes: Array[Node2D]) -> void:
 
-	var _entities: Array[Entity] = nodes.filter(func(node: Node2D) -> bool: return node is Entity)
+	var _entities: Array[Node2D] = nodes.filter(func(node: Node2D) -> bool: return node is Entity)
 
 	# construct monster here i guess lol
 
@@ -24,4 +24,4 @@ func reset_alter_buttons() -> void:
 
 
 func _on_forfeit_button_down() -> void:
-	pass # Replace with function body.
+	pass  # Replace with function body.
