@@ -7,28 +7,37 @@ class_name Idle
 
 var idle_target = null
 var wander_time: float = 0
+var pause_time: float = 0
+var total_idle_time: float = 0
 
 func Enter() -> void:
-	reset_wander_target()
+	wander_time = randf_range(0,1)
+	pause_time = wander_time
 	
 func Exit() -> void:
+	total_idle_time = 0
 	reset_wander_target()
 	
 func Update(delta) -> void:
+	total_idle_time += delta
+	if total_idle_time > 5:
+		Transitioned.emit(self, "returnhome")
+
 	if wander_time > 0:
 		wander_time -= delta
+		if character and wander_time > pause_time:
+			character.global_position += idle_target * (character.speed * 0.5)
 	else:
 		reset_wander_target()
 
-	if character:
-		character.global_position += idle_target * character.speed
 
 	check_enemies()
 
 
 func reset_wander_target():
 	idle_target = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	wander_time = randf_range(1,3)
+	wander_time = randf_range(1,5)
+	pause_time = randf_range(wander_time * 0.8,wander_time)
 
 func check_enemies():
 	if containerReference:

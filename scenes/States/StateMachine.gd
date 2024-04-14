@@ -5,6 +5,7 @@ class_name StateMachine
 @export var initial_state: State
 @export var containerReference: Node2D
 @export var character: Dude
+@export var home: Node2D
 
 var current_state: State
 var states: Dictionary = {}
@@ -13,12 +14,6 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
-
-			if child.has_node_and_resource("character"):
-				child.character = character
-			if child.has_node_and_resource("containerReference"):
-				child.containerReference = containerReference
-			
 			child.Transitioned.connect(on_child_transition)
 	if initial_state:
 		initial_state.Enter()
@@ -41,6 +36,7 @@ func on_child_transition(state, new_state_name):
 	
 	new_state.Enter()
 	current_state = new_state
+	print("State changed to " + new_state_name)
 
 func set_refs() -> void:
 	for index in states:
@@ -49,3 +45,5 @@ func set_refs() -> void:
 			child.character = character
 		if "containerReference" in child:
 			child.containerReference = containerReference
+		if "home" in child:
+			child.home = home

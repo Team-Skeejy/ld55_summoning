@@ -10,7 +10,6 @@ var target = null
 
 
 func Enter() -> void:
-	print("attack now")
 	target = get_closest_dude()
 	
 func Exit() -> void:
@@ -23,7 +22,6 @@ func Update(delta: float) -> void:
 			character.attack(running_target, delta)
 		move_to(running_target)
 	else:
-		print("idle now")
 		Transitioned.emit(self, "idle")
 
 func move_to(dest_target: Dude) -> void:
