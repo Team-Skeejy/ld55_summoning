@@ -13,7 +13,7 @@ func Exit() -> void:
 
 func Update(delta) -> void:
 	if home && character:
-		var distance = distance_to(home)
+		var distance = distance_to(character, home)
 		if distance > 10:
 			move_to(home)
 		else:
@@ -25,9 +25,3 @@ func move_to(dest_target: Node2D) -> void:
 		var direction: Vector2 =  dest_target.global_position - character.global_position
 		direction = direction.normalized()
 		character.global_position += direction * character.speed
-
-
-func distance_to(target):
-	if(target is Vector2):
-		return character.get_global_transform().origin.distance_to(target)
-	return character.get_global_transform().origin.distance_to(target.get_global_transform().origin)
