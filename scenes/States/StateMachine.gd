@@ -36,7 +36,6 @@ func on_child_transition(state, new_state_name):
 	
 	new_state.Enter()
 	current_state = new_state
-	print("State changed to " + new_state_name)
 
 func set_refs() -> void:
 	for index in states:
