@@ -8,8 +8,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-var spawn_interval = 5
-var time_passed = 0
+var spawn_interval = 100
+var time_passed = 99
 
 func _process(delta):
 	time_passed += delta
@@ -17,14 +17,29 @@ func _process(delta):
 		time_passed = 0
 		var new_dude = dude.instantiate()
 		
-		new_dude.parentContainer = $DudeContainer
-		var team = randi_range(1,2)
-		new_dude.team = team
-		if(team == 1):
-			new_dude.homeNode = $Home1
-			new_dude.global_position = $Home1.global_position
-		else:
-			new_dude.homeNode = $Home2
-			new_dude.global_position = $Home2.global_position
-		$DudeContainer.add_child(new_dude)
-	pass
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+		spawn_dudes()
+
+func spawn_dudes():
+	var new_dude = dude.instantiate()
+		
+	new_dude.parentContainer = $DudeContainer
+	var team = randi_range(1,2)
+	new_dude.team = team
+	if(team == 1):
+		new_dude.homeNode = $Home1
+		new_dude.global_position = $Home1.global_position
+	else:
+		new_dude.homeNode = $Home2
+		new_dude.global_position = $Home2.global_position
+	$DudeContainer.add_child(new_dude)
