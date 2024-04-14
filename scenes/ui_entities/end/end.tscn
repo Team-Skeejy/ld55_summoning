@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://ybxcox1kagym"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/end/end.gd" id="1_psgpg"]
+[ext_resource type="AudioStream" uid="uid://d2thrgk2ijbxs" path="res://scenes/ui_entities/end/audio/bell.mp3" id="1_uqcbm"]
+
+[node name="Node" type="Node" node_paths=PackedStringArray("screen", "audio")]
+script = ExtResource("1_psgpg")
+screen = NodePath("Control")
+audio = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_uqcbm")
+volume_db = -10.0
+pitch_scale = 0.75
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Stats go here" type="Label" parent="Control"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -6.0
+offset_right = 25.5
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "Stats go here"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.5
+offset_top = 16.0
+offset_right = 33.5
+offset_bottom = 39.0
+grow_horizontal = 2
+text = "You Lost"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.5
+offset_top = -47.0
+offset_right = 28.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Retry?"
+
+[connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]

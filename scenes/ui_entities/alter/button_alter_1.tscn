@@ -30,7 +30,3 @@ linear_damp = 100.0
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0)
-
-[connection signal="button_up" from="." to="UIButton" method="_on_alter_button_button_up"]
-[connection signal="over" from="." to="UIButton" method="_on_alter_button_over"]
-[connection signal="pressed" from="." to="UIButton" method="_on_alter_button_pressed"]

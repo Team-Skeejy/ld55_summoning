@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dum2vhk725ubd"]
+[gd_scene load_steps=13 format=3 uid="uid://dum2vhk725ubd"]
 
 [ext_resource type="Script" path="res://scenes/ui_entities/ui/ui.gd" id="1_3cdks"]
 [ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="1_yf748"]
 [ext_resource type="Texture2D" uid="uid://dg1q3pxuipxkg" path="res://scenes/ui_entities/inventory/textures/ui.png" id="2_1tb5p"]
 [ext_resource type="PackedScene" uid="uid://bgol823ub27ic" path="res://scenes/ui_entities/inventory/inventory.tscn" id="3_bwefo"]
 [ext_resource type="PackedScene" uid="uid://drtsb3cnf4owo" path="res://scenes/ui_entities/button/btn_forfiet.tscn" id="5_j8rod"]
+[ext_resource type="PackedScene" uid="uid://ybxcox1kagym" path="res://scenes/ui_entities/end/end.tscn" id="6_7mpor"]
+[ext_resource type="PackedScene" uid="uid://fr2enfc8n1ci" path="res://scenes/ui_entities/forfeiting/forfeiting.tscn" id="6_gvynx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l7cmk"]
 
@@ -23,10 +25,11 @@ b = Vector2(102, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lw1g"]
 size = Vector2(99, 13)
 
-[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory", "alter")]
+[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory", "alter", "end")]
 script = ExtResource("1_3cdks")
 inventory = NodePath("Inventory")
 alter = NodePath("Alter")
+end = NodePath("End")
 
 [node name="Alter" parent="." node_paths=PackedStringArray("alter_buttons", "summon_area", "summoning_sprite") instance=ExtResource("1_yf748")]
 position = Vector2(0, 112)
@@ -112,4 +115,16 @@ storage_space = NodePath("Storage Space/CollisionShape2D")
 debug_sprite = NodePath("Sprite2D")
 area = Rect2(3, 3, 96, 91)
 
+[node name="Forfeiting" parent="." node_paths=PackedStringArray("fade_animation_player", "warning_label") instance=ExtResource("6_gvynx")]
+fade_animation_player = NodePath("FadeAnimationPlayer")
+warning_label = NodePath("Control/Control/CountdownLabel")
+
+[node name="End" parent="." node_paths=PackedStringArray("screen", "audio") instance=ExtResource("6_7mpor")]
+screen = NodePath("Control")
+audio = NodePath("AudioStreamPlayer")
+
 [connection signal="summon" from="Alter" to="." method="_on_alter_summon"]
+[connection signal="button_down" from="Buttons/Forfiet" to="Forfeiting" method="start"]
+[connection signal="button_up" from="Buttons/Forfiet" to="Forfeiting" method="stop"]
+[connection signal="forfeited" from="Forfeiting" to="." method="_on_forfeiting_forfeited"]
+[connection signal="retry" from="End" to="." method="_on_end_retry"]

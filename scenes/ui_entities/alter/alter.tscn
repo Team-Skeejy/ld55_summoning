@@ -105,3 +105,12 @@ area = NodePath("Area2D")
 [node name="Alter Bleed" type="AnimatedSprite2D" parent="."]
 position = Vector2(51, 34)
 sprite_frames = SubResource("SpriteFrames_e2of8")
+
+[connection signal="button_up" from="Alter Button2" to="Alter Button2/UIButton" method="_on_alter_button_button_up"]
+[connection signal="pressed" from="Alter Button2" to="Alter Button2/UIButton" method="_on_alter_button_pressed"]
+[connection signal="button_up" from="Alter Button3" to="Alter Button3/UIButton" method="_on_alter_button_button_up"]
+[connection signal="pressed" from="Alter Button3" to="Alter Button3/UIButton" method="_on_alter_button_pressed"]
+[connection signal="button_up" from="Alter Button4" to="Alter Button4/UIButton" method="_on_alter_button_button_up"]
+[connection signal="pressed" from="Alter Button4" to="Alter Button4/UIButton" method="_on_alter_button_pressed"]
+[connection signal="button_up" from="Alter Button5" to="Alter Button5/UIButton" method="_on_alter_button_button_up"]
+[connection signal="pressed" from="Alter Button5" to="Alter Button5/UIButton" method="_on_alter_button_pressed"]

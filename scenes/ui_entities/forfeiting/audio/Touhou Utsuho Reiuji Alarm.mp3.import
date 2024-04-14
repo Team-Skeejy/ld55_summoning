@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://mj26xjc8ssx7"
+path="res://.godot/imported/Touhou Utsuho Reiuji Alarm.mp3-c8d00f3372fd779db10c3d31a13c8dc3.mp3str"
+
+[deps]
+
+source_file="res://scenes/ui_entities/forfeiting/audio/Touhou Utsuho Reiuji Alarm.mp3"
+dest_files=["res://.godot/imported/Touhou Utsuho Reiuji Alarm.mp3-c8d00f3372fd779db10c3d31a13c8dc3.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
