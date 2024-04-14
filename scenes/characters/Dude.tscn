@@ -1,12 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddek8n8d6064c"]
+[gd_scene load_steps=6 format=3 uid="uid://ddek8n8d6064c"]
 
 [ext_resource type="Script" path="res://scenes/characters/Dude.gd" id="1_qqcbt"]
+[ext_resource type="Script" path="res://scenes/States/StateMachine.gd" id="2_n5kgs"]
+[ext_resource type="Script" path="res://scenes/States/Idle.gd" id="3_xogxj"]
+[ext_resource type="Script" path="res://scenes/States/Attack.gd" id="4_anltw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ynn6w"]
 specular_color = Color(1, 0, 1, 1)
 
-[node name="Goodie" type="Node2D"]
+[node name="Goodie" type="Node2D" node_paths=PackedStringArray("stateMachine")]
 script = ExtResource("1_qqcbt")
+stateMachine = NodePath("StateMachine")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("CanvasTexture_ynn6w")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
+script = ExtResource("2_n5kgs")
+initial_state = NodePath("Idle")
+character = NodePath("..")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
+script = ExtResource("3_xogxj")
+character = NodePath("../..")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("4_anltw")

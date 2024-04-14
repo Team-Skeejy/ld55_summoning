@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-var spawn_interval = 5
+var spawn_interval = 10
 var time_passed = 0
 
 func _process(delta):
