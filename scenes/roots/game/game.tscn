@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=6 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
 [ext_resource type="PackedScene" uid="uid://dum2vhk725ubd" path="res://scenes/ui_entities/ui/ui.tscn" id="2_aqm0m"]
-[ext_resource type="Script" path="res://scenes/roots/game/DudeContainer.gd" id="3_3ugd2"]
-[ext_resource type="PackedScene" uid="uid://ddek8n8d6064c" path="res://scenes/characters/Dude.tscn" id="3_pu32q"]
+[ext_resource type="PackedScene" uid="uid://bpp2p2x0xfnw1" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "container")]
@@ -27,29 +26,8 @@ text = "Menu"
 [node name="FadeTransition" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_8k2ii")]
 animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
-[node name="DudeContainer" type="Node2D" parent="." node_paths=PackedStringArray("good_home", "bad_home")]
-script = ExtResource("3_3ugd2")
+[node name="DudeContainer" parent="." node_paths=PackedStringArray("good_home", "bad_home") instance=ExtResource("5_pce2m")]
 good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
 
-[node name="Goodie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode", "stateMachine") instance=ExtResource("3_pu32q")]
-position = Vector2(166, 57)
-parentContainer = NodePath("..")
-homeNode = NodePath("../Home1")
-stateMachine = NodePath("StateMachine")
-
-[node name="Baddie" parent="DudeContainer" node_paths=PackedStringArray("parentContainer", "homeNode", "stateMachine") instance=ExtResource("3_pu32q")]
-position = Vector2(262, 32)
-team = 2
-parentContainer = NodePath("..")
-homeNode = NodePath("../Home2")
-stateMachine = NodePath("StateMachine")
-
-[node name="Home1" type="Node2D" parent="DudeContainer"]
-position = Vector2(151, 57)
-
-[node name="Home2" type="Node2D" parent="DudeContainer"]
-position = Vector2(269, 28)
-
 [connection signal="summon" from="Ui" to="." method="_on_ui_summon"]
-[connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]

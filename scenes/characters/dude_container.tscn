@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpp2p2x0xfnw1"]
+
+[ext_resource type="Script" path="res://scenes/roots/game/DudeContainer.gd" id="1_l5ya6"]
+[ext_resource type="PackedScene" uid="uid://ddek8n8d6064c" path="res://scenes/characters/Dude.tscn" id="2_pmaxt"]
+
+[node name="DudeContainer" type="Node2D" node_paths=PackedStringArray("good_home", "bad_home")]
+script = ExtResource("1_l5ya6")
+good_home = NodePath("Home1")
+bad_home = NodePath("Home2")
+
+[node name="Goodie" parent="." node_paths=PackedStringArray("parentContainer", "homeNode", "stateMachine") instance=ExtResource("2_pmaxt")]
+position = Vector2(166, 57)
+parentContainer = NodePath("..")
+homeNode = NodePath("../Home1")
+stateMachine = NodePath("StateMachine")
+
+[node name="Baddie" parent="." node_paths=PackedStringArray("parentContainer", "homeNode", "stateMachine") instance=ExtResource("2_pmaxt")]
+position = Vector2(262, 32)
+team = 2
+parentContainer = NodePath("..")
+homeNode = NodePath("../Home2")
+stateMachine = NodePath("StateMachine")
+
+[node name="Home1" type="Node2D" parent="."]
+position = Vector2(151, 57)
+
+[node name="Home2" type="Node2D" parent="."]
+position = Vector2(269, 28)
