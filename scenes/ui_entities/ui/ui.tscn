@@ -26,11 +26,16 @@ size = Vector2(99, 13)
 script = ExtResource("1_3cdks")
 inventory = NodePath("Inventory")
 
-[node name="Alter" parent="." instance=ExtResource("1_yf748")]
+[node name="Alter" parent="." node_paths=PackedStringArray("alter_buttons", "summon_area", "summoning_sprite") instance=ExtResource("1_yf748")]
 position = Vector2(0, 112)
+alter_buttons = [NodePath("Alter Button1"), NodePath("Alter Button2"), NodePath("Alter Button3"), NodePath("Alter Button4"), NodePath("Alter Button5")]
+summon_area = NodePath("SummonArea2D")
+summoning_sprite = NodePath("Alter Bleed")
 
-[node name="Inventory" parent="." instance=ExtResource("3_bwefo")]
+[node name="Inventory" parent="." node_paths=PackedStringArray("storage_space", "debug_sprite") instance=ExtResource("3_bwefo")]
 position = Vector2(3, 3)
+storage_space = NodePath("Storage Space/CollisionShape2D")
+debug_sprite = NodePath("Sprite2D")
 
 [node name="Ui" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
