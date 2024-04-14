@@ -16,4 +16,3 @@ func child_killed():
 	var second: Entity = template_entity.duplicate()
 	second.global_position = flesh_spawner.global_position
 	flesh_spawner.add_child(second)
-	print("dude killed")

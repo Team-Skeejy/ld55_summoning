@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 var dude = load("res://scenes/characters/Dude.tscn")
 
