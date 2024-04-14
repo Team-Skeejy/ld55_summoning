@@ -6,6 +6,7 @@ signal summon
 
 @export var alter_buttons: Array[UIButton]
 @export var summon_area: Area2D
+@export var summoning_sprite: AnimatedSprite2D
 
 var _can_summon: bool = false
 
@@ -23,11 +24,14 @@ func _process(delta: float) -> void:
 	if _can_summon:
 		countdown -= delta
 		if countdown > 0:
+			var frame_count: int = summoning_sprite.sprite_frames.get_frame_count("default")
+			summoning_sprite.frame = int((summon_time - countdown) / summon_time * frame_count)
 			summoning.emit(countdown)
 		else:
 			countdown = 0
-			summon.emit(summon_area.get_overlapping_bodies())
+			summoning_sprite.frame = 0
 			_can_summon = false
+			summon.emit(summon_area.get_overlapping_bodies())
 
 func reevaluate_button_collisions() -> void:
 	for button: UIButton in alter_buttons:

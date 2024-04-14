@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dum2vhk725ubd"]
+
+[ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="1_yf748"]
+
+[node name="Ui" type="Node2D"]
+
+[node name="Alter" parent="." instance=ExtResource("1_yf748")]
+position = Vector2(-28, 89)

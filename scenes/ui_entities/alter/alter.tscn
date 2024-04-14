@@ -1,51 +1,103 @@
-[gd_scene load_steps=4 format=3 uid="uid://btco02dq00kwc"]
+[gd_scene load_steps=18 format=3 uid="uid://btco02dq00kwc"]
 
 [ext_resource type="Script" path="res://scenes/ui_entities/alter/alter.gd" id="1_ibfmc"]
-[ext_resource type="PackedScene" uid="uid://6i2uak1cixpa" path="res://scenes/ui_entities/button/button_alter.tscn" id="2_6fh8w"]
+[ext_resource type="Texture2D" uid="uid://d1vwviwckmmu1" path="res://scenes/ui_entities/alter/textures/alter_backdrop.png" id="3_1oqu8"]
+[ext_resource type="PackedScene" uid="uid://ckkkbf2fceqae" path="res://scenes/ui_entities/alter/button_alter_1.tscn" id="3_6tmnc"]
+[ext_resource type="PackedScene" uid="uid://m5d22585x736" path="res://scenes/ui_entities/alter/button_alter_2.tscn" id="4_ht3jc"]
+[ext_resource type="PackedScene" uid="uid://b1kk7hvdusvvo" path="res://scenes/ui_entities/alter/button_alter_3.tscn" id="5_6g0dk"]
+[ext_resource type="PackedScene" uid="uid://bmjg3wy5m1aic" path="res://scenes/ui_entities/alter/button_alter_4.tscn" id="6_ym6j5"]
+[ext_resource type="PackedScene" uid="uid://dmh84ocobmf7t" path="res://scenes/ui_entities/alter/button_alter_5.tscn" id="7_7s3wn"]
+[ext_resource type="Texture2D" uid="uid://cki56xfqsy06o" path="res://scenes/ui_entities/alter/textures/alter_bleed.png" id="8_eldns"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tkfch"]
-radius = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ob2m"]
+size = Vector2(94, 60)
 
-[node name="Alter" type="Node2D" node_paths=PackedStringArray("alter_buttons", "summon_area")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_53fvw"]
+atlas = ExtResource("8_eldns")
+region = Rect2(0, 0, 102, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhxa7"]
+atlas = ExtResource("8_eldns")
+region = Rect2(102, 0, 102, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71x7j"]
+atlas = ExtResource("8_eldns")
+region = Rect2(204, 0, 102, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xm038"]
+atlas = ExtResource("8_eldns")
+region = Rect2(306, 0, 102, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cutid"]
+atlas = ExtResource("8_eldns")
+region = Rect2(408, 0, 102, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdg5c"]
+atlas = ExtResource("8_eldns")
+region = Rect2(510, 0, 102, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rojb7"]
+atlas = ExtResource("8_eldns")
+region = Rect2(612, 0, 102, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2of8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53fvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhxa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71x7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xm038")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cutid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdg5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rojb7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Alter" type="Node2D" node_paths=PackedStringArray("alter_buttons", "summon_area", "summoning_sprite")]
 script = ExtResource("1_ibfmc")
-alter_buttons = [NodePath("Alter Button"), NodePath("Alter Button2"), NodePath("Alter Button3"), NodePath("Alter Button4"), NodePath("Alter Button5")]
+alter_buttons = [NodePath("Alter Button1"), NodePath("Alter Button2"), NodePath("Alter Button3"), NodePath("Alter Button4"), NodePath("Alter Button5")]
 summon_area = NodePath("SummonArea2D")
-metadata/_edit_vertical_guides_ = [96.0]
+summoning_sprite = NodePath("Alter Bleed")
 metadata/_edit_horizontal_guides_ = [96.0]
+
+[node name="Alter Backdrop" type="Sprite2D" parent="."]
+position = Vector2(51, 34)
+texture = ExtResource("3_1oqu8")
 
 [node name="SummonArea2D" type="Area2D" parent="."]
 input_pickable = false
 gravity_space_override = 3
-gravity = 0.0
-
-[node name="ColorRect" type="ColorRect" parent="SummonArea2D"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SummonArea2D"]
-shape = SubResource("CircleShape2D_tkfch")
+position = Vector2(51, 34)
+shape = SubResource("RectangleShape2D_7ob2m")
 
-[node name="Alter Button" parent="." instance=ExtResource("2_6fh8w")]
-position = Vector2(0, -38)
+[node name="Alter Button1" parent="." instance=ExtResource("3_6tmnc")]
 
-[node name="Alter Button2" parent="." instance=ExtResource("2_6fh8w")]
-position = Vector2(-35, -9)
+[node name="Alter Button2" parent="." instance=ExtResource("4_ht3jc")]
 
-[node name="Alter Button3" parent="." instance=ExtResource("2_6fh8w")]
-position = Vector2(33, -9)
+[node name="Alter Button3" parent="." instance=ExtResource("5_6g0dk")]
 
-[node name="Alter Button4" parent="." instance=ExtResource("2_6fh8w")]
-position = Vector2(-23, 30)
+[node name="Alter Button4" parent="." instance=ExtResource("6_ym6j5")]
 
-[node name="Alter Button5" parent="." instance=ExtResource("2_6fh8w")]
-position = Vector2(24, 30)
+[node name="Alter Button5" parent="." instance=ExtResource("7_7s3wn")]
+
+[node name="Alter Bleed" type="AnimatedSprite2D" parent="."]
+position = Vector2(51, 34)
+sprite_frames = SubResource("SpriteFrames_e2of8")

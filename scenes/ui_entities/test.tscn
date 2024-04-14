@@ -137,7 +137,7 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0.219608)
 
 [node name="Alter" parent="." instance=ExtResource("5_3dlbg")]
-position = Vector2(259, 120)
+position = Vector2(207, 101)
 
 [node name="Entity" parent="." instance=ExtResource("1_04yic")]
 position = Vector2(46, 81)
@@ -169,31 +169,31 @@ collider = NodePath("../Entity/CollisionShape2D")
 [node name="DraggableNode" parent="Entity5" instance=ExtResource("2_5p8j2")]
 
 [node name="Entity6" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
-position = Vector2(232, 92)
+position = Vector2(229, 62)
 collider = NodePath("../Entity/CollisionShape2D")
 
 [node name="DraggableNode" parent="Entity6" instance=ExtResource("2_5p8j2")]
 
 [node name="Entity7" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
-position = Vector2(256, 128)
+position = Vector2(253, 98)
 collider = NodePath("../Entity/CollisionShape2D")
 
 [node name="DraggableNode" parent="Entity7" instance=ExtResource("2_5p8j2")]
 
 [node name="Entity8" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
-position = Vector2(247, 108)
+position = Vector2(244, 78)
 collider = NodePath("../Entity/CollisionShape2D")
 
 [node name="DraggableNode" parent="Entity8" instance=ExtResource("2_5p8j2")]
 
 [node name="Entity9" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
-position = Vector2(276, 134)
+position = Vector2(273, 104)
 collider = NodePath("../Entity/CollisionShape2D")
 
 [node name="DraggableNode" parent="Entity9" instance=ExtResource("2_5p8j2")]
 
 [node name="Entity10" parent="." node_paths=PackedStringArray("collider") instance=ExtResource("1_04yic")]
-position = Vector2(271, 108)
+position = Vector2(268, 78)
 collider = NodePath("../Entity/CollisionShape2D")
 
 [node name="DraggableNode" parent="Entity10" instance=ExtResource("2_5p8j2")]

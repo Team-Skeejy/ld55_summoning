@@ -8,6 +8,10 @@ signal pressed
 
 @export var area: Area2D
 
+@export var up_sprite: Vector2i
+@export var over_sprite: Vector2i
+@export var down_sprite: Vector2i
+
 var entity_press_duration: float = 0.5;
 
 var _entity_over: bool = false
@@ -111,8 +115,8 @@ func reevaluate_collisions() -> void:
 
 func reevaluate_ui_state() -> void:
 	if _entity_pressed || _mouse_pressed:
-		frame = 2
+		frame_coords = down_sprite
 	elif _entity_over || _mouse_over || _entity_on:
-		frame = 1
+		frame_coords = over_sprite
 	else:
-		frame = 0
+		frame_coords = up_sprite

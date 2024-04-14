@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckkkbf2fceqae"]
+
+[ext_resource type="PackedScene" uid="uid://6i2uak1cixpa" path="res://scenes/ui_entities/alter/button_alter.tscn" id="1_63t38"]
+[ext_resource type="Texture2D" uid="uid://cxhum301wncn3" path="res://scenes/ui_entities/alter/textures/alter_alters.png" id="2_se88v"]
+
+[node name="Alter Button" instance=ExtResource("1_63t38")]
+position = Vector2(51, 34)
+texture = ExtResource("2_se88v")
+vframes = 5
+
+[node name="Area2D" parent="." index="0"]
+position = Vector2(-11, -15)
+
+[node name="Area2D2" parent="." index="1"]
+position = Vector2(-11, -15)

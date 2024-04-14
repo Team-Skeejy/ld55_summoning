@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmh84ocobmf7t"]
+
+[ext_resource type="PackedScene" uid="uid://ckkkbf2fceqae" path="res://scenes/ui_entities/alter/button_alter_1.tscn" id="1_5aj21"]
+
+[node name="Alter Button" instance=ExtResource("1_5aj21")]
+frame = 12
+up_sprite = Vector2i(0, 4)
+over_sprite = Vector2i(1, 4)
+down_sprite = Vector2i(2, 4)
+
+[node name="Area2D" parent="." index="0"]
+position = Vector2(14, -9)
+
+[node name="Area2D2" parent="." index="1"]
+position = Vector2(14, -9)

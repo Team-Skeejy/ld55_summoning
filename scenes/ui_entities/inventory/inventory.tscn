@@ -1,15 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgol823ub27ic"]
+[gd_scene load_steps=5 format=3 uid="uid://bgol823ub27ic"]
 
 [ext_resource type="Script" path="res://scenes/ui_entities/inventory/inventory.gd" id="1_61pey"]
+[ext_resource type="Texture2D" uid="uid://badgxa4eleh77" path="res://scenes/ui_entities/inventory/textures/grid.png" id="2_y4fo6"]
+[ext_resource type="Texture2D" uid="uid://p3q2r78uxhww" path="res://scenes/ui_entities/base/textures/placeholder_entity.png" id="3_qq1sy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mystw"]
-size = Vector2(149, 140)
+size = Vector2(96, 91)
 
-[node name="Inventory" type="Node2D"]
+[node name="Inventory" type="Node2D" node_paths=PackedStringArray("storage_space", "debug_sprite")]
 script = ExtResource("1_61pey")
+dimensions = Vector2i(5, 6)
+storage_space = NodePath("Storage Space/CollisionShape2D")
+debug_sprite = NodePath("Sprite2D")
+area = Rect2(0, 0, 96, 91)
+
+[node name="Grid" type="Sprite2D" parent="."]
+position = Vector2(48, 46)
+texture = ExtResource("2_y4fo6")
 
 [node name="Storage Space" type="Area2D" parent="."]
-position = Vector2(12, 10)
 input_pickable = false
 gravity_space_override = 3
 gravity = 0.0
@@ -19,14 +28,9 @@ angular_damp_space_override = 3
 angular_damp = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Storage Space"]
-position = Vector2(64.5, 60)
+position = Vector2(48, 45.5)
 shape = SubResource("RectangleShape2D_mystw")
 
-[node name="ColorRect" type="ColorRect" parent="Storage Space"]
-offset_left = -11.0
-offset_top = -10.0
-offset_right = 29.0
-offset_bottom = 30.0
-scale = Vector2(3.70926, 3.48786)
-mouse_filter = 2
-color = Color(1, 0.603922, 1, 0.247059)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_qq1sy")

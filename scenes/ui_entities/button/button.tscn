@@ -11,6 +11,8 @@ texture = ExtResource("1_o8bnn")
 vframes = 3
 script = ExtResource("2_ytfd1")
 area = NodePath("Area2D")
+over_sprite = Vector2i(0, 1)
+down_sprite = Vector2i(0, 2)
 
 [node name="Area2D" type="Area2D" parent="."]
 
