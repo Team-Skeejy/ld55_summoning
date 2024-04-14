@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4ppji14c3vys"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/knife.gd" id="1_02bs7"]
+
+[node name="Knife" type="Node"]
+script = ExtResource("1_02bs7")

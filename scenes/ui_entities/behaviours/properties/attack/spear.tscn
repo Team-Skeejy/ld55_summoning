@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm6hhcv6joc1t"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/spear.gd" id="1_on7d8"]
+
+[node name="Spear" type="Node"]
+script = ExtResource("1_on7d8")

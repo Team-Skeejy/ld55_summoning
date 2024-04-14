@@ -5,13 +5,14 @@ class_name Dude
 signal on_attack(target: Dude)
 
 @export var priority: int = 0
-@export var health: int = 10;
-@export var attack_power: int = 1;
+@export var health: float = 10;
+@export var attack_power: float = 0;
 @export var team: int = 1;
 @export var speed: float = 0.1;
+@export var prevent_regular_attack: bool = false;
 @export var attack_range: float = 1;
 @export var attack_interval: float = 1;
-@export var parentContainer: DudeContainer;
+@export var parentContainer: DudeFactory;
 @export var home: Node2D;
 @export var bad_home: Node2D;
 @export var stateMachine: StateMachine;
@@ -22,7 +23,7 @@ signal on_attack(target: Dude)
 func _ready() -> void:
 	stateMachine.containerReference = parentContainer
 	stateMachine.home = home
-	stateMachine.bad_home = bad_home
+	stateMachine.target_base = bad_home
 	stateMachine.set_refs()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,7 +49,9 @@ func attack(closest: Dude, delta: float) -> void:
 		if closest:
 			var distance: float = distance_to(closest.global_position)
 			if (distance < attack_range):
-				closest.health = closest.health - attack_power
+				if !prevent_regular_attack:
+					closest.health = closest.health - attack_power
+				on_attack.emit(closest)
 
 
 #Private equivs

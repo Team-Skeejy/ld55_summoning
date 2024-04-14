@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sg1p3bs2c635"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/sword.gd" id="1_2x541"]
+
+[node name="Sword" type="Node"]
+script = ExtResource("1_2x541")

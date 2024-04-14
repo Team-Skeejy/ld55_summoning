@@ -1,31 +1,32 @@
 extends Node2D
+class_name Game
 
 @export var interval_spawn_rate: float = 10
 @export var test_entity: PackedScene
 @export var ui: UI
-@export var container: DudeContainer
+@export var dude_factory: DudeFactory
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass  # Replace with function body.
 
-var spawn_timer: float = 0
-func _process(delta: float) -> void:
-	spawn_timer += delta
-	if (spawn_timer > interval_spawn_rate):
-		spawn_timer = 0
-		spawn_entity()
+func _process(_delta: float) -> void:
+	pass
 
 
-func spawn_entity():
+func spawn_entity() -> void:
 	var entity: Entity = test_entity.instantiate()
 	add_child(entity)
 	ui.inventory.add_entity(entity)
 
 
-func _on_ui_summon() -> void:
-	container.spawn_dude(1)
+func _on_ui_summon(properties: Array[Property]) -> void:
+	var dude: Dude = dude_factory.instantiate_dude()
+	for property: Property in properties:
+		property.reparent(dude)
+		property.init(dude)
+		dude_factory.spawn_constructed_dude(dude, true)
 
 
-func _on_dude_container_dude_killed(team: int) -> void:
+func _on_dude_container_dude_killed(_team: int) -> void:
 	spawn_entity()

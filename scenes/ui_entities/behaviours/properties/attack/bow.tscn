@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cylm734pycuqt"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/bow.gd" id="1_spen3"]
+[ext_resource type="PackedScene" uid="uid://2pkj4j61m02n" path="res://scenes/ui_entities/behaviours/properties/attack/projectiles/arrow.tscn" id="2_6mrr2"]
+
+[node name="Bow" type="Node"]
+script = ExtResource("1_spen3")
+arrow_scene = ExtResource("2_6mrr2")

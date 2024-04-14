@@ -40,7 +40,11 @@ func add_entity(entity: Entity) -> void:
 	if unplaced:
 		entity.position = Vector2(randf_range(area.position.x, area.end.x), randf_range(area.position.y, area.end.y))
 
-	entity.reparent(self)
+	if !entity.get_parent():
+		self.add_child(entity)
+	else:
+		entity.reparent(self)
+
 	freeze(entity)
 
 func freeze(entity: Entity) -> void:

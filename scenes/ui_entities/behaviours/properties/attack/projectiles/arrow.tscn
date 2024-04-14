@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://2pkj4j61m02n"]
+
+[ext_resource type="Texture2D" uid="uid://cixfppoxj8yxp" path="res://scenes/ui_entities/behaviours/properties/attack/projectiles/textures/projectiles.png" id="1_vx030"]
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/projectiles/arrow.gd" id="2_ubwpy"]
+
+[node name="Arrow" type="Sprite2D"]
+texture = ExtResource("1_vx030")
+hframes = 8
+vframes = 8
+script = ExtResource("2_ubwpy")

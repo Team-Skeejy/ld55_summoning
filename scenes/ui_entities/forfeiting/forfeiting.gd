@@ -11,14 +11,23 @@ var _counter: float = 0
 var _forfeiting: bool = false
 var _forfeited: bool = false
 
-func ff(_anim_name: StringName) -> void:
-	forfeited.emit()
+func _ready() -> void:
+	fade_animation_player.animation_finished.connect(ff)
+	fade_animation_player.animation_finished.connect(reset)
+
+
+func ff(anim_name: StringName) -> void:
+	if anim_name == "timed_out":
+		forfeited.emit()
+
+func reset(anim_name: StringName) -> void:
+	if anim_name == "fade_out":
+		_counter = 0
 
 func forfeit() -> void:
 	_forfeited = true
 	warning_label.text = "YOU HAVE FORFEITED"
 	fade_animation_player.play("timed_out")
-	fade_animation_player.animation_finished.connect(ff)
 
 func start() -> void:
 	if _forfeited: return

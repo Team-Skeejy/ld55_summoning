@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
 [ext_resource type="PackedScene" uid="uid://dum2vhk725ubd" path="res://scenes/ui_entities/ui/ui.tscn" id="2_aqm0m"]
-[ext_resource type="PackedScene" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
+[ext_resource type="PackedScene" uid="uid://p7wfifl3jsfl" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "container")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_factory")]
 script = ExtResource("1_yek46")
 interval_spawn_rate = 2.0
 test_entity = ExtResource("8_shgoh")
 ui = NodePath("Ui")
-container = NodePath("DudeContainer")
+dude_factory = NodePath("DudeContainer")
 
 [node name="Ui" parent="." node_paths=PackedStringArray("inventory", "alter", "end") instance=ExtResource("2_aqm0m")]
 inventory = NodePath("Inventory")

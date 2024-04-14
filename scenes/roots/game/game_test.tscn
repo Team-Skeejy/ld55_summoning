@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://by22n0w3e1n2v"]
+
+[ext_resource type="PackedScene" uid="uid://by36u8pjqvdg2" path="res://scenes/roots/game/game.tscn" id="1_bcc4q"]
+[ext_resource type="Script" path="res://scenes/roots/game/game_test.gd" id="1_bpqcp"]
+[ext_resource type="PackedScene" uid="uid://4ppji14c3vys" path="res://scenes/ui_entities/behaviours/properties/attack/knife.tscn" id="2_yu2j7"]
+[ext_resource type="PackedScene" uid="uid://sg1p3bs2c635" path="res://scenes/ui_entities/behaviours/properties/attack/sword.tscn" id="3_nxugc"]
+[ext_resource type="PackedScene" uid="uid://bm6hhcv6joc1t" path="res://scenes/ui_entities/behaviours/properties/attack/spear.tscn" id="4_20q7e"]
+[ext_resource type="PackedScene" uid="uid://cylm734pycuqt" path="res://scenes/ui_entities/behaviours/properties/attack/bow.tscn" id="5_r0b3d"]
+[ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="6_0ag1t"]
+
+[node name="GameTest" type="Node2D" node_paths=PackedStringArray("game")]
+script = ExtResource("1_bpqcp")
+properties = {
+"bow": ExtResource("5_r0b3d"),
+"knife": ExtResource("2_yu2j7"),
+"spear": ExtResource("4_20q7e"),
+"sword": ExtResource("3_nxugc")
+}
+game = NodePath("Game")
+base_entity = ExtResource("6_0ag1t")
+
+[node name="Game" parent="." node_paths=PackedStringArray("ui", "dude_factory") instance=ExtResource("1_bcc4q")]
+ui = NodePath("Ui")
+dude_factory = NodePath("DudeContainer")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -63.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Filler" type="Button" parent="UI/Control/VBoxContainer"]
+auto_translate_mode = 1
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Filler"
+
+[node name="Knife" type="Button" parent="UI/Control/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Knife"
+
+[node name="Sword" type="Button" parent="UI/Control/VBoxContainer"]
+auto_translate_mode = 1
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Sword"
+
+[node name="Spear" type="Button" parent="UI/Control/VBoxContainer"]
+auto_translate_mode = 1
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Spear"
+
+[node name="Bow" type="Button" parent="UI/Control/VBoxContainer"]
+auto_translate_mode = 1
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Bow"
+
+[connection signal="button_down" from="UI/Control/VBoxContainer/Filler" to="." method="spawn_entity" binds= [""]]
+[connection signal="button_down" from="UI/Control/VBoxContainer/Knife" to="." method="spawn_entity" binds= ["knife"]]
+[connection signal="button_down" from="UI/Control/VBoxContainer/Sword" to="." method="spawn_entity" binds= ["spear"]]
+[connection signal="button_down" from="UI/Control/VBoxContainer/Spear" to="." method="spawn_entity" binds= ["spear"]]
+[connection signal="button_down" from="UI/Control/VBoxContainer/Bow" to="." method="spawn_entity" binds= ["bow"]]
