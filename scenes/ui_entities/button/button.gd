@@ -112,6 +112,7 @@ func reevaluate_collisions() -> void:
 	_entity_over = colliding
 	_entity_on = colliding
 	_entity_pressed = colliding
+	_absolute_down = _mouse_pressed
 
 func reevaluate_ui_state() -> void:
 	if _entity_pressed || _mouse_pressed:

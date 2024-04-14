@@ -11,13 +11,12 @@ area = NodePath("Area2D")
 
 [node name="Area2D" parent="." index="0"]
 position = Vector2(-11, -18)
-gravity_space_override = 1
+gravity_space_override = 3
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
 gravity_direction = Vector2(0, 0)
-gravity = 9800.0
 linear_damp_space_override = 3
-linear_damp = 10.0
+linear_damp = 100.0
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 0)
@@ -27,3 +26,9 @@ visible = false
 position = Vector2(-11, -15)
 monitoring = false
 monitorable = false
+gravity_space_override = 0
+linear_damp_space_override = 0
+angular_damp_space_override = 0
+
+[node name="CollisionShape2D" parent="Area2D2" index="0"]
+visible = false
