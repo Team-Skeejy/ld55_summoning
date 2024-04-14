@@ -15,6 +15,7 @@ pitch_scale = 0.75
 
 [node name="Control" type="Control" parent="."]
 visible = false
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +46,7 @@ offset_right = 25.5
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Stats go here"
 
 [node name="Label" type="Label" parent="Control"]

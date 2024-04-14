@@ -9,10 +9,10 @@ extends Node2D
 func _ready() -> void:
 	pass  # Replace with function body.
 
-var spawn_timer:float = 0
+var spawn_timer: float = 0
 func _process(delta: float) -> void:
 	spawn_timer += delta
-	if(spawn_timer > interval_spawn_rate):
+	if (spawn_timer > interval_spawn_rate):
 		spawn_timer = 0
 		spawn_entity()
 

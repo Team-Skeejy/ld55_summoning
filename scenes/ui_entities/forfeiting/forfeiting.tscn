@@ -230,6 +230,7 @@ libraries = {
 
 [node name="Control" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -250,8 +251,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1280.0
-offset_right = -1280.0
+offset_left = -833.789
+offset_right = -833.789
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -281,7 +282,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.4, 1.4)
 
 [node name="CountdownLabel" type="Label" parent="Control/Control"]
 layout_mode = 1
