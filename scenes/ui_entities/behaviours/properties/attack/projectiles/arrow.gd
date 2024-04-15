@@ -1,7 +1,7 @@
 class_name Arrow
 extends Sprite2D
 
-var target: Dude
+var target: Attackable
 var attack_power: float = 0
 
 var speed: float = 100
