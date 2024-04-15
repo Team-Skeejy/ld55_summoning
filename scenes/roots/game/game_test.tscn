@@ -67,8 +67,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 9
 text = "Bow"
 
+[node name="ArrowMan" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+text = "Bowman"
+
 [connection signal="button_down" from="UI/Control/VBoxContainer/Filler" to="." method="spawn_entity" binds= [""]]
 [connection signal="button_down" from="UI/Control/VBoxContainer/Knife" to="." method="spawn_entity" binds= ["knife"]]
 [connection signal="button_down" from="UI/Control/VBoxContainer/Sword" to="." method="spawn_entity" binds= ["spear"]]
 [connection signal="button_down" from="UI/Control/VBoxContainer/Spear" to="." method="spawn_entity" binds= ["spear"]]
 [connection signal="button_down" from="UI/Control/VBoxContainer/Bow" to="." method="spawn_entity" binds= ["bow"]]
+[connection signal="button_down" from="UI/Control/VBoxContainer/ArrowMan" to="." method="spawn_bow"]
