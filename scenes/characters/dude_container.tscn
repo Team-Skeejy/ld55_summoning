@@ -9,11 +9,11 @@ good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
 
 [node name="Home1" parent="." node_paths=PackedStringArray("Bar") instance=ExtResource("3_ngeta")]
-position = Vector2(166, 75)
+position = Vector2(126, 153)
 Bar = NodePath("Healthbar")
 
 [node name="Home2" parent="." node_paths=PackedStringArray("Bar") instance=ExtResource("3_ngeta")]
-position = Vector2(291, 40)
+position = Vector2(228, 48)
 Bar = NodePath("Healthbar")
 
 [connection signal="killed" from="Home1" to="." method="_on_home_1_killed"]

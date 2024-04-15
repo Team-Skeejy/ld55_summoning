@@ -1,27 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://by22n0w3e1n2v"]
+[gd_scene load_steps=4 format=3 uid="uid://by22n0w3e1n2v"]
 
 [ext_resource type="PackedScene" uid="uid://by36u8pjqvdg2" path="res://scenes/roots/game/game.tscn" id="1_bcc4q"]
 [ext_resource type="Script" path="res://scenes/roots/game/game_test.gd" id="1_bpqcp"]
-[ext_resource type="PackedScene" uid="uid://4ppji14c3vys" path="res://scenes/ui_entities/behaviours/properties/attack/knife.tscn" id="2_yu2j7"]
-[ext_resource type="PackedScene" uid="uid://sg1p3bs2c635" path="res://scenes/ui_entities/behaviours/properties/attack/sword.tscn" id="3_nxugc"]
-[ext_resource type="PackedScene" uid="uid://bm6hhcv6joc1t" path="res://scenes/ui_entities/behaviours/properties/attack/spear.tscn" id="4_20q7e"]
-[ext_resource type="PackedScene" uid="uid://cylm734pycuqt" path="res://scenes/ui_entities/behaviours/properties/attack/bow.tscn" id="5_r0b3d"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="6_0ag1t"]
 
 [node name="GameTest" type="Node2D" node_paths=PackedStringArray("game")]
 script = ExtResource("1_bpqcp")
-properties = {
-"bow": ExtResource("5_r0b3d"),
-"knife": ExtResource("2_yu2j7"),
-"spear": ExtResource("4_20q7e"),
-"sword": ExtResource("3_nxugc")
-}
 game = NodePath("Game")
 base_entity = ExtResource("6_0ag1t")
 
-[node name="Game" parent="." node_paths=PackedStringArray("ui", "dude_container") instance=ExtResource("1_bcc4q")]
+[node name="Game" parent="." node_paths=PackedStringArray("ui", "dude_container", "fade_transition") instance=ExtResource("1_bcc4q")]
 ui = NodePath("Ui")
 dude_container = NodePath("DudeContainer")
+fade_transition = NodePath("FadeTransition")
 
 [node name="UI" type="Node" parent="."]
 

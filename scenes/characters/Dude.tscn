@@ -13,7 +13,6 @@ specular_color = Color(1, 0, 1, 1)
 [node name="Goodie" type="Node2D" node_paths=PackedStringArray("stateMachine")]
 script = ExtResource("1_qqcbt")
 priority = null
-health = null
 attack_power = null
 team = null
 speed = null
@@ -22,6 +21,7 @@ attack_range = null
 attack_interval = null
 stateMachine = NodePath("StateMachine")
 current_state = null
+health = null
 is_dead = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

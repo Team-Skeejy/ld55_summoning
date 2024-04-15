@@ -5,6 +5,7 @@ class_name Game
 @export var test_entity: PackedScene
 @export var ui: UI
 @export var dude_container: DudeContainer
+@export var fade_transition: FadeTransition
 
 func _ready() -> void:
 	reset()
@@ -33,19 +34,26 @@ func _on_house_killed(team: int) -> void:
 		ui.gameover()
 	else:
 		reset()
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
 
 func _on_ui_retry() -> void:
-	reset()
+	restart()
 
 func reset() -> void:
 	ui.end.hide()
 	ui.inventory.clear()
 	dude_container.setup()
 	#spawn five at the start of the round so we can get started
-	for i: int in [1,2,3,4,5]:
+	for i: int in [1, 2, 3, 4, 5]:
 		spawn_entity()
 
 	dude_container.spawn_dude(true, [])
 	dude_container.spawn_dude(false, [])
+
+func restart() -> void:
+	fade_transition.transition_to(fade_transition.GAME)
+
+
+func _on_ui_forfeited() -> void:
+	ui.gameover()

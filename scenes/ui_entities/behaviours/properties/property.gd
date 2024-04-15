@@ -10,6 +10,7 @@ var attack_power: int = 0
 var speed: float = 0
 var attack_range: float = 0
 var attack_interval: float = 1
+var prevent_regular_attack: bool = false
 
 func _ready() -> void:
 	# name = "This is a base property for items"
@@ -30,3 +31,4 @@ func init(_parent: Dude) -> void:
 	parent.speed += speed
 	parent.attack_range += attack_range
 	parent.attack_interval *= attack_interval
+	parent.prevent_regular_attack = prevent_regular_attack
