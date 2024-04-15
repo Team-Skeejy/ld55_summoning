@@ -27,6 +27,7 @@ end = NodePath("End")
 animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
 [connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]
+[connection signal="house_killed" from="DudeContainer" to="." method="_on_house_killed"]
 [connection signal="forfeited" from="Ui" to="." method="_on_ui_forfeited"]
 [connection signal="retry" from="Ui" to="." method="_on_ui_retry"]
 [connection signal="summon" from="Ui" to="." method="_on_ui_summon"]

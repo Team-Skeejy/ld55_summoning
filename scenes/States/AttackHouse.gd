@@ -17,10 +17,11 @@ func Update(delta: float) -> void:
 		Transitioned.emit(self, "attack")
 		return
 	
-	move_to(character, target_base)
 	var distance = distance_to(character, target_base)
 	if distance < character.attack_range:
 		character.attack(target_base, delta)
+	else:
+		move_to(character, target_base)
 		
 	if target_base.is_dead:
 		Transitioned.emit(self, "returnhome")
