@@ -64,6 +64,9 @@ func _ready() -> void:
 
 	var count: Dictionary = {}
 	for value: String in constructed_with:
+		if value.to_lower() == "meat": continue
+		if value.to_lower() == "boss": continue
+
 		if count.has(value):
 			count[value] += 1
 		else:
@@ -73,16 +76,11 @@ func _ready() -> void:
 	var most_key: String = ""
 
 	for key: String in count.keys():
-		if key == "Boss":
-			break
-		if key == "bow":
-			most_key = "bow"
-			break
-		if key != "meat" && count[key] > most:
+		if count[key] > most:
 			most = count[key]
 			most_key = key
 
-	if count.keys().any(func(key): return key == "Boss"):
+	if count.keys().any(func(key: String) -> bool: return key == "Boss"):
 		scale = Vector2(2, 2)
 
 	if team == 0:

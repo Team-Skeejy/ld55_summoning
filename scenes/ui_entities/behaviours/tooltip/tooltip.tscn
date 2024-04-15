@@ -41,11 +41,15 @@ _data = {
 "fade_out": SubResource("Animation_oejjy")
 }
 
-[node name="Node" type="Node" node_paths=PackedStringArray("label", "tooltip", "animation_player")]
+[node name="Node" type="Node" node_paths=PackedStringArray("label", "tooltip", "animation_player", "tl_node", "tr_node", "bl_node", "br_node")]
 script = ExtResource("1_4qhx1")
 label = NodePath("Control/GridContainer/MarginContainer/Label")
 tooltip = NodePath("Control/GridContainer")
 animation_player = NodePath("AnimationPlayer")
+tl_node = NodePath("Control/GridContainer/Corner")
+tr_node = NodePath("Control/GridContainer/Corner2")
+bl_node = NodePath("Control/GridContainer/Corner3")
+br_node = NodePath("Control/GridContainer/Corner4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
