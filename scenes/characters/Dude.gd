@@ -100,6 +100,7 @@ func _process(delta: float) -> void:
 
 	if current_speed && is_attacking:
 		is_attacking = false
+		print("walk")
 		sprite.play(base_animation)
 
 	if !is_attacking:
@@ -121,9 +122,11 @@ func attack(closest: Attackable, delta: float) -> void:
 		if closest:
 			var distance: float = distance_to(closest.global_position)
 			if (distance < attack_range):
-				if !is_attacking:
-					is_attacking = true
-					sprite.play(base_animation + "_atk", attack_interval)
+
+				is_attacking = true
+				sprite.play(base_animation + "_atk", 1)
+				sprite.speed_scale = 1 / attack_interval
+
 				if !prevent_regular_attack:
 					closest.health = closest.health - attack_power
 				on_attack.emit(closest)

@@ -481,7 +481,7 @@ fgd = NodePath("Bkg/Fgd")
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_xjoq8")
 animation = &"ally"
-frame_progress = 0.682118
+frame_progress = 0.231457
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character")]
 script = ExtResource("2_n5kgs")

@@ -10,6 +10,7 @@ const GAME: StringName = "res://scenes/roots/game/game.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("yippee")
 	animationPlayer.play("fade_in")
 
 var nextScene: StringName

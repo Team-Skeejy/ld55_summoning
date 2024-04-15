@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://d2thrgk2ijbxs" path="res://scenes/ui_entities/end/audio/bell.mp3" id="1_uqcbm"]
 
 [node name="Node" type="Node" node_paths=PackedStringArray("screen", "stats", "audio")]
+process_mode = 2
 script = ExtResource("1_psgpg")
 screen = NodePath("Control")
 stats = NodePath("Control/Stats go here")

@@ -15,7 +15,7 @@ test_entity = ExtResource("8_shgoh")
 ui = NodePath("Ui")
 dude_container = NodePath("DudeContainer")
 wave_machine = NodePath("WaveController")
-fade_transition = NodePath("FadeTransition")
+fade_transition = NodePath("Node/FadeTransition")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
@@ -26,6 +26,10 @@ good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
 spawners = [NodePath("Node2D"), NodePath("Node2D2"), NodePath("Node2D3")]
 
+[node name="WaveController" parent="." node_paths=PackedStringArray("dude_container") instance=ExtResource("6_j4isa")]
+dude_container = NodePath("../DudeContainer")
+mook_interval = 10.0
+
 [node name="Ui" parent="." node_paths=PackedStringArray("inventory", "alter", "end", "health_label", "wave_label") instance=ExtResource("2_aqm0m")]
 inventory = NodePath("Inventory")
 alter = NodePath("Alter")
@@ -33,17 +37,15 @@ end = NodePath("End")
 health_label = NodePath("Node/Control/Health")
 wave_label = NodePath("Node/Control/Next Wave")
 
-[node name="FadeTransition" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_8k2ii")]
-animationPlayer = NodePath("ColorRect/AnimationPlayer")
+[node name="Node" type="Node" parent="."]
 
-[node name="WaveController" parent="." node_paths=PackedStringArray("dude_container") instance=ExtResource("6_j4isa")]
-dude_container = NodePath("../DudeContainer")
-mook_interval = 10.0
+[node name="FadeTransition" parent="Node" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_8k2ii")]
+animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
 [connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]
 [connection signal="house_killed" from="DudeContainer" to="." method="_on_house_killed"]
+[connection signal="boss_spawn" from="WaveController" to="." method="_on_wave_controller_boss_spawn"]
+[connection signal="enemy_spawn" from="WaveController" to="." method="_on_wave_controller_enemy_spawn"]
 [connection signal="forfeited" from="Ui" to="." method="_on_ui_forfeited"]
 [connection signal="retry" from="Ui" to="." method="_on_ui_retry"]
 [connection signal="summon" from="Ui" to="." method="_on_ui_summon"]
-[connection signal="boss_spawn" from="WaveController" to="." method="_on_wave_controller_boss_spawn"]
-[connection signal="enemy_spawn" from="WaveController" to="." method="_on_wave_controller_enemy_spawn"]
