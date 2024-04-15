@@ -27,6 +27,7 @@ func _ready() -> void:
 func init(_parent: Dude) -> void:
 	parent = _parent
 	parent.health += health
+	parent.max_health += health
 	parent.attack_power += attack_power
 	parent.speed += speed
 	parent.attack_range += attack_range

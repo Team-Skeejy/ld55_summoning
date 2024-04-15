@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyyclkt8g4k3d"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/boss.gd" id="1_bgc8m"]
+
+[node name="Boss" type="Node"]
+script = ExtResource("1_bgc8m")

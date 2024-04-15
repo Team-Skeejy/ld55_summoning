@@ -4,7 +4,7 @@ class_name WaveController
 
 @export var dude_container: DudeContainer
 @export var mook_interval: float = 5
-@export var boss_interval: float = 60
+@export var boss_interval: float = 9
 @export var wave_timer_reduction: float = 0.0
 
 signal boss_spawn()
@@ -15,6 +15,7 @@ func _ready() -> void:
 
 var mook_timer: float = 0
 var boss_timer: float = 0
+var boss_level: int = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,8 +41,13 @@ func spawn_mook() -> void:
 
 func spawn_boss() -> void:
 	var options: Array[Property] = [
-		PropertyFactory.entity_by_name("bow")
+		PropertyFactory.entity_by_name("knife")
 	]
+	
+	for item in range(boss_level):
+		options.push_back(PropertyFactory.entity_by_name("boss"))
+	
 	dude_container.spawn_dude(false, options)
 	boss_spawn.emit()
+	boss_level += 1
 	
