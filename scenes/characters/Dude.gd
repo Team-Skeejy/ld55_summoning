@@ -1,12 +1,11 @@
-extends Node2D
+extends Attackable
 
 class_name Dude
 
 signal on_attack(target: Dude)
 
 @export var priority: int = 0
-@export var health: float = 10;
-@export var attack_power: float = 0;
+@export var attack_power: float = 1;
 @export var team: int = 1;
 @export var speed: float = 0.1;
 @export var prevent_regular_attack: bool = false;
@@ -17,10 +16,10 @@ signal on_attack(target: Dude)
 @export var bad_home: Node2D;
 @export var stateMachine: StateMachine;
 @export var current_state: String = "";
-@export var is_dead: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health = 10
 	stateMachine.containerReference = parentContainer
 	stateMachine.home = home
 	stateMachine.target_base = bad_home
@@ -40,7 +39,7 @@ func check_aliveness() -> void:
 
 
 var time_since_last_attack: float = 0
-func attack(closest: Dude, delta: float) -> void:
+func attack(closest: Attackable, delta: float) -> void:
 	if (health <= 0):
 		return
 	time_since_last_attack += delta

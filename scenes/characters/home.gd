@@ -1,12 +1,12 @@
-extends Node2D
+extends Attackable
 
-@export var health = 100
 @export var Bar: ColorRect
 
 var width = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health = 100
 	width = Bar.size.x
 
 

@@ -112,7 +112,8 @@ libraries = {
 }
 autoplay = "sleepy_fade"
 
-[node name="FadeTransition" parent="." instance=ExtResource("2_hcovi")]
+[node name="FadeTransition" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_hcovi")]
 layout_mode = 1
+animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
 [connection signal="animation_finished" from="ColorRect/TextureRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
