@@ -216,7 +216,6 @@ warning_label = NodePath("Control/Control/CountdownLabel")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_vky3h")
 volume_db = -80.0
-stream_paused = true
 
 [node name="WarningAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -244,6 +243,7 @@ modulate = Color(1, 1, 1, 0.6)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("3_d7v16")
 
 [node name="Warning" type="Control" parent="Control"]
@@ -255,6 +255,7 @@ offset_left = -833.789
 offset_right = -833.789
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/Warning"]
 layout_mode = 0
@@ -282,6 +283,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CountdownLabel" type="Label" parent="Control/Control"]
 layout_mode = 1
