@@ -31,5 +31,7 @@ animationPlayer = NodePath("ColorRect/AnimationPlayer")
 good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
 
+[connection signal="retry" from="Ui" to="." method="_on_ui_retry"]
 [connection signal="summon" from="Ui" to="." method="_on_ui_summon"]
 [connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]
+[connection signal="house_killed" from="DudeContainer" to="." method="_on_house_killed"]

@@ -7,12 +7,7 @@ class_name Game
 @export var dude_container: DudeContainer
 
 func _ready() -> void:
-	#spawn five at the start of the round so we can get started
-	for i: int in [1,2,3,4,5]:
-		spawn_entity()
-
-	dude_container.spawn_dude(true, [])
-	dude_container.spawn_dude(false, [])
+	reset()
 
 
 func _process(_delta: float) -> void:
@@ -31,3 +26,26 @@ func _on_ui_summon(properties: Array[Property]) -> void:
 
 func _on_dude_container_dude_killed(_team: int) -> void:
 	spawn_entity()
+
+
+func _on_house_killed(team: int) -> void:
+	if team == 0:
+		ui.gameover()
+	else:
+		reset()
+	pass # Replace with function body.
+
+
+func _on_ui_retry() -> void:
+	reset()
+
+func reset() -> void:
+	ui.end.hide()
+	ui.inventory.clear()
+	dude_container.setup()
+	#spawn five at the start of the round so we can get started
+	for i: int in [1,2,3,4,5]:
+		spawn_entity()
+
+	dude_container.spawn_dude(true, [])
+	dude_container.spawn_dude(false, [])

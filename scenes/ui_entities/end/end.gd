@@ -9,6 +9,9 @@ signal retry
 func show() -> void:
 	screen.visible = true
 	audio.play()
+	
+func hide() -> void:
+	screen.visible = false
 
 func _on_button_button_down() -> void:
 	retry.emit()

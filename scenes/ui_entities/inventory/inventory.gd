@@ -50,3 +50,8 @@ func add_entity(entity: Entity) -> void:
 func freeze(entity: Entity) -> void:
 	await get_tree().process_frame
 	entity.linear_velocity = Vector2.ZERO
+
+func clear():
+	var items = get_children().filter(func (child: Node2D): return child is Entity and child.visible)
+	for item in items:
+		item.queue_free()
