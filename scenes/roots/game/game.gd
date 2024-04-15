@@ -5,6 +5,7 @@ class_name Game
 @export var test_entity: PackedScene
 @export var ui: UI
 @export var dude_container: DudeContainer
+@export var wave_machine: WaveController
 @export var fade_transition: FadeTransition
 
 func _ready() -> void:
@@ -12,8 +13,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	pass
-
+	ui.set_seconds_til_next_wave(int(wave_machine.boss_interval - wave_machine.boss_timer))
+	ui.set_health_as_percentage(dude_container.good_home.health) # fix this
 
 func spawn_entity() -> void:
 	#fetch from a drop table

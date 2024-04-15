@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://btco02dq00kwc" path="res://scenes/ui_entities/alter/alter.tscn" id="1_yf748"]
 [ext_resource type="Texture2D" uid="uid://dg1q3pxuipxkg" path="res://scenes/ui_entities/inventory/textures/ui.png" id="2_1tb5p"]
 [ext_resource type="PackedScene" uid="uid://bgol823ub27ic" path="res://scenes/ui_entities/inventory/inventory.tscn" id="3_bwefo"]
-[ext_resource type="PackedScene" uid="uid://g0nmnjyilkpx" path="res://scenes/ui_entities/button/btn_spikes.tscn" id="5_cuxea"]
+[ext_resource type="PackedScene" path="res://scenes/ui_entities/button/btn_spikes.tscn" id="5_cuxea"]
 [ext_resource type="PackedScene" uid="uid://drtsb3cnf4owo" path="res://scenes/ui_entities/button/btn_forfiet.tscn" id="5_j8rod"]
 [ext_resource type="PackedScene" uid="uid://ybxcox1kagym" path="res://scenes/ui_entities/end/end.tscn" id="6_7mpor"]
 [ext_resource type="PackedScene" uid="uid://fr2enfc8n1ci" path="res://scenes/ui_entities/forfeiting/forfeiting.tscn" id="6_gvynx"]
@@ -32,11 +32,13 @@ b = Vector2(102, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lw1g"]
 size = Vector2(99, 13)
 
-[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory", "alter", "end")]
+[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory", "alter", "end", "health_label", "wave_label")]
 script = ExtResource("1_3cdks")
 inventory = NodePath("Inventory")
 alter = NodePath("Alter")
 end = NodePath("End")
+health_label = NodePath("Node/Control/Health")
+wave_label = NodePath("Node/Control/Next Wave")
 
 [node name="Alter" parent="." node_paths=PackedStringArray("alter_buttons", "summon_area", "summoning_sprite") instance=ExtResource("1_yf748")]
 position = Vector2(0, 112)
@@ -156,6 +158,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Next Wave" type="Label" parent="Node/Control"]
+layout_mode = 0
 offset_left = 258.0
 offset_top = 170.0
 offset_right = 327.0
