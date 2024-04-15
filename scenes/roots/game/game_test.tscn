@@ -13,7 +13,7 @@ base_entity = ExtResource("6_0ag1t")
 ui = NodePath("Ui")
 dude_container = NodePath("DudeContainer")
 wave_machine = NodePath("WaveController")
-fade_transition = NodePath("FadeTransition")
+fade_transition = NodePath("Node/FadeTransition")
 
 [node name="UI" type="Node" parent="."]
 

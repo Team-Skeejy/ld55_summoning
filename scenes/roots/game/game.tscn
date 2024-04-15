@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=10 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
 [ext_resource type="PackedScene" uid="uid://dum2vhk725ubd" path="res://scenes/ui_entities/ui/ui.tscn" id="2_aqm0m"]
 [ext_resource type="Texture2D" uid="uid://bgk508s7yjppg" path="res://scenes/ui_entities/game/textures/background.png" id="3_ytfxc"]
+[ext_resource type="Script" path="res://scenes/roots/game/spikes.gd" id="4_0yuux"]
+[ext_resource type="PackedScene" uid="uid://uxa7ukwsq0cr" path="res://scenes/spikes/spike.tscn" id="4_teu47"]
 [ext_resource type="PackedScene" uid="uid://p7wfifl3jsfl" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
 [ext_resource type="PackedScene" uid="uid://cl7yrn5rqmw14" path="res://scenes/ui_entities/behaviours/WaveController.tscn" id="6_j4isa"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
@@ -20,6 +22,90 @@ fade_transition = NodePath("Node/FadeTransition")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
 texture = ExtResource("3_ytfxc")
+
+[node name="Spikes" type="Node2D" parent="." node_paths=PackedStringArray("ui")]
+script = ExtResource("4_0yuux")
+ui = NodePath("../Ui")
+
+[node name="Spike" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(243, 140)
+hitbox = NodePath("Area2D")
+
+[node name="Spike2" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(231, 120)
+hitbox = NodePath("Area2D")
+
+[node name="Spike3" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(244, 106)
+hitbox = NodePath("Area2D")
+
+[node name="Spike4" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(246, 118)
+hitbox = NodePath("Area2D")
+
+[node name="Spike5" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(237, 131)
+hitbox = NodePath("Area2D")
+
+[node name="Spike6" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(254, 145)
+hitbox = NodePath("Area2D")
+
+[node name="Spike7" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(243, 152)
+hitbox = NodePath("Area2D")
+
+[node name="Spike8" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(252, 132)
+hitbox = NodePath("Area2D")
+
+[node name="Spike9" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(231, 109)
+hitbox = NodePath("Area2D")
+
+[node name="Spike10" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(261, 93)
+hitbox = NodePath("Area2D")
+
+[node name="Spike11" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(263, 111)
+hitbox = NodePath("Area2D")
+
+[node name="Spike12" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(261, 125)
+hitbox = NodePath("Area2D")
+
+[node name="Spike13" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(271, 140)
+hitbox = NodePath("Area2D")
+
+[node name="Spike14" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(266, 152)
+hitbox = NodePath("Area2D")
+
+[node name="Spike15" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(243, 88)
+hitbox = NodePath("Area2D")
+
+[node name="Spike16" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(233, 96)
+hitbox = NodePath("Area2D")
+
+[node name="Spike17" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(226, 86)
+hitbox = NodePath("Area2D")
+
+[node name="Spike18" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(259, 78)
+hitbox = NodePath("Area2D")
+
+[node name="Spike19" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(253, 159)
+hitbox = NodePath("Area2D")
+
+[node name="Spike20" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(228, 158)
+hitbox = NodePath("Area2D")
 
 [node name="DudeContainer" parent="." node_paths=PackedStringArray("good_home", "bad_home", "spawners") instance=ExtResource("5_pce2m")]
 good_home = NodePath("Home1")
