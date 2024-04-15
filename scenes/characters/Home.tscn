@@ -1,29 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch5rsfub34lwr"]
+[gd_scene load_steps=4 format=3 uid="uid://ch5rsfub34lwr"]
 
 [ext_resource type="Script" path="res://scenes/characters/home.gd" id="1_jdass"]
-[ext_resource type="Texture2D" uid="uid://cpewd7w6kx4ol" path="res://assets/house.png" id="2_e8rnn"]
+[ext_resource type="PackedScene" uid="uid://by12k65hvpwxu" path="res://scenes/characters/health_bar.tscn" id="2_haplr"]
+[ext_resource type="Texture2D" uid="uid://p3q2r78uxhww" path="res://scenes/ui_entities/base/textures/placeholder_entity.png" id="3_c600r"]
 
-[node name="Home1" type="Node2D" node_paths=PackedStringArray("Bar")]
+[node name="Home1" type="Node2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_jdass")
-Bar = NodePath("Healthbar")
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("fgd") instance=ExtResource("2_haplr")]
+position = Vector2(-22, -50)
+scale = Vector2(4, 2)
+fgd = NodePath("Bkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -17)
+visible = false
+position = Vector2(1, 1)
 scale = Vector2(1.325, 1.325)
-texture = ExtResource("2_e8rnn")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -13.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = -2.0
-color = Color(1, 0, 0, 1)
-
-[node name="Healthbar" type="ColorRect" parent="."]
-auto_translate_mode = 1
-offset_left = -13.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = -2.0
-color = Color(0, 1, 0, 1)
+texture = ExtResource("3_c600r")
+hframes = 16
+vframes = 16
+frame = 136

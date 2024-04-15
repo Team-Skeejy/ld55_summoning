@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=8 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
 [ext_resource type="PackedScene" uid="uid://dum2vhk725ubd" path="res://scenes/ui_entities/ui/ui.tscn" id="2_aqm0m"]
+[ext_resource type="Texture2D" uid="uid://bgk508s7yjppg" path="res://scenes/ui_entities/game/textures/background.png" id="3_ytfxc"]
 [ext_resource type="PackedScene" uid="uid://p7wfifl3jsfl" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
 [ext_resource type="PackedScene" uid="uid://cl7yrn5rqmw14" path="res://scenes/ui_entities/behaviours/WaveController.tscn" id="6_j4isa"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
@@ -14,6 +15,10 @@ test_entity = ExtResource("8_shgoh")
 ui = NodePath("Ui")
 dude_container = NodePath("DudeContainer")
 fade_transition = NodePath("FadeTransition")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("3_ytfxc")
 
 [node name="DudeContainer" parent="." node_paths=PackedStringArray("good_home", "bad_home", "spawners") instance=ExtResource("5_pce2m")]
 good_home = NodePath("Home1")

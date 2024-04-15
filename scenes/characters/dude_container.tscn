@@ -9,14 +9,12 @@ good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
 spawners = [NodePath("Node2D"), NodePath("Node2D2"), NodePath("Node2D3"), NodePath("Node2D4"), NodePath("Node2D5"), NodePath("Node2D6")]
 
-[node name="Home1" parent="." node_paths=PackedStringArray("Bar") instance=ExtResource("3_ngeta")]
-position = Vector2(133, 96)
-Bar = NodePath("Healthbar")
+[node name="Home1" parent="." instance=ExtResource("3_ngeta")]
+position = Vector2(140, 134)
 
-[node name="Home2" parent="." node_paths=PackedStringArray("Bar") instance=ExtResource("3_ngeta")]
+[node name="Home2" parent="." instance=ExtResource("3_ngeta")]
 visible = false
 position = Vector2(191, 94)
-Bar = NodePath("Healthbar")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(296, 43)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://by12k65hvpwxu"]
+
+[ext_resource type="Script" path="res://scenes/characters/health_bar.gd" id="1_1x4t0"]
+
+[node name="HealthBar" type="Node2D" node_paths=PackedStringArray("fgd")]
+script = ExtResource("1_1x4t0")
+ally_color = Color(0.596078, 0.00392157, 0.894118, 0.466667)
+enemy_color = Color(0.89, 0, 0.0148331, 0.466667)
+fgd = NodePath("Bkg/Fgd")
+
+[node name="Bkg" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.568627)
+
+[node name="Fgd" type="ColorRect" parent="Bkg"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.59
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.595931, 0.00315256, 0.893927, 0.466667)

@@ -14,16 +14,15 @@ signal house_killed(team: int)
 func child_killed(team: int) -> void:
 	dude_killed.emit(team)
 
-func setup():
+func setup() -> void:
 	for home: Home in [good_home, bad_home]:
-		home.health = 100
+		home.health = home.max_health
 		home.is_dead = false
 
-var spawner_index:int = 0;
+var spawner_index: int = 0;
 
 func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 	var new_dude: Dude = dude.instantiate()
-
 	new_dude.parentContainer = self
 	if is_player_team:
 		new_dude.team = 0
@@ -34,9 +33,9 @@ func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 		new_dude.team = 1
 		new_dude.target_base = good_home
 		new_dude.home = bad_home
-		var index = spawners.size()
+		var index: int = spawners.size()
 		spawner_index += 1
-		
+
 		new_dude.global_position = spawners[spawner_index % index].global_position
 
 	if new_dude.get_parent():
