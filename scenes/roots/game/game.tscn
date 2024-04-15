@@ -110,6 +110,18 @@ hitbox = NodePath("Area2D")
 position = Vector2(228, 158)
 hitbox = NodePath("Area2D")
 
+[node name="Spike21" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(142, 118)
+hitbox = NodePath("Area2D")
+
+[node name="Spike22" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(146, 130)
+hitbox = NodePath("Area2D")
+
+[node name="Spike23" parent="Spikes" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_teu47")]
+position = Vector2(141, 143)
+hitbox = NodePath("Area2D")
+
 [node name="DudeContainer" parent="." node_paths=PackedStringArray("good_home", "bad_home", "spawners") instance=ExtResource("5_pce2m")]
 good_home = NodePath("Home1")
 bad_home = NodePath("Home2")

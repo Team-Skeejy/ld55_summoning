@@ -75,9 +75,9 @@ func _ready() -> void:
 	var most: int = 0
 	var most_key: String = ""
 
-	if count.has("bomb"):
+	if count.has("Bomb"):
 		most_key = "bomb"
-	elif count.has("bow"):
+	elif count.has("Bow"):
 		most_key = "bow"
 	else:
 		for key: String in count.keys():
