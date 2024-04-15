@@ -5,6 +5,7 @@ class_name WaveController
 @export var dude_container: DudeContainer
 @export var mook_interval: float = 5
 @export var boss_interval: float = 60
+@export var wave_timer_reduction: float = 0.0
 
 signal boss_spawn()
 signal enemy_spawn()
@@ -22,10 +23,12 @@ func _process(delta: float) -> void:
 
 	if mook_timer > mook_interval:
 		mook_timer = 0
+		mook_interval = (1 - wave_timer_reduction) * mook_interval  
 		spawn_mook()
 
 	if boss_timer > boss_interval:
 		boss_timer = 0
+		boss_timer = (1 - wave_timer_reduction) * boss_timer
 		spawn_boss()
 
 func spawn_mook() -> void:

@@ -5,6 +5,7 @@ class_name Game
 @export var test_entity: PackedScene
 @export var ui: UI
 @export var dude_container: DudeContainer
+@export var wave_machine: WaveController
 @export var fade_transition: FadeTransition
 
 func _ready() -> void:
@@ -12,12 +13,15 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	pass
-
+	ui.set_seconds_til_next_wave(int(wave_machine.boss_interval - wave_machine.boss_timer))
+	ui.set_health_as_percentage(dude_container.good_home.health) # fix this
 
 func spawn_entity() -> void:
+	#fetch from a drop table
+	var property: Property = PropertyFactory.entity_by_name("bow")
 	var entity: Entity = test_entity.instantiate()
 	add_child(entity)
+	entity.add_child(property)
 	ui.inventory.add_entity(entity)
 
 
@@ -51,8 +55,10 @@ func reset() -> void:
 	for i: int in [1, 2, 3, 4, 5]:
 		spawn_entity()
 
-	#dude_container.spawn_dude(true, [])
-	dude_container.spawn_dude(false, [])
+	#dude_container.spawn_dude(true, [
+	#	PropertyFactory.entity_by_name("bow")
+	#])
+	#dude_container.spawn_dude(false, [])
 
 func restart() -> void:
 	fade_transition.transition_to(fade_transition.GAME)

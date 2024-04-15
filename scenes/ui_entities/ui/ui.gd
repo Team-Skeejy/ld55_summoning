@@ -22,7 +22,7 @@ func _on_alter_summon(nodes: Array[Node2D]) -> void:
 	for entity: Entity in entities:
 		for child: Node in entity.get_children():
 			if child is Property:
-				properties.push_back(child)
+				properties.push_back(child.duplicate())
 
 	summon.emit(properties)
 
@@ -51,10 +51,10 @@ func _on_end_retry() -> void:
 
 
 func set_health_as_percentage(value: int) -> void:
-	health_label.text = "Health: {}%".format(value)
+	health_label.text = "Health: %s %%" % value
 
 func set_seconds_til_next_wave(value: int) -> void:
-	wave_label.text = "Next Boss: {}s".format(value)
+	wave_label.text = "Next Boss: %s" % value
 
 
 func _on_btn_raise_spikes_button_up() -> void:

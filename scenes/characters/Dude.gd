@@ -2,7 +2,7 @@ extends Attackable
 
 class_name Dude
 
-signal on_attack(target: Dude)
+signal on_attack(target: Attackable)
 
 @export var priority: int = 0
 @export var attack_power: float = 1;

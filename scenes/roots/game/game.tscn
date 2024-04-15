@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://cl7yrn5rqmw14" path="res://scenes/ui_entities/behaviours/WaveController.tscn" id="6_j4isa"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_container", "fade_transition")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_container", "wave_machine", "fade_transition")]
 script = ExtResource("1_yek46")
 interval_spawn_rate = 2.0
 test_entity = ExtResource("8_shgoh")
 ui = NodePath("Ui")
 dude_container = NodePath("DudeContainer")
+wave_machine = NodePath("WaveController")
 fade_transition = NodePath("FadeTransition")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,10 +26,12 @@ good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
 spawners = [NodePath("Node2D"), NodePath("Node2D2"), NodePath("Node2D3")]
 
-[node name="Ui" parent="." node_paths=PackedStringArray("inventory", "alter", "end") instance=ExtResource("2_aqm0m")]
+[node name="Ui" parent="." node_paths=PackedStringArray("inventory", "alter", "end", "health_label", "wave_label") instance=ExtResource("2_aqm0m")]
 inventory = NodePath("Inventory")
 alter = NodePath("Alter")
 end = NodePath("End")
+health_label = NodePath("Node/Control/Health")
+wave_label = NodePath("Node/Control/Next Wave")
 
 [node name="FadeTransition" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_8k2ii")]
 animationPlayer = NodePath("ColorRect/AnimationPlayer")
@@ -36,7 +39,7 @@ animationPlayer = NodePath("ColorRect/AnimationPlayer")
 [node name="WaveController" parent="." node_paths=PackedStringArray("dude_container") instance=ExtResource("6_j4isa")]
 dude_container = NodePath("../DudeContainer")
 mook_interval = 10.0
-boss_interval = 1.0
+wave_timer_reduction = 0.1
 
 [connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]
 [connection signal="house_killed" from="DudeContainer" to="." method="_on_house_killed"]
