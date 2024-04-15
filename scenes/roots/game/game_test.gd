@@ -9,4 +9,15 @@ func spawn_entity(property_name: String) -> void:
 	entity.add_child(prop)
 	game.ui.inventory.add_entity(entity)
 
-
+func spawn_bow() -> void:
+	var items: Array[Property] = [ 
+		get_bow(),
+		get_bow(),
+		get_bow(),
+		get_bow(),
+		get_bow()
+	]
+	game.dude_container.spawn_dude(true, items)
+	
+func get_bow() -> Property:
+	return PropertyFactory.entity_by_name("bow")
