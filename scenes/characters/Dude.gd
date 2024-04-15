@@ -36,12 +36,28 @@ const animations: Dictionary = {
 	"bomb": "_bomb"
 }
 
+
+var is_attacking: bool = false
+
+func handle_animation(anim_name: String) -> void:
+	pass
+# 	match anim_name:
+# 		"attack", "attackhouse":
+# 			is_attacking = true
+# 			sprite.play(base_animation + "_atk", attack_interval / 5)
+# 		_:
+# 			is_attacking = false
+# 			sprite.play(base_animation)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	stateMachine.containerReference = parentContainer
 	stateMachine.home = home
 	stateMachine.target_base = target_base
 	stateMachine.set_refs()
+
+	stateMachine.state_transition.connect(handle_animation)
+
 
 	var count: Dictionary = {}
 	for value: String in constructed_with:
@@ -82,6 +98,13 @@ func _process(delta: float) -> void:
 	current_speed = global_position.distance_to(previous_position) / delta
 	previous_position = global_position
 
+	if current_speed && is_attacking:
+		is_attacking = false
+		sprite.play(base_animation)
+
+	if !is_attacking:
+		sprite.speed_scale = current_speed / 10
+
 func check_aliveness() -> void:
 	if (health <= 0):
 		is_dead = true;
@@ -98,9 +121,17 @@ func attack(closest: Attackable, delta: float) -> void:
 		if closest:
 			var distance: float = distance_to(closest.global_position)
 			if (distance < attack_range):
+				if !is_attacking:
+					is_attacking = true
+					sprite.play(base_animation + "_atk", attack_interval)
 				if !prevent_regular_attack:
 					closest.health = closest.health - attack_power
 				on_attack.emit(closest)
+			else:
+				if is_attacking:
+					is_attacking = false
+					sprite.play(base_animation)
+
 
 
 #Private equivs

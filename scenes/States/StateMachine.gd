@@ -2,6 +2,8 @@ extends Node
 
 class_name StateMachine
 
+signal state_transition(name: String)
+
 @export var initial_state: State
 @export var containerReference: Node2D
 @export var character: Dude
@@ -38,6 +40,7 @@ func on_child_transition(state, new_state_name):
 	new_state.Enter()
 	current_state = new_state
 	print("becoming a " + new_state_name)
+	state_transition.emit(new_state_name)
 
 func set_refs() -> void:
 	for index in states:
