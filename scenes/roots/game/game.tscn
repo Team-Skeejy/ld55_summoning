@@ -38,8 +38,8 @@ animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
 [node name="WaveController" parent="." node_paths=PackedStringArray("dude_container") instance=ExtResource("6_j4isa")]
 dude_container = NodePath("../DudeContainer")
-mook_interval = 10.0
-wave_timer_reduction = 0.1
+mook_interval = 1.0
+boss_interval = 1.0
 
 [connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]
 [connection signal="house_killed" from="DudeContainer" to="." method="_on_house_killed"]
