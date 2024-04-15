@@ -42,8 +42,8 @@ func stop() -> void:
 func _process(delta: float) -> void:
 	if !_forfeiting || _forfeited: return
 	_counter += delta
-
-	warning_label.text = "YOU WILL FORFEIT IN: " + str(max(forfeit_time - _counter, 0)).left(3) + "s"
+	var remaining = max(forfeit_time - _counter, 0)
+	warning_label.text = "YOU WILL FORFEIT IN: " + ("%1.2f" % remaining) + "s"
 
 	if _counter > forfeit_time:
 		forfeit()
