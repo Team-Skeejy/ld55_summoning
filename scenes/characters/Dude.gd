@@ -172,7 +172,7 @@ func _on_mouse_entered() -> void:
 			else:
 				props[property.chosen_name] = [1, property.description]
 
-	var texts: PackedStringArray = PackedStringArray(["Health: " + str(health) + "/" + str(max_health)])
+	var texts: PackedStringArray = PackedStringArray(["Health: " + str(int(health)) + "/" + str(max_health)])
 	for key: String in props.keys():
 		var entry: Array = props[key]
 		if entry[0] > 1:
