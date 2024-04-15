@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bextljc1g2uar"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/horse.gd" id="1_bxdbc"]
+
+[node name="Horse" type="Node"]
+script = ExtResource("1_bxdbc")

@@ -25,3 +25,5 @@ func use_skin_for(prop: Property) -> void:
 		sprite.frame = 2
 	elif name == "sword":
 		sprite.frame = 1
+	elif name == "horse":
+		sprite.frame = 10
