@@ -32,7 +32,8 @@ const animations: Dictionary = {
 	"knife": "_blade",
 	"bow": "_bow",
 	"book": "_book",
-	"bomb": "_bomb"
+	"bomb": "_bomb",
+	"horse": "_blade"
 }
 
 

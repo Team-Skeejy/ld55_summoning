@@ -19,6 +19,7 @@ static func get_dropped_property() -> Property:
 		"knife",
 		"spear",
 		"sword",
+		"horse"
 	]
 	
 	var item: String = obj[randi_range(0, obj.size() - 1)]

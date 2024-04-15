@@ -25,7 +25,8 @@ func use_skin_for(prop: Property) -> void:
 		sprite.frame = 2
 	elif name == "sword":
 		sprite.frame = 1
-
+	elif name == "horse":
+		sprite.frame = 10
 
 
 func _on_mouse_exited() -> void:
@@ -37,4 +38,5 @@ func _on_mouse_entered() -> void:
 		if child is Property:
 			texts.push_back((child).name + "\n\n" + (child as Property).description)
 	ToolTip.get_instance().text = "\n\n\n".join(texts)
+
 
