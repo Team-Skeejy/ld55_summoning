@@ -4,6 +4,7 @@ extends Node2D
 signal summon(properties: Array[Property])  # dunno what to put in this yet
 signal forfeited()
 signal retry()
+signal spike_state_change(raised: bool)
 
 @export var inventory: Inventory
 @export var alter: Alter
@@ -44,3 +45,9 @@ func _on_forfeiting_forfeited() -> void:
 
 func _on_end_retry() -> void:
 	retry.emit()
+
+func set_health_as_percentage(value: int):
+	pass
+
+func set_seconds_til_next_wave(value: int):
+	pass
