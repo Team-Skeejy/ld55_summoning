@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=12 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://p7wfifl3jsfl" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
 [ext_resource type="PackedScene" uid="uid://cl7yrn5rqmw14" path="res://scenes/ui_entities/behaviours/WaveController.tscn" id="6_j4isa"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
+[ext_resource type="Script" path="res://scenes/roots/game/tutorial.gd" id="9_pfpo3"]
 [ext_resource type="AudioStream" uid="uid://cj5v4wj4fjip6" path="res://assets/audio/summoning.wav" id="10_860k3"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_container", "wave_machine", "fade_transition")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_container", "wave_machine", "fade_transition", "tutorial")]
 script = ExtResource("1_yek46")
 interval_spawn_rate = 2.0
 test_entity = ExtResource("8_shgoh")
@@ -19,6 +20,7 @@ ui = NodePath("Ui")
 dude_container = NodePath("DudeContainer")
 wave_machine = NodePath("WaveController")
 fade_transition = NodePath("Node/FadeTransition")
+tutorial = NodePath("Tutorial")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(160, 90)
@@ -123,12 +125,800 @@ end = NodePath("End")
 health_label = NodePath("Node/Control/Health")
 wave_label = NodePath("Node/Control/Next Wave")
 
+[node name="Tutorial" type="Node" parent="." node_paths=PackedStringArray("frames")]
+process_mode = 3
+script = ExtResource("9_pfpo3")
+frames = [NodePath("Control"), NodePath("Control2"), NodePath("Control3"), NodePath("Control4"), NodePath("Control5"), NodePath("Control6"), NodePath("Control7")]
+
+[node name="Control" type="Control" parent="Tutorial"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.5
+offset_top = -29.0
+offset_right = 103.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button2" type="Button" parent="Tutorial/Control/ColorRect/VBoxContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+text = "Click Here For tutorial"
+
+[node name="Button" type="Button" parent="Tutorial/Control/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Skip"
+
+[node name="Control2" type="Control" parent="Tutorial"]
+auto_translate_mode = 1
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/Control2"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Label" type="Label" parent="Tutorial/Control2/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 10.0
+offset_right = 27.5
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "This is your inventory"
+
+[node name="Label2" type="Label" parent="Tutorial/Control2/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 198.0
+offset_bottom = 49.0
+pivot_offset = Vector2(52, 2)
+theme_override_font_sizes/font_size = 7
+text = "This holds your loot you get from killing enemies."
+
+[node name="Label3" type="Label" parent="Tutorial/Control2/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 48.0
+offset_right = -86.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Next" type="Button" parent="Tutorial/Control2/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = 135.0
+offset_right = 201.0
+offset_bottom = 162.0
+text = "Next"
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial/Control2"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 98.0
+offset_right = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Control3" type="Control" parent="Tutorial"]
+auto_translate_mode = 1
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/Control3"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Label" type="Label" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 92.0
+offset_right = 88.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "This is your evil lair"
+
+[node name="Label3" type="Label" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_top = 128.0
+offset_right = -118.0
+offset_bottom = 144.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label4" type="Label" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_top = 153.0
+offset_right = -122.0
+offset_bottom = 169.0
+grow_horizontal = 2
+rotation = 0.618968
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label5" type="Label" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -172.0
+offset_top = 157.0
+offset_right = -156.0
+offset_bottom = 173.0
+grow_horizontal = 2
+rotation = 1.17026
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label7" type="Label" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 116.0
+offset_right = -148.0
+offset_bottom = 132.0
+grow_horizontal = 2
+rotation = -0.317076
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label6" type="Label" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -191.0
+offset_top = 146.0
+offset_right = -175.0
+offset_bottom = 162.0
+grow_horizontal = 2
+rotation = 2.02485
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label2" type="Label" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+offset_left = 8.0
+offset_top = 115.0
+offset_right = 210.0
+offset_bottom = 131.0
+pivot_offset = Vector2(52, 2)
+theme_override_font_sizes/font_size = 7
+text = "Drag items from your inventory into 
+the recepticals to start summoning minions"
+
+[node name="Next" type="Button" parent="Tutorial/Control3/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = 135.0
+offset_right = 201.0
+offset_bottom = 162.0
+text = "Next"
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial/Control3"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -218.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Control4" type="Control" parent="Tutorial"]
+auto_translate_mode = 1
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/Control4"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Label" type="Label" parent="Tutorial/Control4/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 10.0
+offset_right = 27.5
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Enemies!"
+
+[node name="Label2" type="Label" parent="Tutorial/Control4/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 198.0
+offset_bottom = 49.0
+pivot_offset = Vector2(52, 2)
+theme_override_font_sizes/font_size = 7
+text = "Defend your castle against the those who seek
+to destroy you...
+
+They will come from over there..."
+
+[node name="Label3" type="Label" parent="Tutorial/Control4/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 85.0
+offset_top = 100.0
+offset_right = 101.0
+offset_bottom = 116.0
+grow_horizontal = 2
+rotation = -2.77185
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Next" type="Button" parent="Tutorial/Control4/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = 135.0
+offset_right = 201.0
+offset_bottom = 162.0
+text = "Next"
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial/Control4"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Control5" type="Control" parent="Tutorial"]
+auto_translate_mode = 1
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/Control5"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Label" type="Label" parent="Tutorial/Control5/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 10.0
+offset_right = 27.5
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Press this!"
+
+[node name="Label2" type="Label" parent="Tutorial/Control5/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+offset_left = 18.0
+offset_top = 74.0
+offset_right = 208.0
+offset_bottom = 104.0
+pivot_offset = Vector2(52, 2)
+theme_override_font_sizes/font_size = 7
+text = "To raise your carefully crafted spike defenses!
+
+Beware, they may hurt your own minions!"
+
+[node name="Label3" type="Label" parent="Tutorial/Control5/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_top = 158.0
+offset_right = -19.0
+offset_bottom = 174.0
+grow_horizontal = 2
+rotation = -2.58459
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label4" type="Label" parent="Tutorial/Control5/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 32.0
+offset_bottom = 168.0
+grow_horizontal = 2
+rotation = -0.898274
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Next" type="Button" parent="Tutorial/Control5/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = 135.0
+offset_right = 201.0
+offset_bottom = 162.0
+text = "Next"
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial/Control5"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial/Control5"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="ColorRect4" type="ColorRect" parent="Tutorial/Control5"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = 164.0
+offset_right = -157.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Control6" type="Control" parent="Tutorial"]
+auto_translate_mode = 1
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/Control6"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Label" type="Label" parent="Tutorial/Control6/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 10.0
+offset_right = 27.5
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Don't Press THIS!"
+
+[node name="Label2" type="Label" parent="Tutorial/Control6/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 198.0
+offset_bottom = 49.0
+pivot_offset = Vector2(52, 2)
+theme_override_font_sizes/font_size = 7
+text = "BE CAREFUL!
+Don't press this button....
+Why do we even have this?"
+
+[node name="Label3" type="Label" parent="Tutorial/Control6/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -101.0
+offset_top = 95.0
+offset_right = -85.0
+offset_bottom = 111.0
+grow_horizontal = 2
+rotation = -0.00473976
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Next" type="Button" parent="Tutorial/Control6/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = 135.0
+offset_right = 201.0
+offset_bottom = 162.0
+text = "Next"
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial/Control6"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -218.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial/Control6"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 112.0
+offset_right = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Control7" type="Control" parent="Tutorial"]
+auto_translate_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial/Control7"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="Label" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 10.0
+offset_right = 27.5
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 14
+text = "Press This!"
+
+[node name="Label2" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 198.0
+offset_bottom = 49.0
+pivot_offset = Vector2(52, 2)
+theme_override_font_sizes/font_size = 7
+text = "To start the game!!
+can't just sit here in the tutorial forever!"
+
+[node name="Label3" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 36.0
+offset_top = 132.0
+offset_right = 52.0
+offset_bottom = 148.0
+grow_horizontal = 2
+rotation = -2.11584
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label4" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 35.0
+offset_top = 155.0
+offset_right = 51.0
+offset_bottom = 171.0
+grow_horizontal = 2
+rotation = -3.09849
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label5" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 77.0
+offset_top = 126.0
+offset_right = 93.0
+offset_bottom = 142.0
+grow_horizontal = 2
+rotation = -1.17511
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label6" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 55.0
+offset_top = 131.0
+offset_right = 71.0
+offset_bottom = 147.0
+grow_horizontal = 2
+rotation = -1.52061
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label7" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 69.0
+offset_top = 116.0
+offset_right = 85.0
+offset_bottom = 132.0
+grow_horizontal = 2
+rotation = -1.30966
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label8" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 44.0
+offset_top = 118.0
+offset_right = 60.0
+offset_bottom = 134.0
+grow_horizontal = 2
+rotation = -1.73645
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label9" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 26.0
+offset_top = 141.0
+offset_right = 42.0
+offset_bottom = 157.0
+grow_horizontal = 2
+rotation = -2.8872
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Label10" type="Label" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 39.0
+offset_bottom = 179.0
+grow_horizontal = 2
+rotation = -3.25691
+theme_override_font_sizes/font_size = 14
+text = "<-"
+
+[node name="Next" type="Button" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 151.0
+offset_top = 135.0
+offset_right = 201.0
+offset_bottom = 162.0
+text = "Next"
+
+[node name="Next2" type="Button" parent="Tutorial/Control7/ColorRect"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 135.0
+offset_right = 56.0
+offset_bottom = 162.0
+text = "AGAIN!"
+
+[node name="ColorRect2" type="ColorRect" parent="Tutorial/Control7"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = -218.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="ColorRect3" type="ColorRect" parent="Tutorial/Control7"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 112.0
+offset_right = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
 [node name="Node" type="Node" parent="."]
 
 [node name="FadeTransition" parent="Node" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_8k2ii")]
+pivot_offset = Vector2(175, 12)
 animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("10_860k3")
 volume_db = -15.0
 autoplay = true
@@ -141,3 +931,12 @@ autoplay = true
 [connection signal="retry" from="Ui" to="." method="_on_ui_retry"]
 [connection signal="return_to_menu" from="Ui" to="." method="_on_ui_return_to_menu"]
 [connection signal="summon" from="Ui" to="." method="_on_ui_summon"]
+[connection signal="button_down" from="Tutorial/Control/ColorRect/VBoxContainer/Button2" to="Tutorial" method="next"]
+[connection signal="button_down" from="Tutorial/Control/ColorRect/VBoxContainer/Button" to="Tutorial" method="skip"]
+[connection signal="button_down" from="Tutorial/Control2/ColorRect/Next" to="Tutorial" method="next"]
+[connection signal="button_down" from="Tutorial/Control3/ColorRect/Next" to="Tutorial" method="next"]
+[connection signal="button_down" from="Tutorial/Control4/ColorRect/Next" to="Tutorial" method="next"]
+[connection signal="button_down" from="Tutorial/Control5/ColorRect/Next" to="Tutorial" method="next"]
+[connection signal="button_down" from="Tutorial/Control6/ColorRect/Next" to="Tutorial" method="next"]
+[connection signal="button_down" from="Tutorial/Control7/ColorRect/Next" to="Tutorial" method="skip"]
+[connection signal="button_down" from="Tutorial/Control7/ColorRect/Next2" to="Tutorial" method="next"]

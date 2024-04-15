@@ -7,6 +7,10 @@ class_name Game
 @export var dude_container: DudeContainer
 @export var wave_machine: WaveController
 @export var fade_transition: FadeTransition
+@export var tutorial: Tutorial
+
+var has_played_tutorial: bool = false
+
 
 func _ready() -> void:
 	reset()
@@ -98,6 +102,12 @@ func spawn_starting_items():
 
 	await get_tree().create_timer(0.25).timeout
 	spawn_entity_by_name("knife")
+
+	await get_tree().create_timer(0.25).timeout
+	if !has_played_tutorial:
+		tutorial.init()
+		has_played_tutorial = true
+
 
 
 
