@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://p7wfifl3jsfl" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_factory")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_container")]
 script = ExtResource("1_yek46")
 interval_spawn_rate = 2.0
 test_entity = ExtResource("8_shgoh")
 ui = NodePath("Ui")
-dude_factory = NodePath("DudeContainer")
+dude_container = NodePath("DudeContainer")
 
 [node name="Ui" parent="." node_paths=PackedStringArray("inventory", "alter", "end") instance=ExtResource("2_aqm0m")]
 inventory = NodePath("Inventory")
@@ -32,3 +32,4 @@ good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
 
 [connection signal="summon" from="Ui" to="." method="_on_ui_summon"]
+[connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]

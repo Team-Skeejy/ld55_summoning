@@ -4,11 +4,16 @@ class_name Game
 @export var interval_spawn_rate: float = 10
 @export var test_entity: PackedScene
 @export var ui: UI
-@export var dude_factory: DudeFactory
+@export var dude_container: DudeContainer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass  # Replace with function body.
+	#spawn five at the start of the round so we can get started
+	for i: int in [1,2,3,4,5]:
+		spawn_entity()
+
+	dude_container.spawn_dude(true, [])
+	dude_container.spawn_dude(false, [])
+
 
 func _process(_delta: float) -> void:
 	pass
@@ -21,11 +26,7 @@ func spawn_entity() -> void:
 
 
 func _on_ui_summon(properties: Array[Property]) -> void:
-	var dude: Dude = dude_factory.instantiate_dude()
-	for property: Property in properties:
-		property.reparent(dude)
-		property.init(dude)
-		dude_factory.spawn_constructed_dude(dude, true)
+	dude_container.spawn_dude(true, properties)
 
 
 func _on_dude_container_dude_killed(_team: int) -> void:

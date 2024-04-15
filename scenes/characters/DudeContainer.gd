@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name DudeFactory
+class_name DudeContainer
 var dude: PackedScene = load("res://scenes/characters/Dude.tscn")
 
 signal dude_killed(team: int)
@@ -13,20 +13,22 @@ func child_killed(team: int) -> void:
 	dude_killed.emit(team)
 
 
-func instantiate_dude() -> Dude:
-	return dude.instantiate()
+func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
+	var new_dude: Dude = dude.instantiate()
+	if properties:
+		for property: Property in properties:
+			property.reparent(new_dude)
+			property.init(new_dude)
 
-
-func spawn_constructed_dude(new_dude: Dude, is_player_team: bool) -> void:
 	new_dude.parentContainer = self
 	if is_player_team:
 		new_dude.team = 0
-		new_dude.bad_home = bad_home
+		new_dude.target_base = bad_home
 		new_dude.home = good_home
 		new_dude.global_position = good_home.global_position
 	else:
 		new_dude.team = 1
-		new_dude.bad_home = good_home
+		new_dude.target_base = good_home
 		new_dude.home = bad_home
 		new_dude.global_position = bad_home.global_position
 
@@ -34,7 +36,3 @@ func spawn_constructed_dude(new_dude: Dude, is_player_team: bool) -> void:
 		new_dude.reparent(self)
 	else:
 		add_child(new_dude)
-
-
-func spawn_dude(is_player_team: bool) -> void:
-	spawn_constructed_dude(instantiate_dude(), is_player_team)

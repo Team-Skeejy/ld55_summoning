@@ -11,9 +11,9 @@ signal on_attack(target: Dude)
 @export var prevent_regular_attack: bool = false;
 @export var attack_range: float = 1;
 @export var attack_interval: float = 1;
-@export var parentContainer: DudeFactory;
+@export var parentContainer: DudeContainer;
 @export var home: Node2D;
-@export var bad_home: Node2D;
+@export var target_base: Node2D;
 @export var stateMachine: StateMachine;
 @export var current_state: String = "";
 
@@ -22,7 +22,7 @@ func _ready() -> void:
 	health = 10
 	stateMachine.containerReference = parentContainer
 	stateMachine.home = home
-	stateMachine.target_base = bad_home
+	stateMachine.target_base = target_base
 	stateMachine.set_refs()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
