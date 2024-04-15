@@ -4,7 +4,7 @@ extends Sprite2D
 var target: Attackable
 var attack_power: float = 0
 
-var speed: float = 25
+var speed: float = 50
 
 func _process(delta: float) -> void:
 	if !is_instance_valid(self) || !is_instance_valid(target):

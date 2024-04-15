@@ -15,7 +15,26 @@ signal on_attack(target: Attackable)
 @export var target_base: Node2D;
 @export var stateMachine: StateMachine;
 @export var current_state: String = "";
-@export var constructed_with: String = "";
+@export var constructed_with: Array[String] = [];
+
+@export var sprite: AnimatedSprite2D
+
+var previous_position: Vector2
+var current_speed: float
+var base_animation: String
+
+var direction: float = 1
+
+const animations: Dictionary = {
+	"": "",
+	"sword": "_blade",
+	"staff": "_staff",
+	"spear": "_blade",
+	"knife": "_blade",
+	"bow": "_bow",
+	"book": "_book",
+	"bomb": "_bomb"
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,18 +43,50 @@ func _ready() -> void:
 	stateMachine.target_base = target_base
 	stateMachine.set_refs()
 
+	var count: Dictionary = {}
+	for value: String in constructed_with:
+		if count.has(value):
+			count[value] += 1
+		else:
+			count[value] = 1
+
+	var most: int = 0
+	var most_key: String = ""
+
+	for key: String in count.keys():
+		if count[key] > most:
+			most = count[key]
+			most_key = key
+
+	if team == 0:
+		base_animation += "ally"
+	else:
+		base_animation += "enemy"
+
+	base_animation += animations[most_key.to_lower()]
+	sprite.play(base_animation)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if !is_dead:
 		current_state = stateMachine.current_state.name
 		check_aliveness()
+
+	if global_position.x < previous_position.x:
+		direction = -1
+	else:
+		direction = 1
+	sprite.scale.x = direction
+
+	current_speed = global_position.distance_to(previous_position) / delta
+	previous_position = global_position
 
 func check_aliveness() -> void:
 	if (health <= 0):
 		is_dead = true;
 		parentContainer.child_killed(team)
 		queue_free()
-
 
 var time_since_last_attack: float = 0
 func attack(closest: Attackable, delta: float) -> void:

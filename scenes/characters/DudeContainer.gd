@@ -38,6 +38,10 @@ func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 
 		new_dude.global_position = spawners[spawner_index % index].global_position
 
+	if properties:
+		for property: Property in properties:
+			new_dude.constructed_with.push_back(property.name)
+
 	if new_dude.get_parent():
 		new_dude.reparent(self)
 	else:
@@ -47,7 +51,6 @@ func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 		for property: Property in properties:
 			new_dude.add_child(property)
 			property.init(new_dude)
-			new_dude.constructed_with += property.name
 
 
 func _on_home_1_killed() -> void:
