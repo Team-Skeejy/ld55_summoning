@@ -25,8 +25,11 @@ func _on_ui_summon(properties: Array[Property]) -> void:
 	dude_container.spawn_dude(true, properties)
 
 
-func _on_dude_container_dude_killed(_team: int) -> void:
+func _on_dude_container_dude_killed(team: int) -> void:
+	if team == 1:
+		ui.end.dudes_killed += 1
 	spawn_entity()
+	ui.end.objects_collected += 1
 
 
 func _on_house_killed(team: int) -> void:
@@ -57,3 +60,11 @@ func restart() -> void:
 
 func _on_ui_forfeited() -> void:
 	ui.gameover()
+
+
+func _on_wave_controller_boss_spawn() -> void:
+	pass
+
+
+func _on_wave_controller_enemy_spawn() -> void:
+	pass

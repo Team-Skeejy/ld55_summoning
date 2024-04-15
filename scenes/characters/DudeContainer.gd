@@ -8,6 +8,7 @@ signal house_killed(team: int)
 
 @export var good_home: Home
 @export var bad_home: Home
+@export var spawners: Array[Node2D]
 
 
 func child_killed(team: int) -> void:
@@ -17,7 +18,9 @@ func setup():
 	for home: Home in [good_home, bad_home]:
 		home.health = 100
 		home.is_dead = false
-		
+
+var spawner_index:int = 0;
+
 func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 	var new_dude: Dude = dude.instantiate()
 
@@ -31,7 +34,10 @@ func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 		new_dude.team = 1
 		new_dude.target_base = good_home
 		new_dude.home = bad_home
-		new_dude.global_position = bad_home.global_position
+		var index = spawners.size()
+		spawner_index += 1
+		
+		new_dude.global_position = spawners[spawner_index % index].global_position
 
 	if new_dude.get_parent():
 		new_dude.reparent(self)

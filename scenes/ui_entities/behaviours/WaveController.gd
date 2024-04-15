@@ -6,6 +6,8 @@ class_name WaveController
 @export var mook_interval: float = 5
 @export var boss_interval: float = 60
 
+signal boss_spawn()
+signal enemy_spawn()
 
 func _ready() -> void:
 	pass
@@ -31,9 +33,12 @@ func spawn_mook() -> void:
 		PropertyFactory.entity_by_name("knife")
 	]
 	dude_container.spawn_dude(false, options)
+	enemy_spawn.emit()
 
 func spawn_boss() -> void:
 	var options: Array[Property] = [
 		PropertyFactory.entity_by_name("bow")
 	]
 	dude_container.spawn_dude(false, options)
+	boss_spawn.emit()
+	

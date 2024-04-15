@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://scenes/ui_entities/end/end.gd" id="1_psgpg"]
 [ext_resource type="AudioStream" uid="uid://d2thrgk2ijbxs" path="res://scenes/ui_entities/end/audio/bell.mp3" id="1_uqcbm"]
 
-[node name="Node" type="Node" node_paths=PackedStringArray("screen", "audio")]
+[node name="Node" type="Node" node_paths=PackedStringArray("screen", "stats", "audio")]
 script = ExtResource("1_psgpg")
 screen = NodePath("Control")
+stats = NodePath("Control/Stats go here")
 audio = NodePath("AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -14,7 +15,6 @@ volume_db = -10.0
 pitch_scale = 0.75
 
 [node name="Control" type="Control" parent="."]
-visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -40,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.5
-offset_top = -6.0
-offset_right = 25.5
-offset_bottom = 6.0
+offset_left = -27.0
+offset_top = 12.0
+offset_right = 28.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 7

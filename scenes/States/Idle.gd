@@ -21,7 +21,10 @@ func Exit() -> void:
 func Update(delta) -> void:
 	total_idle_time += delta
 	if total_idle_time > 1:
-		Transitioned.emit(self, "attackhouse")
+		if character.team == 1:
+			Transitioned.emit(self, "attackhouse")
+		else:
+			Transitioned.emit(self, "returnhome")
 
 	if wander_time > 0:
 		wander_time -= delta

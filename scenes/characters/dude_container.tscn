@@ -3,18 +3,38 @@
 [ext_resource type="Script" path="res://scenes/characters/DudeContainer.gd" id="1_l5ya6"]
 [ext_resource type="PackedScene" uid="uid://ch5rsfub34lwr" path="res://scenes/characters/Home.tscn" id="3_ngeta"]
 
-[node name="DudeContainer" type="Node2D" node_paths=PackedStringArray("good_home", "bad_home")]
+[node name="DudeContainer" type="Node2D" node_paths=PackedStringArray("good_home", "bad_home", "spawners")]
 script = ExtResource("1_l5ya6")
 good_home = NodePath("Home1")
 bad_home = NodePath("Home2")
+spawners = [NodePath("Node2D"), NodePath("Node2D2"), NodePath("Node2D3"), NodePath("Node2D4"), NodePath("Node2D5"), NodePath("Node2D6")]
 
 [node name="Home1" parent="." node_paths=PackedStringArray("Bar") instance=ExtResource("3_ngeta")]
-position = Vector2(126, 153)
+position = Vector2(133, 96)
 Bar = NodePath("Healthbar")
 
 [node name="Home2" parent="." node_paths=PackedStringArray("Bar") instance=ExtResource("3_ngeta")]
-position = Vector2(228, 48)
+visible = false
+position = Vector2(191, 94)
 Bar = NodePath("Healthbar")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(296, 43)
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(295, 102)
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(297, 157)
+
+[node name="Node2D4" type="Node2D" parent="."]
+position = Vector2(297, 13)
+
+[node name="Node2D5" type="Node2D" parent="."]
+position = Vector2(296, 72)
+
+[node name="Node2D6" type="Node2D" parent="."]
+position = Vector2(298, 127)
 
 [connection signal="killed" from="Home1" to="." method="_on_home_1_killed"]
 [connection signal="killed" from="Home2" to="." method="_on_home_2_killed"]
