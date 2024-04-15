@@ -21,7 +21,7 @@ func Update(delta: float) -> void:
 		if character:
 			character.attack(running_target, delta)
 		if distance_to(character, running_target) > character.attack_range:
-			move_to(character, running_target)
+			move_to(character, running_target, delta)
 	else:
 		Transitioned.emit(self, "idle")
 

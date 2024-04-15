@@ -19,6 +19,6 @@ func Update(delta) -> void:
 	if home && character:
 		var distance = distance_to(character, home)
 		if distance > 10:
-			move_to(character, home)
+			move_to(character, home, delta)
 		else:
 			Transitioned.emit(self, "idle")

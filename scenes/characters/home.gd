@@ -11,6 +11,7 @@ signal killed()
 func _ready() -> void:
 	health = 1000
 	max_health = 1000
+	team = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

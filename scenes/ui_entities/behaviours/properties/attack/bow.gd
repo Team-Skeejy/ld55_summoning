@@ -7,7 +7,7 @@ func _ready() -> void:
 	description = "Increases range"
 
 	attack_power = 2
-	attack_range = 15
+	attack_range = 25
 	prevent_regular_attack = true
 
 func init(_parent: Dude) -> void:

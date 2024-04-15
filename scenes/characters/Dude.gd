@@ -6,7 +6,7 @@ signal on_attack(target: Attackable)
 
 @export var priority: int = 0
 @export var attack_power: float = 1;
-@export var speed: float = 0.1;
+@export var speed: float = 10;
 @export var prevent_regular_attack: bool = false;
 @export var attack_range: float = 1;
 @export var attack_interval: float = 1;

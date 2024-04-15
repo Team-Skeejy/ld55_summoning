@@ -15,7 +15,7 @@ stateMachine = NodePath("StateMachine")
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("fgd") instance=ExtResource("2_fkoma")]
 position = Vector2(0, 4)
-fgd = NodePath("Bkg")
+fgd = NodePath("Bkg/Fgd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_qby0n")
