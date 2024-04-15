@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://2pkj4j61m02n"]
+[gd_scene load_steps=4 format=3 uid="uid://2pkj4j61m02n"]
 
 [ext_resource type="Texture2D" uid="uid://cixfppoxj8yxp" path="res://scenes/ui_entities/behaviours/properties/attack/projectiles/textures/projectiles.png" id="1_vx030"]
 [ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/projectiles/arrow.gd" id="2_ubwpy"]
+[ext_resource type="AudioStream" uid="uid://dux2r0niv7lrt" path="res://assets/audio/arrow.mp3" id="3_piyo2"]
 
-[node name="Arrow" type="Sprite2D"]
+[node name="Arrow" type="Sprite2D" node_paths=PackedStringArray("audio")]
 texture = ExtResource("1_vx030")
 hframes = 8
 vframes = 8
 script = ExtResource("2_ubwpy")
+audio = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_piyo2")
+volume_db = -20.0

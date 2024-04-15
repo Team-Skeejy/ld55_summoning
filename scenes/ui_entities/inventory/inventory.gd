@@ -4,6 +4,8 @@ extends Node2D
 @export var dimensions: Vector2i
 @export var storage_space: CollisionShape2D
 
+@export var audio: AudioStreamPlayer
+
 @export var debug_sprite: Sprite2D
 @export var area: Rect2
 
@@ -46,12 +48,15 @@ func add_entity(entity: Entity) -> void:
 		entity.reparent(self)
 
 	freeze(entity)
+	audio.pitch_scale = randf_range(0.8, 1.2)
+	audio.play()
+
 
 func freeze(entity: Entity) -> void:
 	await get_tree().process_frame
 	entity.linear_velocity = Vector2.ZERO
 
 func clear():
-	var items = get_children().filter(func (child: Node2D): return child is Entity and child.visible)
+	var items = get_children().filter(func(child: Node2D): return child is Entity and child.visible)
 	for item in items:
 		item.queue_free()

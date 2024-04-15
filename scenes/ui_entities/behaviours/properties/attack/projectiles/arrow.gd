@@ -1,6 +1,8 @@
 class_name Arrow
 extends Sprite2D
 
+@export var audio: AudioStreamPlayer
+
 var target: Attackable
 var target_vec: Vector2
 var attack_power: float = 0
@@ -24,7 +26,9 @@ func _process(delta: float) -> void:
 			if impact_time < 0:
 				queue_free()
 		else:
-			impacted = true 
+			impacted = true
+			audio.pitch_scale = randf_range(0.8, 1.2)
+			audio.play()
 			if is_instance_valid(target):
 				target.health -= attack_power
 	else:

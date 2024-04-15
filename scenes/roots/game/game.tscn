@@ -115,7 +115,6 @@ spawners = [NodePath("Node2D"), NodePath("Node2D2"), NodePath("Node2D3"), NodePa
 
 [node name="WaveController" parent="." node_paths=PackedStringArray("dude_container") instance=ExtResource("6_j4isa")]
 dude_container = NodePath("../DudeContainer")
-boss_interval = 60.0
 
 [node name="Ui" parent="." node_paths=PackedStringArray("inventory", "alter", "end", "health_label", "wave_label") instance=ExtResource("2_aqm0m")]
 inventory = NodePath("Inventory")
@@ -131,7 +130,7 @@ animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_860k3")
-volume_db = -5.0
+volume_db = -15.0
 autoplay = true
 
 [connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]

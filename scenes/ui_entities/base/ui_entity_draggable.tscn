@@ -12,6 +12,6 @@ sprite = NodePath("Sprite2D")
 texture = ExtResource("2_luiw2")
 hframes = 5
 vframes = 3
-frame = 1
+frame = 11
 
 [node name="DraggableNode" parent="." index="2" instance=ExtResource("2_ayvi2")]

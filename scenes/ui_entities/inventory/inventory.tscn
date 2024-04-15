@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgol823ub27ic"]
+[gd_scene load_steps=6 format=3 uid="uid://bgol823ub27ic"]
 
 [ext_resource type="Script" path="res://scenes/ui_entities/inventory/inventory.gd" id="1_61pey"]
 [ext_resource type="Texture2D" uid="uid://badgxa4eleh77" path="res://scenes/ui_entities/inventory/textures/grid.png" id="2_y4fo6"]
 [ext_resource type="Texture2D" uid="uid://p3q2r78uxhww" path="res://scenes/ui_entities/base/textures/placeholder_entity.png" id="3_qq1sy"]
+[ext_resource type="AudioStream" uid="uid://bdv00oqy5ik6c" path="res://assets/audio/thud.mp3" id="4_6xj8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mystw"]
 size = Vector2(96, 91)
 
-[node name="Inventory" type="Node2D" node_paths=PackedStringArray("storage_space", "debug_sprite")]
+[node name="Inventory" type="Node2D" node_paths=PackedStringArray("storage_space", "audio", "debug_sprite")]
 script = ExtResource("1_61pey")
 dimensions = Vector2i(5, 6)
 storage_space = NodePath("Storage Space/CollisionShape2D")
+audio = NodePath("AudioStreamPlayer")
 debug_sprite = NodePath("Sprite2D")
 area = Rect2(1, 1, 95, 90)
 
@@ -35,3 +37,7 @@ shape = SubResource("RectangleShape2D_mystw")
 visible = false
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_qq1sy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6xj8n")
+volume_db = -15.0

@@ -3,6 +3,8 @@ class_name Dude
 
 signal on_attack(target: Attackable)
 
+@export var audio: AudioStreamPlayer
+
 @export var priority: int = 0
 @export var attack_power: float = 1;
 @export var speed: float = 10;
@@ -26,6 +28,7 @@ var direction: float = 1
 
 const animations: Dictionary = {
 	"": "",
+	"meat": "",
 	"sword": "_blade",
 	"staff": "_staff",
 	"spear": "_blade",
@@ -72,7 +75,10 @@ func _ready() -> void:
 	for key: String in count.keys():
 		if key == "Boss":
 			break
-		if count[key] > most:
+		if key == "bow":
+			most_key = "bow"
+			break
+		if key != "meat" && count[key] > most:
 			most = count[key]
 			most_key = key
 
@@ -134,6 +140,8 @@ func attack(closest: Attackable, delta: float) -> void:
 
 				if !prevent_regular_attack:
 					closest.health = closest.health - attack_power
+					audio.pitch_scale = randf_range(0.8, 1.2)
+					audio.play()
 				on_attack.emit(closest)
 			else:
 				if is_attacking:
@@ -151,8 +159,22 @@ func _on_mouse_exited() -> void:
 	ToolTip.get_instance().text = ""
 
 func _on_mouse_entered() -> void:
-	var texts: PackedStringArray = PackedStringArray(["Holding"])
+	# var texts: PackedStringArray = PackedStringArray(["Holding"])
+	var props: Dictionary = {}
 	for child: Node in get_children():
 		if child is Property:
-			texts.push_back((child).name + " - " + (child as Property).description)
+			var property: Property = child as Property
+			if props.has(property.chosen_name):
+				props[property.chosen_name][0] += 1
+			else:
+				props[property.chosen_name] = [1, property.description]
+
+	var texts: PackedStringArray = PackedStringArray(["Health: " + str(health) + "/" + str(max_health)])
+	for key: String in props.keys():
+		var entry: Array = props[key]
+		if entry[0] > 1:
+			texts.push_back(key + " x" + str(entry[0]) + " - " + entry[1])
+		else:
+			texts.push_back(key + " - " + entry[1])
+
 	ToolTip.get_instance().text = "\n".join(texts)

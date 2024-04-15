@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ddek8n8d6064c"]
+[gd_scene load_steps=60 format=3 uid="uid://ddek8n8d6064c"]
 
 [ext_resource type="Script" path="res://scenes/characters/Dude.gd" id="1_qqcbt"]
 [ext_resource type="PackedScene" uid="uid://by12k65hvpwxu" path="res://scenes/characters/health_bar.tscn" id="2_fkoma"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/States/Attack.gd" id="4_anltw"]
 [ext_resource type="Script" path="res://scenes/States/ReturnHome.gd" id="5_2y0be"]
 [ext_resource type="Script" path="res://scenes/States/AttackHouse.gd" id="6_l8227"]
+[ext_resource type="AudioStream" uid="uid://bxkk15i4hjdqg" path="res://assets/audio/clash.mp3" id="9_qvrd1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8eqj"]
 atlas = ExtResource("3_crw42")
@@ -471,9 +472,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7suih"]
 size = Vector2(8, 8)
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("audio", "stateMachine", "sprite")]
 input_pickable = true
 script = ExtResource("1_qqcbt")
+audio = NodePath("AudioStreamPlayer")
 stateMachine = NodePath("StateMachine")
 sprite = NodePath("AnimatedSprite2D")
 
@@ -508,6 +510,10 @@ script = ExtResource("6_l8227")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_7suih")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qvrd1")
+volume_db = -15.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

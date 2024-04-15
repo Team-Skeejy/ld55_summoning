@@ -12,16 +12,39 @@ static func entity_by_name(property_name: String) -> Property:
 	scenes[property_name.to_lower()] = prop
 	return prop.instantiate()
 
-
 static func get_dropped_property() -> Property:
 	var obj: Array[String] = [
 		"bow",
 		"knife",
 		"spear",
 		"sword",
-		"horse"
+		"horse",
+		"meat"
 	]
-	
+
 	var item: String = obj[randi_range(0, obj.size() - 1)]
-	
+	var roll: float = randf_range(0, 1)
+	if roll < 0.2:
+		item = "meat"
+
 	return entity_by_name(item)
+
+static func get_second_dropped_property() -> Property:
+
+	var obj: Array[String] = [
+		"bow",
+		"knife",
+		"spear",
+		"sword",
+		"horse",
+		"meat"
+	]
+
+	var item: String = obj[randi_range(0, obj.size() - 1)]
+
+	var roll: float = randf_range(0, 1)
+	if roll < 0.9:
+		item = "meat"
+
+	return entity_by_name(item)
+

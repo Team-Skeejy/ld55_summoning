@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 func use_skin_for(prop: Property) -> void:
-	var name = prop.name.to_lower()
+	var name = prop.chosen_name.to_lower()
 	if name == "bow":
 		sprite.frame = 3
 	elif name == "knife":
@@ -27,6 +27,8 @@ func use_skin_for(prop: Property) -> void:
 		sprite.frame = 1
 	elif name == "horse":
 		sprite.frame = 10
+	elif name == "meat":
+		sprite.frame = 11
 
 
 func _on_mouse_exited() -> void:
@@ -36,7 +38,7 @@ func _on_mouse_entered() -> void:
 	var texts: PackedStringArray = PackedStringArray()
 	for child: Node in get_children():
 		if child is Property:
-			texts.push_back((child).name + "\n\n" + (child as Property).description)
+			texts.push_back((child as Property).chosen_name + "\n\n" + (child as Property).description)
 	ToolTip.get_instance().text = "\n\n\n".join(texts)
 
 

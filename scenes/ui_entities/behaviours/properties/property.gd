@@ -2,6 +2,7 @@ class_name Property
 extends Node
 
 var parent: Dude
+var chosen_name: String
 var description: String
 var effects: String
 
@@ -32,4 +33,4 @@ func init(_parent: Dude) -> void:
 	parent.speed += speed
 	parent.attack_range += attack_range
 	parent.attack_interval *= attack_interval
-	parent.prevent_regular_attack = prevent_regular_attack
+	parent.prevent_regular_attack = prevent_regular_attack || parent.prevent_regular_attack

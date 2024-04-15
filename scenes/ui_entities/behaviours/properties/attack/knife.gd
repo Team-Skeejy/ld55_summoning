@@ -1,8 +1,8 @@
 extends Property
 
 func _ready() -> void:
-	name = "Knife"
+	chosen_name = "Knife"
 	description = "stab stab stab"
 
-	attack_power = 1
+	attack_power = 2
 	attack_interval = 0.8

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scenes/ui_entities/behaviours/WaveController.gd" id="1_pfgi3"]
 
-[node name="WaveController" type="Node2D"]
+[node name="Node" type="Node"]
 script = ExtResource("1_pfgi3")

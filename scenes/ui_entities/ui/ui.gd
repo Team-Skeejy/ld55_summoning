@@ -7,6 +7,7 @@ signal retry()
 signal return_to_menu()
 signal spike_state_change(raised: bool)
 
+
 @export var inventory: Inventory
 @export var alter: Alter
 @export var end: End

@@ -24,7 +24,7 @@ credits = NodePath("Credits")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qlvyn")
-volume_db = -5.0
+volume_db = -10.0
 autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
