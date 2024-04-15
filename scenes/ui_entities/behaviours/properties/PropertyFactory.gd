@@ -11,3 +11,16 @@ static func entity_by_name(property_name: String) -> Property:
 		return
 	scenes[property_name.to_lower()] = prop
 	return prop.instantiate()
+
+
+static func get_dropped_property() -> Property:
+	var obj: Array[String] = [
+		"bow",
+		"knife",
+		"spear",
+		"sword",
+	]
+	
+	var item: String = obj[randi_range(0, obj.size() - 1)]
+	
+	return entity_by_name(item)

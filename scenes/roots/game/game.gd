@@ -17,8 +17,7 @@ func _process(_delta: float) -> void:
 	ui.set_health_as_percentage(dude_container.good_home.health / dude_container.good_home.max_health)
 
 func spawn_entity() -> void:
-	#fetch from a drop table
-	var property: Property = PropertyFactory.entity_by_name("bow")
+	var property: Property = PropertyFactory.get_dropped_property()
 	var entity: Entity = test_entity.instantiate()
 	add_child(entity)
 	entity.add_child(property)
