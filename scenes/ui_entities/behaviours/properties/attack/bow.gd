@@ -16,8 +16,8 @@ func init(_parent: Dude) -> void:
 
 func attack(target: Attackable) -> void:
 	var arrow: Arrow = arrow_scene.instantiate()
-	add_child(arrow)
-	arrow.global_position = parent.global_position
+	arrow.global_position = parent.global_position + Vector2(0,-4)
 	arrow.target = target
 	arrow.attack_power = parent.attack_power
+	add_child(arrow)
 
