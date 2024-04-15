@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://g0nmnjyilkpx"]
+
+[ext_resource type="PackedScene" uid="uid://cwg3bj4u5xq54" path="res://scenes/ui_entities/button/button.tscn" id="1_3k207"]
+[ext_resource type="Texture2D" uid="uid://yjl8i58h75em" path="res://scenes/ui_entities/button/textures/button_raise_spikes.png" id="2_kit42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x614"]
+size = Vector2(85, 14)
+
+[node name="BtnRaiseSpikes" node_paths=PackedStringArray("area") instance=ExtResource("1_3k207")]
+texture = ExtResource("2_kit42")
+area = NodePath("Area2D")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_3x614")
