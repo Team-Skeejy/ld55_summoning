@@ -21,6 +21,7 @@ func spawn_entity() -> void:
 	var entity: Entity = test_entity.instantiate()
 	add_child(entity)
 	entity.add_child(property)
+	entity.use_skin_for(property)
 	ui.inventory.add_entity(entity)
 
 

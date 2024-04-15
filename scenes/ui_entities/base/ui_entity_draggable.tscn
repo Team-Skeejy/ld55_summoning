@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckm3g6n5hhpn"]
+[gd_scene load_steps=4 format=3 uid="uid://ckm3g6n5hhpn"]
 
 [ext_resource type="PackedScene" uid="uid://dfvjewsccldtf" path="res://scenes/ui_entities/base/ui_entity.tscn" id="1_8hv07"]
 [ext_resource type="PackedScene" uid="uid://dbcab68lspkfi" path="res://scenes/ui_entities/behaviours/draggable.tscn" id="2_ayvi2"]
+[ext_resource type="Texture2D" uid="uid://bo5afjhbeivf1" path="res://scenes/ui_entities/behaviours/properties/textures/items.png" id="2_luiw2"]
 
-[node name="Entity" node_paths=PackedStringArray("collider") instance=ExtResource("1_8hv07")]
+[node name="Entity" node_paths=PackedStringArray("collider", "sprite") instance=ExtResource("1_8hv07")]
 collider = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_luiw2")
+hframes = 5
+vframes = 3
+frame = 2
 
 [node name="DraggableNode" parent="." index="2" instance=ExtResource("2_ayvi2")]
