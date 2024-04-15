@@ -4,6 +4,7 @@ extends Node2D
 signal summon(properties: Array[Property])  # dunno what to put in this yet
 signal forfeited()
 signal retry()
+signal return_to_menu()
 signal spike_state_change(raised: bool)
 
 @export var inventory: Inventory
@@ -62,3 +63,7 @@ func _on_btn_raise_spikes_button_up() -> void:
 
 func _on_btn_raise_spikes_button_down() -> void:
 	spike_state_change.emit(true)
+
+
+func _on_end_return_to_menu() -> void:
+	return_to_menu.emit()

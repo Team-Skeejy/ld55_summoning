@@ -8,9 +8,10 @@ const GAME: StringName = "res://scenes/roots/game/game.tscn"
 
 @export var animationPlayer: AnimationPlayer
 
+@onready var starting_volume: float = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("yippee")
 	animationPlayer.play("fade_in")
 
 var nextScene: StringName

@@ -134,4 +134,5 @@ animationPlayer = NodePath("ColorRect/AnimationPlayer")
 [connection signal="enemy_spawn" from="WaveController" to="." method="_on_wave_controller_enemy_spawn"]
 [connection signal="forfeited" from="Ui" to="." method="_on_ui_forfeited"]
 [connection signal="retry" from="Ui" to="." method="_on_ui_retry"]
+[connection signal="return_to_menu" from="Ui" to="." method="_on_ui_return_to_menu"]
 [connection signal="summon" from="Ui" to="." method="_on_ui_summon"]

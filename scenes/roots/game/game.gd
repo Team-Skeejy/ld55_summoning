@@ -74,3 +74,7 @@ func _on_wave_controller_boss_spawn() -> void:
 
 func _on_wave_controller_enemy_spawn() -> void:
 	pass
+
+
+func _on_ui_return_to_menu() -> void:
+	fade_transition.transition_to(fade_transition.MAIN_MENU)
