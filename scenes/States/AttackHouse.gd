@@ -19,11 +19,9 @@ func Update(delta: float) -> void:
 	
 	move_to(character, target_base)
 	var distance = distance_to(character, target_base)
-	if distance < 1:
+	if distance < character.attack_range:
 		pass
-		#Do this and make sure it attacks the house
 		character.attack(target_base, delta)
-		#bad_home.health -= 1
 
 func is_other_enemy():
 	var closest = get_closest_enemy(containerReference, character)
