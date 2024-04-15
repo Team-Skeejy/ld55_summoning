@@ -15,6 +15,7 @@ volume_db = -10.0
 pitch_scale = 0.75
 
 [node name="Control" type="Control" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15

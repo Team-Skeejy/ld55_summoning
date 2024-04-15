@@ -10,6 +10,9 @@ signal spike_state_change(raised: bool)
 @export var alter: Alter
 @export var end: End
 
+@export var health_label: Label
+@export var wave_label: Label
+
 var timer: Timer
 
 func _on_alter_summon(nodes: Array[Node2D]) -> void:
@@ -46,8 +49,16 @@ func _on_forfeiting_forfeited() -> void:
 func _on_end_retry() -> void:
 	retry.emit()
 
-func set_health_as_percentage(value: int):
-	pass
 
-func set_seconds_til_next_wave(value: int):
-	pass
+func set_health_as_percentage(value: int) -> void:
+	health_label.text = "Health: {}%".format(value)
+
+func set_seconds_til_next_wave(value: int) -> void:
+	wave_label.text = "Next Boss: {}s".format(value)
+
+
+func _on_btn_raise_spikes_button_up() -> void:
+	spike_state_change.emit(false)
+
+func _on_btn_raise_spikes_button_down() -> void:
+	spike_state_change.emit(true)

@@ -142,12 +142,41 @@ area = Rect2(3, 3, 96, 91)
 fade_animation_player = NodePath("FadeAnimationPlayer")
 warning_label = NodePath("Control/Control/CountdownLabel")
 
-[node name="End" parent="." node_paths=PackedStringArray("screen", "audio") instance=ExtResource("6_7mpor")]
+[node name="End" parent="." node_paths=PackedStringArray("screen", "stats", "audio") instance=ExtResource("6_7mpor")]
 screen = NodePath("Control")
+stats = NodePath("Control/Stats go here")
 audio = NodePath("AudioStreamPlayer")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="Node"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Next Wave" type="Label" parent="Node/Control"]
+offset_left = 258.0
+offset_top = 170.0
+offset_right = 327.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 7
+text = "Next Boss: 66s"
+
+[node name="Health" type="Label" parent="Node/Control"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 107.0
+offset_top = 170.0
+offset_right = 157.0
+offset_bottom = 178.0
+theme_override_font_sizes/font_size = 7
+text = "Health: 100%"
 
 [connection signal="summon" from="Alter" to="." method="_on_alter_summon"]
 [connection signal="button_down" from="Buttons/Forfiet" to="Forfeiting" method="start"]
 [connection signal="button_up" from="Buttons/Forfiet" to="Forfeiting" method="stop"]
+[connection signal="button_down" from="Buttons/BtnRaiseSpikes" to="." method="_on_btn_raise_spikes_button_down"]
+[connection signal="button_up" from="Buttons/BtnRaiseSpikes" to="." method="_on_btn_raise_spikes_button_up"]
 [connection signal="forfeited" from="Forfeiting" to="." method="_on_forfeiting_forfeited"]
 [connection signal="retry" from="End" to="." method="_on_end_retry"]
