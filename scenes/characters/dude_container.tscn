@@ -17,22 +17,22 @@ visible = false
 position = Vector2(191, 94)
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(296, 43)
+position = Vector2(328, 81)
 
 [node name="Node2D2" type="Node2D" parent="."]
-position = Vector2(295, 102)
+position = Vector2(331, 108)
 
 [node name="Node2D3" type="Node2D" parent="."]
-position = Vector2(297, 157)
+position = Vector2(328, 163)
 
 [node name="Node2D4" type="Node2D" parent="."]
-position = Vector2(297, 13)
+position = Vector2(328, 68)
 
 [node name="Node2D5" type="Node2D" parent="."]
-position = Vector2(296, 72)
+position = Vector2(328, 92)
 
 [node name="Node2D6" type="Node2D" parent="."]
-position = Vector2(298, 127)
+position = Vector2(329, 137)
 
 [connection signal="killed" from="Home1" to="." method="_on_home_1_killed"]
 [connection signal="killed" from="Home2" to="." method="_on_home_2_killed"]

@@ -69,9 +69,14 @@ func _ready() -> void:
 	var most_key: String = ""
 
 	for key: String in count.keys():
+		if key == "Boss":
+			break
 		if count[key] > most:
 			most = count[key]
 			most_key = key
+
+	if count.keys().any(func (key): return key == "Boss"):
+		scale = Vector2(2,2)
 
 	if team == 0:
 		base_animation += "ally"
