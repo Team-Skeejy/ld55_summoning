@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ddek8n8d6064c"]
+[gd_scene load_steps=59 format=3 uid="uid://ddek8n8d6064c"]
 
 [ext_resource type="Script" path="res://scenes/characters/Dude.gd" id="1_qqcbt"]
 [ext_resource type="PackedScene" uid="uid://by12k65hvpwxu" path="res://scenes/characters/health_bar.tscn" id="2_fkoma"]
@@ -468,6 +468,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7suih"]
+size = Vector2(8, 8)
+
 [node name="Dude" type="Node2D" node_paths=PackedStringArray("stateMachine", "sprite")]
 script = ExtResource("1_qqcbt")
 stateMachine = NodePath("StateMachine")
@@ -500,3 +503,9 @@ script = ExtResource("5_2y0be")
 
 [node name="attackhouse" type="Node" parent="StateMachine"]
 script = ExtResource("6_l8227")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_7suih")

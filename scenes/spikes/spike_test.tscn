@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2lti3bmwuoct"]
+[gd_scene load_steps=3 format=3 uid="uid://d2lti3bmwuoct"]
 
 [ext_resource type="PackedScene" uid="uid://uxa7ukwsq0cr" path="res://scenes/spikes/spike.tscn" id="1_g08rm"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri31v"]
+
 [node name="SpikeTest" type="Node2D"]
 
-[node name="Spike" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("1_g08rm")]
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Spike" parent="Node2D2" node_paths=PackedStringArray("hitbox") instance=ExtResource("1_g08rm")]
 position = Vector2(62, 78)
 hitbox = NodePath("Area2D")
 
@@ -13,5 +17,15 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "raise!"
 
-[connection signal="button_down" from="Button" to="Spike" method="raise_spikes" binds= [true]]
-[connection signal="button_up" from="Button" to="Spike" method="raise_spikes" binds= [false]]
+[node name="Node2D Container" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Node2D Container"]
+position = Vector2(70, 68)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D Container/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D Container/Node2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ri31v")
+
+[connection signal="button_down" from="Button" to="Node2D2/Spike" method="raise_spikes" binds= [true]]
+[connection signal="button_up" from="Button" to="Node2D2/Spike" method="raise_spikes" binds= [false]]

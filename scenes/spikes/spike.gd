@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		print("overlap")
 
 	for body: Node2D in hitbox.get_overlapping_bodies():
-		if body is Dude:
+		if body.get_parent() is Dude:
 			print("damaging dude")
 			(body as Dude).health -= damage * delta
 
