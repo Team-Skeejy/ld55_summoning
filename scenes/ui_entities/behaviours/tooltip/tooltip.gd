@@ -43,8 +43,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position() / get_viewport().get_visible_rect().size
-	print(tooltip.size)
-
 	if mouse_pos.x < 0.5:
 		if mouse_pos.y < 0.5:
 			tooltip.global_position = get_viewport().get_mouse_position() - tl_node.position

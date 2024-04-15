@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1713208364|9869442939';
+const CACHE_VERSION = '1713217493|18997602990';
 /** @type {string} */
 const CACHE_PREFIX = 'Remnant Revival-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

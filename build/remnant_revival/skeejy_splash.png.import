@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0k3s4yidg7cm"
-path="res://.godot/imported/skeejy_splash.png-432bc646cdda3412c2b61e684f85eece.ctex"
+path="res://.godot/imported/skeejy_splash.png-edbecebd47ee6ceb3384210b7d0c1850.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/remnant_revival/skeejy_splash.png"
-dest_files=["res://.godot/imported/skeejy_splash.png-432bc646cdda3412c2b61e684f85eece.ctex"]
+source_file="res://templates/web_debug/skeejy_splash.png"
+dest_files=["res://.godot/imported/skeejy_splash.png-edbecebd47ee6ceb3384210b7d0c1850.ctex"]
 
 [params]
 

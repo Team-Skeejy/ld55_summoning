@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvp70oco380uj"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/properties/attack/bomb.gd" id="1_0mr3a"]
+[ext_resource type="PackedScene" uid="uid://da76ox0io4dp3" path="res://scenes/ui_entities/behaviours/properties/attack/projectiles/explosion.tscn" id="2_e161j"]
+
+[node name="Bomb" type="Node"]
+script = ExtResource("1_0mr3a")
+explosion = ExtResource("2_e161j")

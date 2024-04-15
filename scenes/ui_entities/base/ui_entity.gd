@@ -17,19 +17,21 @@ func _physics_process(_delta: float) -> void:
 
 func use_skin_for(prop: Property) -> void:
 	var name = prop.chosen_name.to_lower()
-	if name == "bow":
-		sprite.frame = 3
-	elif name == "knife":
-		sprite.frame = 0
-	elif name == "spear":
-		sprite.frame = 2
-	elif name == "sword":
-		sprite.frame = 1
-	elif name == "horse":
-		sprite.frame = 10
-	elif name == "meat":
-		sprite.frame = 11
-
+	match name:
+		"bow":
+			sprite.frame = 3
+		"knife":
+			sprite.frame = 0
+		"spear":
+			sprite.frame = 2
+		"sword":
+			sprite.frame = 1
+		"horse":
+			sprite.frame = 10
+		"meat":
+			sprite.frame = 11
+		"bomb":
+			sprite.frame = 6
 
 func _on_mouse_exited() -> void:
 	ToolTip.get_instance().text = ""

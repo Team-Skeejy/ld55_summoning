@@ -110,7 +110,10 @@ text = "Thank you for playing Remnant Revival
 Animoo - Programming
 Marii_5 - Art
 Scribbelellie - Music
-Subzerofusion - Programming & Art"
+Subzerofusion - Programming & Art
+
+Bomb - Small by Zangrutz -- 
+https://freesound.org/s/155235/ -- License: Attribution 3.0"
 horizontal_alignment = 1
 
 [node name="ButtonClose" type="TextureButton" parent="Credits"]

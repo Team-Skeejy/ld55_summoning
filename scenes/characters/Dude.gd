@@ -75,10 +75,15 @@ func _ready() -> void:
 	var most: int = 0
 	var most_key: String = ""
 
-	for key: String in count.keys():
-		if count[key] > most:
-			most = count[key]
-			most_key = key
+	if count.has("bomb"):
+		most_key = "bomb"
+	elif count.has("bow"):
+		most_key = "bow"
+	else:
+		for key: String in count.keys():
+			if count[key] > most:
+				most = count[key]
+				most_key = key
 
 	if count.keys().any(func(key: String) -> bool: return key == "Boss"):
 		scale = Vector2(2, 2)
