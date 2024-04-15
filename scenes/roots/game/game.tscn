@@ -704,6 +704,7 @@ color = Color(0, 0, 0, 0.686275)
 
 [node name="Control7" type="Control" parent="Tutorial"]
 auto_translate_mode = 1
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
