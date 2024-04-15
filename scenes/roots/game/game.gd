@@ -16,8 +16,11 @@ func _process(_delta: float) -> void:
 
 
 func spawn_entity() -> void:
+	#fetch from a drop table
+	var property: Property = PropertyFactory.entity_by_name("bow")
 	var entity: Entity = test_entity.instantiate()
 	add_child(entity)
+	entity.add_child(property)
 	ui.inventory.add_entity(entity)
 
 
@@ -51,8 +54,10 @@ func reset() -> void:
 	for i: int in [1, 2, 3, 4, 5]:
 		spawn_entity()
 
-	#dude_container.spawn_dude(true, [])
-	dude_container.spawn_dude(false, [])
+	#dude_container.spawn_dude(true, [
+	#	PropertyFactory.entity_by_name("bow")
+	#])
+	#dude_container.spawn_dude(false, [])
 
 func restart() -> void:
 	fade_transition.transition_to(fade_transition.GAME)

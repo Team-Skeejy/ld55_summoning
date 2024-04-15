@@ -2,10 +2,10 @@ extends Attackable
 
 class_name Dude
 
-signal on_attack(target: Dude)
+signal on_attack(target: Attackable)
 
-@export var priority: int = 0
-@export var attack_power: float = 1;
+@export var priority: int = 0;
+@export var attack_power: float = 0.01;
 @export var team: int = 1;
 @export var speed: float = 0.1;
 @export var prevent_regular_attack: bool = false;

@@ -22,7 +22,7 @@ func _on_alter_summon(nodes: Array[Node2D]) -> void:
 	for entity: Entity in entities:
 		for child: Node in entity.get_children():
 			if child is Property:
-				properties.push_back(child)
+				properties.push_back(child.duplicate())
 
 	summon.emit(properties)
 
