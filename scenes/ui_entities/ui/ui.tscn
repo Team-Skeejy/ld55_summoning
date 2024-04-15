@@ -49,6 +49,7 @@ position = Vector2(160, 90)
 texture = ExtResource("2_1tb5p")
 
 [node name="Borders" type="Node2D" parent="."]
+visible = false
 
 [node name="Game Border" type="RigidBody2D" parent="Borders"]
 collision_layer = 2

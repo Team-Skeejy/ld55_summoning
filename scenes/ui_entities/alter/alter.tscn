@@ -81,6 +81,7 @@ position = Vector2(51, 34)
 texture = ExtResource("3_1oqu8")
 
 [node name="SummonArea2D" type="Area2D" parent="."]
+visible = false
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SummonArea2D"]
