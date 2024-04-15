@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl7yrn5rqmw14"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/WaveController.gd" id="1_pfgi3"]
+
+[node name="WaveController" type="Node2D"]
+script = ExtResource("1_pfgi3")
