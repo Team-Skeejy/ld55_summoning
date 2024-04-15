@@ -19,9 +19,9 @@ properties = {
 game = NodePath("Game")
 base_entity = ExtResource("6_0ag1t")
 
-[node name="Game" parent="." node_paths=PackedStringArray("ui", "dude_factory") instance=ExtResource("1_bcc4q")]
+[node name="Game" parent="." node_paths=PackedStringArray("ui", "dude_container") instance=ExtResource("1_bcc4q")]
 ui = NodePath("Ui")
-dude_factory = NodePath("DudeContainer")
+dude_container = NodePath("DudeContainer")
 
 [node name="UI" type="Node" parent="."]
 
