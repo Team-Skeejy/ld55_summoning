@@ -1,0 +1,155 @@
+[gd_scene load_steps=8 format=3 uid="uid://bcx4pp8303gpw"]
+
+[ext_resource type="Script" path="res://scenes/ui_entities/behaviours/tooltip/tooltip.gd" id="1_4qhx1"]
+[ext_resource type="Texture2D" uid="uid://bbhchrlbn51br" path="res://scenes/ui_entities/behaviours/tooltip/textures/corner.png" id="2_onpia"]
+[ext_resource type="Texture2D" uid="uid://cnjjdryxscx6f" path="res://scenes/ui_entities/behaviours/tooltip/textures/edge_h.png" id="3_f3c3a"]
+[ext_resource type="Texture2D" uid="uid://x4iud0usw0nm" path="res://scenes/ui_entities/behaviours/tooltip/textures/edge_v.png" id="4_w6j2f"]
+
+[sub_resource type="Animation" id="Animation_2r61p"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Control/GridContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oejjy"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Control/GridContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nrt8e"]
+_data = {
+"fade_in": SubResource("Animation_2r61p"),
+"fade_out": SubResource("Animation_oejjy")
+}
+
+[node name="Node" type="Node" node_paths=PackedStringArray("label", "tooltip", "animation_player")]
+script = ExtResource("1_4qhx1")
+label = NodePath("Control/GridContainer/MarginContainer/Label")
+tooltip = NodePath("Control/GridContainer")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_nrt8e")
+}
+
+[node name="Control" type="Control" parent="."]
+z_index = 4096
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 65.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="Corner" type="TextureRect" parent="Control/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_onpia")
+
+[node name="Top" type="TextureRect" parent="Control/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_f3c3a")
+
+[node name="Corner2" type="TextureRect" parent="Control/GridContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+texture = ExtResource("2_onpia")
+flip_h = true
+
+[node name="Left" type="TextureRect" parent="Control/GridContainer"]
+auto_translate_mode = 1
+layout_mode = 2
+texture = ExtResource("4_w6j2f")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/GridContainer"]
+z_index = 1
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="Control/GridContainer/MarginContainer"]
+z_index = 2
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "sample text goes here lol
+sample text goes here lol
+sample text goes here lol
+sample text goes here lol"
+
+[node name="Control" type="Control" parent="Control/GridContainer/MarginContainer"]
+z_index = 1
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/GridContainer/MarginContainer/Control"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113725, 0.105882, 0.184314, 1)
+
+[node name="Right" type="TextureRect" parent="Control/GridContainer"]
+auto_translate_mode = 1
+z_index = 4
+layout_mode = 2
+texture = ExtResource("4_w6j2f")
+
+[node name="Corner3" type="TextureRect" parent="Control/GridContainer"]
+auto_translate_mode = 1
+z_index = 4
+layout_mode = 2
+texture = ExtResource("2_onpia")
+flip_v = true
+
+[node name="Top2" type="TextureRect" parent="Control/GridContainer"]
+auto_translate_mode = 1
+z_index = 4
+layout_mode = 2
+texture = ExtResource("3_f3c3a")
+
+[node name="Corner4" type="TextureRect" parent="Control/GridContainer"]
+auto_translate_mode = 1
+z_index = 4
+layout_mode = 2
+texture = ExtResource("2_onpia")
+flip_h = true
+flip_v = true

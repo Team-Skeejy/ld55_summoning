@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://7qt5cys60ti4"]
+[gd_scene load_steps=8 format=3 uid="uid://7qt5cys60ti4"]
 
 [ext_resource type="Script" path="res://scenes/roots/main/menu.gd" id="1_8aya2"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_dglu1"]
 [ext_resource type="AudioStream" uid="uid://cj5v4wj4fjip6" path="res://assets/audio/summoning.wav" id="3_qlvyn"]
 [ext_resource type="Texture2D" uid="uid://cs8e65w3i3pqo" path="res://scenes/roots/main/textures/splash.png" id="4_q1yc4"]
+[ext_resource type="Texture2D" uid="uid://ceoqvlpap2poh" path="res://scenes/roots/main/textures/close.png" id="5_8nl8p"]
+[ext_resource type="Texture2D" uid="uid://yf2uqo67sb00" path="res://scenes/roots/main/textures/close_down.png" id="6_r7d6m"]
+[ext_resource type="Texture2D" uid="uid://yw0bkdjomgcx" path="res://scenes/roots/main/textures/close_over.png" id="7_crngv"]
 
-[node name="UI" type="Control" node_paths=PackedStringArray("fadeTransition", "volume")]
+[node name="UI" type="Control" node_paths=PackedStringArray("fadeTransition", "volume", "credits")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +20,7 @@ size_flags_vertical = 3
 script = ExtResource("1_8aya2")
 fadeTransition = NodePath("FadeTransition")
 volume = NodePath("VBoxContainer2/HSlider")
+credits = NodePath("Credits")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qlvyn")
@@ -71,5 +75,56 @@ text = "Credits"
 layout_mode = 1
 animationPlayer = NodePath("ColorRect/AnimationPlayer")
 
+[node name="Credits" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.878431)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+text = "Thank you for playing Remnant Revival
+
+Animoo - Programming
+Marii_5 - Art
+Scribbelellie - Music
+Subzerofusion - Programming & Art"
+horizontal_alignment = 1
+
+[node name="ButtonClose" type="TextureButton" parent="Credits"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 4.0
+offset_right = 300.0
+offset_bottom = 12.0
+texture_normal = ExtResource("5_8nl8p")
+texture_pressed = ExtResource("6_r7d6m")
+texture_hover = ExtResource("7_crngv")
+stretch_mode = 0
+
 [connection signal="button_down" from="VBoxContainer2/Btn Start" to="." method="_on_btn_start_button_down"]
 [connection signal="value_changed" from="VBoxContainer2/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="button_down" from="VBoxContainer2/Credits" to="." method="_on_credits_button_down"]
+[connection signal="button_down" from="Credits/ButtonClose" to="." method="_on_button_close_button_down"]

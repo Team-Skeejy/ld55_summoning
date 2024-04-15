@@ -75,8 +75,8 @@ func _ready() -> void:
 			most = count[key]
 			most_key = key
 
-	if count.keys().any(func (key): return key == "Boss"):
-		scale = Vector2(2,2)
+	if count.keys().any(func(key): return key == "Boss"):
+		scale = Vector2(2, 2)
 
 	if team == 0:
 		base_animation += "ally"
@@ -95,7 +95,7 @@ func _process(delta: float) -> void:
 
 	if global_position.x < previous_position.x:
 		direction = -1
-	else:
+	elif global_position.x > previous_position.x:
 		direction = 1
 	sprite.scale.x = direction
 
@@ -145,3 +145,13 @@ func attack(closest: Attackable, delta: float) -> void:
 
 func distance_to(target: Vector2) -> float:
 	return global_position.distance_to(target)
+
+func _on_mouse_exited() -> void:
+	ToolTip.get_instance().text = ""
+
+func _on_mouse_entered() -> void:
+	var texts: PackedStringArray = PackedStringArray(["Holding"])
+	for child: Node in get_children():
+		if child is Property:
+			texts.push_back((child).name + " - " + (child as Property).description)
+	ToolTip.get_instance().text = "\n".join(texts)

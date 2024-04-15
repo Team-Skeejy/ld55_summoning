@@ -15,6 +15,10 @@ run/main_scene="res://scenes/roots/splash/splash_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Tooltip="*res://scenes/ui_entities/behaviours/tooltip/tooltip.tscn"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=1

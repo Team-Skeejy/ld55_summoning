@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://by36u8pjqvdg2"]
+[gd_scene load_steps=11 format=3 uid="uid://by36u8pjqvdg2"]
 
 [ext_resource type="Script" path="res://scenes/roots/game/game.gd" id="1_yek46"]
 [ext_resource type="PackedScene" uid="uid://c7khnlrdtspt" path="res://scenes/fade_transition/fade_transition.tscn" id="2_8k2ii"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://p7wfifl3jsfl" path="res://scenes/characters/dude_container.tscn" id="5_pce2m"]
 [ext_resource type="PackedScene" uid="uid://cl7yrn5rqmw14" path="res://scenes/ui_entities/behaviours/WaveController.tscn" id="6_j4isa"]
 [ext_resource type="PackedScene" uid="uid://ckm3g6n5hhpn" path="res://scenes/ui_entities/base/ui_entity_draggable.tscn" id="8_shgoh"]
+[ext_resource type="AudioStream" uid="uid://cj5v4wj4fjip6" path="res://assets/audio/summoning.wav" id="10_860k3"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("ui", "dude_container", "wave_machine", "fade_transition")]
 script = ExtResource("1_yek46")
@@ -127,6 +128,11 @@ wave_label = NodePath("Node/Control/Next Wave")
 
 [node name="FadeTransition" parent="Node" node_paths=PackedStringArray("animationPlayer") instance=ExtResource("2_8k2ii")]
 animationPlayer = NodePath("ColorRect/AnimationPlayer")
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_860k3")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="dude_killed" from="DudeContainer" to="." method="_on_dude_container_dude_killed"]
 [connection signal="house_killed" from="DudeContainer" to="." method="_on_house_killed"]
