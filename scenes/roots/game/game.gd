@@ -48,7 +48,7 @@ func reset() -> void:
 	for i: int in [1, 2, 3, 4, 5]:
 		spawn_entity()
 
-	dude_container.spawn_dude(true, [])
+	#dude_container.spawn_dude(true, [])
 	dude_container.spawn_dude(false, [])
 
 func restart() -> void:

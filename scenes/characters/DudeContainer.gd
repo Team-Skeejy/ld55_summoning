@@ -20,10 +20,6 @@ func setup():
 		
 func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 	var new_dude: Dude = dude.instantiate()
-	if properties:
-		for property: Property in properties:
-			property.reparent(new_dude)
-			property.init(new_dude)
 
 	new_dude.parentContainer = self
 	if is_player_team:
@@ -41,6 +37,12 @@ func spawn_dude(is_player_team: bool, properties: Array[Property]) -> void:
 		new_dude.reparent(self)
 	else:
 		add_child(new_dude)
+
+	if properties:
+		for property: Property in properties:
+			new_dude.add_child(property)
+			property.init(new_dude)
+			new_dude.constructed_with += property.name
 
 
 func _on_home_1_killed() -> void:

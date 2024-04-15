@@ -7,7 +7,7 @@ signal on_attack(target: Dude)
 @export var priority: int = 0
 @export var attack_power: float = 1;
 @export var team: int = 1;
-@export var speed: float = 0.1;
+@export var speed: float = 1;
 @export var prevent_regular_attack: bool = false;
 @export var attack_range: float = 1;
 @export var attack_interval: float = 1;
@@ -16,6 +16,7 @@ signal on_attack(target: Dude)
 @export var target_base: Node2D;
 @export var stateMachine: StateMachine;
 @export var current_state: String = "";
+@export var constructed_with: String = "";
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +44,7 @@ func attack(closest: Attackable, delta: float) -> void:
 	if (health <= 0):
 		return
 	time_since_last_attack += delta
-	if (attack_interval > time_since_last_attack):
+	if (attack_interval < time_since_last_attack):
 		time_since_last_attack = 0;
 		if closest:
 			var distance: float = distance_to(closest.global_position)
