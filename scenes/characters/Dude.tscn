@@ -471,7 +471,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7suih"]
 size = Vector2(8, 8)
 
-[node name="Dude" type="Node2D" node_paths=PackedStringArray("stateMachine", "sprite")]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("stateMachine", "sprite")]
 script = ExtResource("1_qqcbt")
 stateMachine = NodePath("StateMachine")
 sprite = NodePath("AnimatedSprite2D")
@@ -504,8 +504,6 @@ script = ExtResource("5_2y0be")
 [node name="attackhouse" type="Node" parent="StateMachine"]
 script = ExtResource("6_l8227")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_7suih")

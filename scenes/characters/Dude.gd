@@ -1,5 +1,4 @@
 extends Attackable
-
 class_name Dude
 
 signal on_attack(target: Attackable)

@@ -10,11 +10,8 @@ var spikes_up: bool = false
 func _process(delta: float) -> void:
 	if !spikes_up: return
 
-	if hitbox.has_overlapping_bodies():
-		print("overlap")
-
 	for body: Node2D in hitbox.get_overlapping_bodies():
-		if body.get_parent() is Dude:
+		if body is Dude:
 			print("damaging dude")
 			(body as Dude).health -= damage * delta
 
