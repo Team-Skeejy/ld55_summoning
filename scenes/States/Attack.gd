@@ -11,10 +11,10 @@ var target: Dude = null
 
 func Enter() -> void:
 	target = get_closest_enemy(containerReference, character)
-	
+
 func Exit() -> void:
 	target = null
-	
+
 func Update(delta: float) -> void:
 	var running_target: Dude = get_target()
 	if running_target != null:
@@ -26,6 +26,6 @@ func Update(delta: float) -> void:
 		Transitioned.emit(self, "idle")
 
 func get_target() -> Dude:
-	if target and target.health and target.health > 0:
+	if is_instance_valid(target) and target.health > 0:
 		return target
 	return get_closest_enemy(containerReference, character)
