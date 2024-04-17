@@ -8,7 +8,7 @@ extends Node2D
 var attack_power: float = 0
 var parent: Dude
 
-func explode():
+func explode() -> void:
 	visible = true
 	audio.pitch_scale = randf_range(0.8, 1.2)
 	audio.play()

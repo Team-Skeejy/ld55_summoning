@@ -14,6 +14,7 @@ signal spike_state_change(raised: bool)
 
 @export var health_label: Label
 @export var wave_label: Label
+@export var forfiet_button: UIButton
 
 var timer: Timer
 
@@ -37,10 +38,13 @@ func _on_alter_summon(nodes: Array[Node2D]) -> void:
 func reset_alter_buttons() -> void:
 	await get_tree().process_frame
 	alter.reevaluate_button_collisions()
+
 	await get_tree().process_frame
 	alter.reevaluate_button_collisions()
+
 	await get_tree().process_frame
 	alter.reevaluate_button_collisions()
+
 
 func gameover() -> void:
 	end.show()

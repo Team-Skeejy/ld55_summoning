@@ -32,13 +32,14 @@ b = Vector2(102, 112)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4lw1g"]
 size = Vector2(99, 13)
 
-[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory", "alter", "end", "health_label", "wave_label")]
+[node name="Ui" type="Node2D" node_paths=PackedStringArray("inventory", "alter", "end", "health_label", "wave_label", "forfiet_button")]
 script = ExtResource("1_3cdks")
 inventory = NodePath("Inventory")
 alter = NodePath("Alter")
 end = NodePath("End")
 health_label = NodePath("Node/Control/Health")
 wave_label = NodePath("Node/Control/Next Wave")
+forfiet_button = NodePath("Buttons/Forfiet")
 
 [node name="Alter" parent="." node_paths=PackedStringArray("alter_buttons", "summon_area", "summoning_sprite") instance=ExtResource("1_yf748")]
 position = Vector2(0, 112)
@@ -134,9 +135,10 @@ area = NodePath("Area2D")
 position = Vector2(208, 172)
 area = NodePath("Area2D")
 
-[node name="Inventory" parent="." node_paths=PackedStringArray("storage_space", "debug_sprite") instance=ExtResource("3_bwefo")]
+[node name="Inventory" parent="." node_paths=PackedStringArray("storage_space", "audio", "debug_sprite") instance=ExtResource("3_bwefo")]
 position = Vector2(3, 3)
 storage_space = NodePath("Storage Space/CollisionShape2D")
+audio = NodePath("AudioStreamPlayer")
 debug_sprite = NodePath("Sprite2D")
 area = Rect2(3, 3, 96, 91)
 

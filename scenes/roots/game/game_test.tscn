@@ -9,11 +9,12 @@ script = ExtResource("1_bpqcp")
 game = NodePath("Game")
 base_entity = ExtResource("6_0ag1t")
 
-[node name="Game" parent="." node_paths=PackedStringArray("ui", "dude_container", "wave_machine", "fade_transition") instance=ExtResource("1_bcc4q")]
+[node name="Game" parent="." node_paths=PackedStringArray("ui", "dude_container", "wave_machine", "fade_transition", "tutorial") instance=ExtResource("1_bcc4q")]
 ui = NodePath("Ui")
 dude_container = NodePath("DudeContainer")
 wave_machine = NodePath("WaveController")
 fade_transition = NodePath("Node/FadeTransition")
+tutorial = NodePath("Tutorial")
 
 [node name="UI" type="Node" parent="."]
 
@@ -71,6 +72,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 9
 text = "Bow"
 
+[node name="Bomb" type="Button" parent="UI/Control/VBoxContainer"]
+auto_translate_mode = 1
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+text = "Bomb"
+
 [node name="ArrowMan" type="Button" parent="UI/Control/VBoxContainer"]
 layout_mode = 2
 text = "Bowman"
@@ -80,4 +88,5 @@ text = "Bowman"
 [connection signal="button_down" from="UI/Control/VBoxContainer/Sword" to="." method="spawn_entity" binds= ["spear"]]
 [connection signal="button_down" from="UI/Control/VBoxContainer/Spear" to="." method="spawn_entity" binds= ["spear"]]
 [connection signal="button_down" from="UI/Control/VBoxContainer/Bow" to="." method="spawn_entity" binds= ["bow"]]
+[connection signal="button_down" from="UI/Control/VBoxContainer/Bomb" to="." method="spawn_entity" binds= ["bomb"]]
 [connection signal="button_down" from="UI/Control/VBoxContainer/ArrowMan" to="." method="spawn_bow"]

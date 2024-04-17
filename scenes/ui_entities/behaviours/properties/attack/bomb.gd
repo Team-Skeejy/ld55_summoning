@@ -23,9 +23,10 @@ func init(_parent: Dude) -> void:
 	parent.parentContainer.add_child(explode)
 	ready_to_explode = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !ready_to_explode: return
 	explode.global_position = parent.global_position
 
 func attack(_target: Attackable) -> void:
+	await get_tree().process_frame
 	explode.explode()

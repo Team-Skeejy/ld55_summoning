@@ -3,6 +3,7 @@ extends Node2D
 
 signal summoning(remaining: float)
 signal summon(nodes: Array[Node2D])
+signal on_reevaluate_buttons
 
 @export var alter_buttons: Array[UIButton]
 @export var summon_area: Area2D
@@ -38,6 +39,7 @@ func _process(delta: float) -> void:
 func reevaluate_button_collisions() -> void:
 	for button: UIButton in alter_buttons:
 		button.reevaluate_collisions()
+	on_reevaluate_buttons.emit()
 
 func check_buttons() -> void:
 	var exited_early: bool = false
